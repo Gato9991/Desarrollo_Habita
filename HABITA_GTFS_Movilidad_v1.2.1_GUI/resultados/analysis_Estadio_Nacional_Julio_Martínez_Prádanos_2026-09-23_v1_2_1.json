@@ -1,0 +1,716 @@
+{
+  "metadata": {
+    "feed_version": "V167.20260829",
+    "feed_start_date": "20260829",
+    "feed_end_date": "20261231",
+    "analysis_date": "2026-09-23",
+    "active_service_ids": [
+      "L",
+      "LJ"
+    ],
+    "timezone": "America/Santiago",
+    "generated_at": "2026-09-24T06:12:53.632668-03:00"
+  },
+  "location": {
+    "name": "Estadio Nacional Julio Martínez Prádanos",
+    "lat": -33.4644994,
+    "lon": -70.6112756
+  },
+  "nearest_physical_stop": {
+    "stop_id": "PD561",
+    "stop_name": "PD561-Parada 4 / Avenida Marathon",
+    "geodesic_distance_m": 308.0,
+    "theoretical_walk_time_min": 3.7
+  },
+  "nearest_active_stop": {
+    "stop_id": "PD561",
+    "stop_name": "PD561-Parada 4 / Avenida Marathon",
+    "geodesic_distance_m": 308.0,
+    "theoretical_walk_time_min": 3.7,
+    "routes_serving_stop": [
+      "508",
+      "511"
+    ],
+    "route_count": 2,
+    "destinations": [
+      {
+        "route_id": "508",
+        "route_short_name": "508",
+        "route_long_name": "Av. Mapocho - Av. Las Torres",
+        "direction_id": "1",
+        "trip_headsign": "Av. Mapocho",
+        "service_id": "L"
+      },
+      {
+        "route_id": "511",
+        "route_short_name": "511",
+        "route_long_name": "Cerro Navia - Peñalolen",
+        "direction_id": "1",
+        "trip_headsign": "Cerro Navia",
+        "service_id": "L"
+      }
+    ],
+    "service_window": {
+      "first_departure": "00:23:38",
+      "last_departure": "24:26:07",
+      "note": "24 corresponde a las 00 horas del día calendario siguiente, dentro del mismo día de servicio GTFS."
+    },
+    "peak_departures": {
+      "morning_peak": {
+        "window": "07:00:00-09:00:00",
+        "total_departures": 33
+      },
+      "afternoon_peak": {
+        "window": "17:00:00-19:00:00",
+        "total_departures": 14
+      }
+    },
+    "headway_by_route_direction": [
+      {
+        "route_id": "508",
+        "route_short_name": "508",
+        "route_long_name": "Av. Mapocho - Av. Las Torres",
+        "direction_id": "1",
+        "headway": {
+          "morning_peak": {
+            "scheduled_departures": 23,
+            "distinct_trip_id_patterns": 10,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 5.72,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 5.08,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          },
+          "afternoon_peak": {
+            "scheduled_departures": 2,
+            "distinct_trip_id_patterns": 10,
+            "concurrent_patterns_detected": false,
+            "weighted_block_headway_min": 8.33,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 8.33
+          }
+        }
+      },
+      {
+        "route_id": "511",
+        "route_short_name": "511",
+        "route_long_name": "Cerro Navia - Peñalolen",
+        "direction_id": "1",
+        "headway": {
+          "morning_peak": {
+            "scheduled_departures": 10,
+            "distinct_trip_id_patterns": 11,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 11.43,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 11.03,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          },
+          "afternoon_peak": {
+            "scheduled_departures": 12,
+            "distinct_trip_id_patterns": 11,
+            "concurrent_patterns_detected": false,
+            "weighted_block_headway_min": 10.96,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 10.04
+          }
+        }
+      }
+    ],
+    "same_as_nearest_physical_stop": true
+  },
+  "closest_stop_analysis": {
+    "stop_id": "PD561",
+    "stop_name": "PD561-Parada 4 / Avenida Marathon",
+    "geodesic_distance_m": 308.0,
+    "theoretical_walk_time_min": 3.7,
+    "routes_serving_stop": [
+      "508",
+      "511"
+    ],
+    "route_count": 2,
+    "destinations": [
+      {
+        "route_id": "508",
+        "route_short_name": "508",
+        "route_long_name": "Av. Mapocho - Av. Las Torres",
+        "direction_id": "1",
+        "trip_headsign": "Av. Mapocho",
+        "service_id": "L"
+      },
+      {
+        "route_id": "511",
+        "route_short_name": "511",
+        "route_long_name": "Cerro Navia - Peñalolen",
+        "direction_id": "1",
+        "trip_headsign": "Cerro Navia",
+        "service_id": "L"
+      }
+    ],
+    "service_window": {
+      "first_departure": "00:23:38",
+      "last_departure": "24:26:07",
+      "note": "24 corresponde a las 00 horas del día calendario siguiente, dentro del mismo día de servicio GTFS."
+    },
+    "peak_departures": {
+      "morning_peak": {
+        "window": "07:00:00-09:00:00",
+        "total_departures": 33
+      },
+      "afternoon_peak": {
+        "window": "17:00:00-19:00:00",
+        "total_departures": 14
+      }
+    },
+    "headway_by_route_direction": [
+      {
+        "route_id": "508",
+        "route_short_name": "508",
+        "route_long_name": "Av. Mapocho - Av. Las Torres",
+        "direction_id": "1",
+        "headway": {
+          "morning_peak": {
+            "scheduled_departures": 23,
+            "distinct_trip_id_patterns": 10,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 5.72,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 5.08,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          },
+          "afternoon_peak": {
+            "scheduled_departures": 2,
+            "distinct_trip_id_patterns": 10,
+            "concurrent_patterns_detected": false,
+            "weighted_block_headway_min": 8.33,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 8.33
+          }
+        }
+      },
+      {
+        "route_id": "511",
+        "route_short_name": "511",
+        "route_long_name": "Cerro Navia - Peñalolen",
+        "direction_id": "1",
+        "headway": {
+          "morning_peak": {
+            "scheduled_departures": 10,
+            "distinct_trip_id_patterns": 11,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 11.43,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 11.03,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          },
+          "afternoon_peak": {
+            "scheduled_departures": 12,
+            "distinct_trip_id_patterns": 11,
+            "concurrent_patterns_detected": false,
+            "weighted_block_headway_min": 10.96,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 10.04
+          }
+        }
+      }
+    ],
+    "same_as_nearest_physical_stop": true
+  },
+  "area_analysis": {
+    "radius_500m": {
+      "radius_m": 500.0,
+      "stop_points": 25,
+      "active_routes": [
+        {
+          "route_id": "103",
+          "route_short_name": "103"
+        },
+        {
+          "route_id": "106",
+          "route_short_name": "106"
+        },
+        {
+          "route_id": "114",
+          "route_short_name": "114"
+        },
+        {
+          "route_id": "117",
+          "route_short_name": "117"
+        },
+        {
+          "route_id": "126",
+          "route_short_name": "126"
+        },
+        {
+          "route_id": "506",
+          "route_short_name": "506"
+        },
+        {
+          "route_id": "506e",
+          "route_short_name": "506e"
+        },
+        {
+          "route_id": "506v",
+          "route_short_name": "506v"
+        },
+        {
+          "route_id": "507",
+          "route_short_name": "507"
+        },
+        {
+          "route_id": "507c",
+          "route_short_name": "507c"
+        },
+        {
+          "route_id": "508",
+          "route_short_name": "508"
+        },
+        {
+          "route_id": "510",
+          "route_short_name": "510"
+        },
+        {
+          "route_id": "511",
+          "route_short_name": "511"
+        },
+        {
+          "route_id": "516",
+          "route_short_name": "516"
+        },
+        {
+          "route_id": "519",
+          "route_short_name": "519"
+        },
+        {
+          "route_id": "D05",
+          "route_short_name": "D05"
+        },
+        {
+          "route_id": "D13",
+          "route_short_name": "D13"
+        },
+        {
+          "route_id": "L6",
+          "route_short_name": "L6"
+        }
+      ],
+      "active_routes_count": 18,
+      "morning_peak": {
+        "window": "07:00:00-09:00:00",
+        "stop_departure_events": 914,
+        "unique_trip_instances": 487,
+        "by_route": {
+          "103": {
+            "stop_departure_events": 34,
+            "unique_trip_instances": 22
+          },
+          "106": {
+            "stop_departure_events": 46,
+            "unique_trip_instances": 23
+          },
+          "114": {
+            "stop_departure_events": 41,
+            "unique_trip_instances": 22
+          },
+          "117": {
+            "stop_departure_events": 36,
+            "unique_trip_instances": 25
+          },
+          "126": {
+            "stop_departure_events": 43,
+            "unique_trip_instances": 14
+          },
+          "506": {
+            "stop_departure_events": 70,
+            "unique_trip_instances": 35
+          },
+          "506e": {
+            "stop_departure_events": 20,
+            "unique_trip_instances": 20
+          },
+          "506v": {
+            "stop_departure_events": 59,
+            "unique_trip_instances": 30
+          },
+          "507": {
+            "stop_departure_events": 71,
+            "unique_trip_instances": 36
+          },
+          "507c": {
+            "stop_departure_events": 55,
+            "unique_trip_instances": 28
+          },
+          "508": {
+            "stop_departure_events": 76,
+            "unique_trip_instances": 38
+          },
+          "510": {
+            "stop_departure_events": 41,
+            "unique_trip_instances": 21
+          },
+          "511": {
+            "stop_departure_events": 69,
+            "unique_trip_instances": 18
+          },
+          "516": {
+            "stop_departure_events": 96,
+            "unique_trip_instances": 48
+          },
+          "519": {
+            "stop_departure_events": 53,
+            "unique_trip_instances": 27
+          },
+          "D05": {
+            "stop_departure_events": 26,
+            "unique_trip_instances": 13
+          },
+          "D13": {
+            "stop_departure_events": 22,
+            "unique_trip_instances": 11
+          },
+          "L6": {
+            "stop_departure_events": 56,
+            "unique_trip_instances": 56
+          }
+        }
+      },
+      "afternoon_peak": {
+        "window": "17:00:00-19:00:00",
+        "stop_departure_events": 935,
+        "unique_trip_instances": 491,
+        "by_route": {
+          "103": {
+            "stop_departure_events": 36,
+            "unique_trip_instances": 24
+          },
+          "106": {
+            "stop_departure_events": 50,
+            "unique_trip_instances": 25
+          },
+          "114": {
+            "stop_departure_events": 43,
+            "unique_trip_instances": 23
+          },
+          "117": {
+            "stop_departure_events": 38,
+            "unique_trip_instances": 25
+          },
+          "126": {
+            "stop_departure_events": 46,
+            "unique_trip_instances": 16
+          },
+          "506": {
+            "stop_departure_events": 68,
+            "unique_trip_instances": 34
+          },
+          "506e": {
+            "stop_departure_events": 11,
+            "unique_trip_instances": 11
+          },
+          "506v": {
+            "stop_departure_events": 56,
+            "unique_trip_instances": 29
+          },
+          "507": {
+            "stop_departure_events": 76,
+            "unique_trip_instances": 39
+          },
+          "507c": {
+            "stop_departure_events": 48,
+            "unique_trip_instances": 25
+          },
+          "508": {
+            "stop_departure_events": 66,
+            "unique_trip_instances": 34
+          },
+          "510": {
+            "stop_departure_events": 50,
+            "unique_trip_instances": 26
+          },
+          "511": {
+            "stop_departure_events": 92,
+            "unique_trip_instances": 24
+          },
+          "516": {
+            "stop_departure_events": 93,
+            "unique_trip_instances": 47
+          },
+          "519": {
+            "stop_departure_events": 56,
+            "unique_trip_instances": 28
+          },
+          "D05": {
+            "stop_departure_events": 30,
+            "unique_trip_instances": 15
+          },
+          "D13": {
+            "stop_departure_events": 20,
+            "unique_trip_instances": 10
+          },
+          "L6": {
+            "stop_departure_events": 56,
+            "unique_trip_instances": 56
+          }
+        }
+      }
+    },
+    "radius_800m": {
+      "radius_m": 800.0,
+      "stop_points": 46,
+      "active_routes": [
+        {
+          "route_id": "103",
+          "route_short_name": "103"
+        },
+        {
+          "route_id": "106",
+          "route_short_name": "106"
+        },
+        {
+          "route_id": "114",
+          "route_short_name": "114"
+        },
+        {
+          "route_id": "117",
+          "route_short_name": "117"
+        },
+        {
+          "route_id": "126",
+          "route_short_name": "126"
+        },
+        {
+          "route_id": "506",
+          "route_short_name": "506"
+        },
+        {
+          "route_id": "506e",
+          "route_short_name": "506e"
+        },
+        {
+          "route_id": "506v",
+          "route_short_name": "506v"
+        },
+        {
+          "route_id": "507",
+          "route_short_name": "507"
+        },
+        {
+          "route_id": "507c",
+          "route_short_name": "507c"
+        },
+        {
+          "route_id": "508",
+          "route_short_name": "508"
+        },
+        {
+          "route_id": "510",
+          "route_short_name": "510"
+        },
+        {
+          "route_id": "511",
+          "route_short_name": "511"
+        },
+        {
+          "route_id": "516",
+          "route_short_name": "516"
+        },
+        {
+          "route_id": "519",
+          "route_short_name": "519"
+        },
+        {
+          "route_id": "D02",
+          "route_short_name": "D02"
+        },
+        {
+          "route_id": "D05",
+          "route_short_name": "D05"
+        },
+        {
+          "route_id": "D13",
+          "route_short_name": "D13"
+        },
+        {
+          "route_id": "L6",
+          "route_short_name": "L6"
+        }
+      ],
+      "active_routes_count": 19,
+      "morning_peak": {
+        "window": "07:00:00-09:00:00",
+        "stop_departure_events": 1802,
+        "unique_trip_instances": 517,
+        "by_route": {
+          "103": {
+            "stop_departure_events": 78,
+            "unique_trip_instances": 22
+          },
+          "106": {
+            "stop_departure_events": 92,
+            "unique_trip_instances": 23
+          },
+          "114": {
+            "stop_departure_events": 95,
+            "unique_trip_instances": 23
+          },
+          "117": {
+            "stop_departure_events": 87,
+            "unique_trip_instances": 26
+          },
+          "126": {
+            "stop_departure_events": 85,
+            "unique_trip_instances": 14
+          },
+          "506": {
+            "stop_departure_events": 139,
+            "unique_trip_instances": 36
+          },
+          "506e": {
+            "stop_departure_events": 40,
+            "unique_trip_instances": 21
+          },
+          "506v": {
+            "stop_departure_events": 118,
+            "unique_trip_instances": 30
+          },
+          "507": {
+            "stop_departure_events": 141,
+            "unique_trip_instances": 36
+          },
+          "507c": {
+            "stop_departure_events": 111,
+            "unique_trip_instances": 29
+          },
+          "508": {
+            "stop_departure_events": 150,
+            "unique_trip_instances": 39
+          },
+          "510": {
+            "stop_departure_events": 82,
+            "unique_trip_instances": 22
+          },
+          "511": {
+            "stop_departure_events": 104,
+            "unique_trip_instances": 18
+          },
+          "516": {
+            "stop_departure_events": 193,
+            "unique_trip_instances": 51
+          },
+          "519": {
+            "stop_departure_events": 106,
+            "unique_trip_instances": 27
+          },
+          "D02": {
+            "stop_departure_events": 20,
+            "unique_trip_instances": 10
+          },
+          "D05": {
+            "stop_departure_events": 51,
+            "unique_trip_instances": 13
+          },
+          "D13": {
+            "stop_departure_events": 54,
+            "unique_trip_instances": 21
+          },
+          "L6": {
+            "stop_departure_events": 56,
+            "unique_trip_instances": 56
+          }
+        }
+      },
+      "afternoon_peak": {
+        "window": "17:00:00-19:00:00",
+        "stop_departure_events": 1835,
+        "unique_trip_instances": 527,
+        "by_route": {
+          "103": {
+            "stop_departure_events": 84,
+            "unique_trip_instances": 24
+          },
+          "106": {
+            "stop_departure_events": 99,
+            "unique_trip_instances": 26
+          },
+          "114": {
+            "stop_departure_events": 97,
+            "unique_trip_instances": 24
+          },
+          "117": {
+            "stop_departure_events": 87,
+            "unique_trip_instances": 26
+          },
+          "126": {
+            "stop_departure_events": 92,
+            "unique_trip_instances": 16
+          },
+          "506": {
+            "stop_departure_events": 137,
+            "unique_trip_instances": 36
+          },
+          "506e": {
+            "stop_departure_events": 21,
+            "unique_trip_instances": 11
+          },
+          "506v": {
+            "stop_departure_events": 113,
+            "unique_trip_instances": 30
+          },
+          "507": {
+            "stop_departure_events": 153,
+            "unique_trip_instances": 41
+          },
+          "507c": {
+            "stop_departure_events": 95,
+            "unique_trip_instances": 25
+          },
+          "508": {
+            "stop_departure_events": 132,
+            "unique_trip_instances": 35
+          },
+          "510": {
+            "stop_departure_events": 100,
+            "unique_trip_instances": 26
+          },
+          "511": {
+            "stop_departure_events": 140,
+            "unique_trip_instances": 26
+          },
+          "516": {
+            "stop_departure_events": 186,
+            "unique_trip_instances": 49
+          },
+          "519": {
+            "stop_departure_events": 113,
+            "unique_trip_instances": 30
+          },
+          "D02": {
+            "stop_departure_events": 18,
+            "unique_trip_instances": 9
+          },
+          "D05": {
+            "stop_departure_events": 61,
+            "unique_trip_instances": 16
+          },
+          "D13": {
+            "stop_departure_events": 51,
+            "unique_trip_instances": 21
+          },
+          "L6": {
+            "stop_departure_events": 56,
+            "unique_trip_instances": 56
+          }
+        }
+      }
+    }
+  },
+  "limitations": [
+    "geodesic_distance_m es distancia geodésica en línea recta (Haversine); no es una ruta caminable real y puede haber calles sin cruce, vías férreas, muros, autopistas u otras barreras no consideradas.",
+    "theoretical_walk_time_min asume 1.4 m/s (5 km/h) en línea recta; es una estimación teórica, no un tiempo de caminata verificado.",
+    "Las salidas se derivan del horario programado del feed GTFS estático; no reflejan atrasos, adelantos ni cancelaciones en tiempo real.",
+    "Cuando exact_times distinto de 1, las salidas generadas desde frequencies.txt son estimaciones de un viaje patrón, no el paso exacto observado del vehículo.",
+    "stop_departure_events cuenta eventos de paso en cada parada del radio (un mismo vehículo puede sumar varios si su recorrido cruza más de una parada dentro del radio); unique_trip_instances cuenta cada instancia de viaje una sola vez. Ninguna de las dos debe leerse como 'cantidad de buses' sin esta aclaración.",
+    "Se excluyeron de las cuentas de salida las filas de stop_times.txt con pickup_type=1 (sin abordaje permitido).",
+    "Feed vigente entre 20260829 y 20261231 (versión V167.20260829); no incluye datos en tiempo real ni fechas fuera de ese rango."
+  ]
+}

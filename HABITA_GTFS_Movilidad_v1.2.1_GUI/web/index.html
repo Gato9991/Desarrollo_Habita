@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HABITA · Movilidad</title><link rel="stylesheet" href="/style.css">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<script src="/app.js" defer></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/" aria-label="HABITA inicio"><span class="brandmark" aria-hidden="true"></span><span>HABITA<small>INFORMACIÓN PARA ELEGIR MEJOR</small></span></a><div class="topright"><span class="online-dot"></span> ENTORNO LOCAL <span class="version">GTFS / 1.2.1</span></div></header>
+<main class="shell">
+<section class="hero"><div><div class="eyebrow"><span class="dash"></span> EXPLORA TU CONECTIVIDAD</div><h1>Tu entorno,<br><em>mejor conectado.</em></h1><p>Descubre el transporte público cerca de una ubicación.<br class="desktop"> Datos programados, decisiones informadas.</p></div><div class="hero-stamp"><svg viewBox="0 0 80 80" aria-hidden="true"><rect x="18" y="12" width="44" height="48" rx="12"/><path d="M24 26h32M24 41h32M28 61v7M52 61v7"/><circle cx="29" cy="50" r="3"/><circle cx="51" cy="50" r="3"/></svg><span>MOVILIDAD<br><strong>A tu alcance</strong></span></div></section>
+<div class="workspace">
+<aside class="query-panel panel">
+<div class="panel-title"><span class="step">01</span><div><h2>Define tu ubicación</h2><p>El punto de partida del análisis</p></div></div>
+<form id="query-form">
+<label for="preset">Consulta rápida</label><select id="preset"><option value="0">Plaza de Armas · San Bernardo</option><option value="1">Estadio Nacional</option><option value="custom">Otra ubicación</option></select>
+<label for="name">Nombre del lugar</label><input id="name" name="name" maxlength="160" value="Plaza de Armas · San Bernardo" required autocomplete="off">
+<div class="field-pair"><div><label for="lat">Latitud</label><input id="lat" name="lat" type="number" step="any" min="-90" max="90" value="-33.5922368" required></div><div><label for="lon">Longitud</label><input id="lon" name="lon" type="number" step="any" min="-180" max="180" value="-70.704706" required></div></div>
+<label for="date">Fecha de servicio</label><input id="date" name="date" type="date" required><p class="field-note">La fecha debe estar dentro de la vigencia del feed.</p>
+<button class="primary analyze" type="submit" id="analyze" disabled><span>Analizar ubicación</span><span aria-hidden="true">↗</span></button>
+<div id="busy" class="busy hidden" role="status"><span class="spinner"></span><span id="busy-label">Preparando análisis…</span></div>
+<div id="message" class="message hidden" role="alert"></div>
+</form>
+<div class="source-info"><div class="source-label"><span class="online-dot"></span> FUENTE DE LA CONSULTA</div><strong id="feed-version">Conectando…</strong><span id="feed-validity">Leyendo la fuente de datos</span><small id="feed-label"></small></div>
+<details id="feed-details"><summary>Cambiar fuente GTFS <span aria-hidden="true">+</span></summary><div class="feed-content"><p>Carga un feed completo en ZIP o usa una carpeta de este equipo.</p><input id="feed-file" type="file" accept=".zip" class="file-input"><label for="feed-file" class="secondary file-button">Seleccionar ZIP GTFS</label><label for="feed-path">Ruta local de carpeta o ZIP</label><input id="feed-path" placeholder="C:\Datos\GTFS"><button id="load-path" class="secondary" type="button">Usar esta ruta</button></div></details>
+<p class="privacy-note">Tus consultas se procesan en este equipo. No necesitas una cuenta ni una API externa.</p>
+</aside>
+<section class="results-column">
+<div class="results-header"><div><div class="eyebrow navy">02 / LECTURA DEL ENTORNO</div><h2 id="result-title">Todo comienza con un lugar.</h2></div><button id="export" class="secondary hidden" type="button">Descargar JSON ↓</button></div>
+<div id="empty-state" class="empty-state panel"><div class="orbit" aria-hidden="true"><span class="orbit-ring outer"></span><span class="orbit-ring inner"></span><span class="orbit-center">⌖</span><span class="orbit-dot d1"></span><span class="orbit-dot d2"></span><span class="orbit-dot d3"></span><span class="orbit-label l1">500 m</span><span class="orbit-label l2">800 m</span></div><h3>Una ubicación. Muchas conexiones.</h3><p>Consulta paraderos cercanos, recorridos activos<br>y horarios de servicio en un solo lugar.</p><div class="empty-tags"><span>PROXIMIDAD</span><span>COBERTURA</span><span>FRECUENCIA</span></div></div>
+<div id="report" class="hidden">
+<div id="report-context" class="report-context"></div>
+<div id="metrics" class="metrics"></div>
+<nav class="tabs" role="tablist" aria-label="Vistas del informe"><button id="tab-summary" role="tab" aria-selected="true" aria-controls="summary" data-tab="summary">Resumen</button><button id="tab-routes" role="tab" aria-selected="false" aria-controls="routes" data-tab="routes" tabindex="-1">Recorridos</button><button id="tab-coverage" role="tab" aria-selected="false" aria-controls="coverage" data-tab="coverage" tabindex="-1">Cobertura</button><button id="tab-technical" role="tab" aria-selected="false" aria-controls="technical" data-tab="technical" tabindex="-1">Ficha técnica</button></nav>
+<section id="summary" class="tab-panel" role="tabpanel" aria-labelledby="tab-summary"></section>
+<section id="routes" class="tab-panel hidden" role="tabpanel" aria-labelledby="tab-routes"></section>
+<section id="coverage" class="tab-panel hidden" role="tabpanel" aria-labelledby="tab-coverage"></section>
+<section id="technical" class="tab-panel hidden" role="tabpanel" aria-labelledby="tab-technical"></section>
+</div>
+<div class="method-note"><span class="info-icon">i</span><p><strong>Una lectura del transporte programado.</strong> Las distancias son en línea recta y los tiempos de caminata son teóricos. El feed no informa la llegada de vehículos en tiempo real.</p></div>
+</section>
+</div>
+<footer><span>HABITA <b>·</b> Movilidad territorial</span><span>Motor GTFS 1.2.1 <b> / </b> Interfaz gráfica local</span></footer>
+</main>
+</body></html>

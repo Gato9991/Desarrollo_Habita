@@ -1,0 +1,16 @@
+{
+  "filename": "GTFS_20260829.zip",
+  "size": 12420603,
+  "sha256": "8c31a7f68676f9a1cf2b3d86a40c8bea7adbd1f7478ac57d57eb826f6de21e77",
+  "parts": [
+    "GTFS_20260829.zip.part01",
+    "GTFS_20260829.zip.part02",
+    "GTFS_20260829.zip.part03",
+    "GTFS_20260829.zip.part04",
+    "GTFS_20260829.zip.part05",
+    "GTFS_20260829.zip.part06",
+    "GTFS_20260829.zip.part07",
+    "GTFS_20260829.zip.part08",
+    "GTFS_20260829.zip.part09"
+  ]
+}
