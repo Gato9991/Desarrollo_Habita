@@ -1,0 +1,1044 @@
+{
+  "metadata": {
+    "feed_version": "V167.20260829",
+    "feed_start_date": "20260829",
+    "feed_end_date": "20261231",
+    "analysis_date": "2026-09-23",
+    "active_service_ids": [
+      "L",
+      "LJ"
+    ],
+    "timezone": "America/Santiago",
+    "generated_at": "2026-09-24T06:12:53.243521-03:00"
+  },
+  "location": {
+    "name": "Plaza de Armas - San Bernardo",
+    "lat": -33.5922368,
+    "lon": -70.704706
+  },
+  "nearest_physical_stop": {
+    "stop_id": "PG1599",
+    "stop_name": "PG1599-Parada 2 / Plaza de San Bernardo",
+    "geodesic_distance_m": 94.2,
+    "theoretical_walk_time_min": 1.1
+  },
+  "nearest_active_stop": {
+    "stop_id": "PG1599",
+    "stop_name": "PG1599-Parada 2 / Plaza de San Bernardo",
+    "geodesic_distance_m": 94.2,
+    "theoretical_walk_time_min": 1.1,
+    "routes_serving_stop": [
+      "201",
+      "201e",
+      "211",
+      "211c",
+      "217e",
+      "271"
+    ],
+    "route_count": 6,
+    "destinations": [
+      {
+        "route_id": "201",
+        "route_short_name": "201",
+        "route_long_name": "Mall Plaza Norte - San Bernardo",
+        "direction_id": "1",
+        "trip_headsign": "Mall Plaza Norte",
+        "service_id": "L"
+      },
+      {
+        "route_id": "201e",
+        "route_short_name": "201e",
+        "route_long_name": "(M) Santa Ana - San Bernardo",
+        "direction_id": "1",
+        "trip_headsign": "(M) Santa Ana",
+        "service_id": "L"
+      },
+      {
+        "route_id": "211",
+        "route_short_name": "211",
+        "route_long_name": "La Florida - Nos",
+        "direction_id": "1",
+        "trip_headsign": "La Florida",
+        "service_id": "L"
+      },
+      {
+        "route_id": "211c",
+        "route_short_name": "211c",
+        "route_long_name": "(M) La Cisterna - San Bernardo",
+        "direction_id": "1",
+        "trip_headsign": "(M) La Cisterna",
+        "service_id": "L"
+      },
+      {
+        "route_id": "217e",
+        "route_short_name": "217e",
+        "route_long_name": "Maestranza - (M) Santa Ana",
+        "direction_id": "0",
+        "trip_headsign": "(M) Santa Ana",
+        "service_id": "L"
+      },
+      {
+        "route_id": "271",
+        "route_short_name": "271",
+        "route_long_name": "Santiago - San Bernardo",
+        "direction_id": "1",
+        "trip_headsign": "Santiago",
+        "service_id": "L"
+      }
+    ],
+    "service_window": {
+      "first_departure": "00:04:38",
+      "last_departure": "23:53:42",
+      "note": null
+    },
+    "peak_departures": {
+      "morning_peak": {
+        "window": "07:00:00-09:00:00",
+        "total_departures": 95
+      },
+      "afternoon_peak": {
+        "window": "17:00:00-19:00:00",
+        "total_departures": 88
+      }
+    },
+    "headway_by_route_direction": [
+      {
+        "route_id": "201",
+        "route_short_name": "201",
+        "route_long_name": "Mall Plaza Norte - San Bernardo",
+        "direction_id": "1",
+        "headway": {
+          "morning_peak": {
+            "scheduled_departures": 16,
+            "distinct_trip_id_patterns": 12,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 7.79,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 7.74,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          },
+          "afternoon_peak": {
+            "scheduled_departures": 15,
+            "distinct_trip_id_patterns": 12,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 8.83,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 8.05,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          }
+        }
+      },
+      {
+        "route_id": "201e",
+        "route_short_name": "201e",
+        "route_long_name": "(M) Santa Ana - San Bernardo",
+        "direction_id": "1",
+        "headway": {
+          "morning_peak": {
+            "scheduled_departures": 19,
+            "distinct_trip_id_patterns": 10,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 7.15,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 6.4,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          },
+          "afternoon_peak": {
+            "scheduled_departures": 24,
+            "distinct_trip_id_patterns": 10,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 5.32,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 5.03,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          }
+        }
+      },
+      {
+        "route_id": "211",
+        "route_short_name": "211",
+        "route_long_name": "La Florida - Nos",
+        "direction_id": "1",
+        "headway": {
+          "morning_peak": {
+            "scheduled_departures": 14,
+            "distinct_trip_id_patterns": 11,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 9.27,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 8.82,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          },
+          "afternoon_peak": {
+            "scheduled_departures": 14,
+            "distinct_trip_id_patterns": 11,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 9.22,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 8.84,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          }
+        }
+      },
+      {
+        "route_id": "211c",
+        "route_short_name": "211c",
+        "route_long_name": "(M) La Cisterna - San Bernardo",
+        "direction_id": "1",
+        "headway": {
+          "morning_peak": {
+            "scheduled_departures": 24,
+            "distinct_trip_id_patterns": 10,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 5.1,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 4.96,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          },
+          "afternoon_peak": {
+            "scheduled_departures": 21,
+            "distinct_trip_id_patterns": 10,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 5.9,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 5.76,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          }
+        }
+      },
+      {
+        "route_id": "217e",
+        "route_short_name": "217e",
+        "route_long_name": "Maestranza - (M) Santa Ana",
+        "direction_id": "0",
+        "headway": {
+          "morning_peak": {
+            "scheduled_departures": 7,
+            "distinct_trip_id_patterns": 5,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 19.79,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 19.03,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          },
+          "afternoon_peak": {
+            "scheduled_departures": 4,
+            "distinct_trip_id_patterns": 5,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 36.6,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 32.84,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          }
+        }
+      },
+      {
+        "route_id": "271",
+        "route_short_name": "271",
+        "route_long_name": "Santiago - San Bernardo",
+        "direction_id": "1",
+        "headway": {
+          "morning_peak": {
+            "scheduled_departures": 15,
+            "distinct_trip_id_patterns": 10,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 8.85,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 8.03,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          },
+          "afternoon_peak": {
+            "scheduled_departures": 10,
+            "distinct_trip_id_patterns": 10,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 11.72,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 11.52,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          }
+        }
+      }
+    ],
+    "same_as_nearest_physical_stop": true
+  },
+  "closest_stop_analysis": {
+    "stop_id": "PG1599",
+    "stop_name": "PG1599-Parada 2 / Plaza de San Bernardo",
+    "geodesic_distance_m": 94.2,
+    "theoretical_walk_time_min": 1.1,
+    "routes_serving_stop": [
+      "201",
+      "201e",
+      "211",
+      "211c",
+      "217e",
+      "271"
+    ],
+    "route_count": 6,
+    "destinations": [
+      {
+        "route_id": "201",
+        "route_short_name": "201",
+        "route_long_name": "Mall Plaza Norte - San Bernardo",
+        "direction_id": "1",
+        "trip_headsign": "Mall Plaza Norte",
+        "service_id": "L"
+      },
+      {
+        "route_id": "201e",
+        "route_short_name": "201e",
+        "route_long_name": "(M) Santa Ana - San Bernardo",
+        "direction_id": "1",
+        "trip_headsign": "(M) Santa Ana",
+        "service_id": "L"
+      },
+      {
+        "route_id": "211",
+        "route_short_name": "211",
+        "route_long_name": "La Florida - Nos",
+        "direction_id": "1",
+        "trip_headsign": "La Florida",
+        "service_id": "L"
+      },
+      {
+        "route_id": "211c",
+        "route_short_name": "211c",
+        "route_long_name": "(M) La Cisterna - San Bernardo",
+        "direction_id": "1",
+        "trip_headsign": "(M) La Cisterna",
+        "service_id": "L"
+      },
+      {
+        "route_id": "217e",
+        "route_short_name": "217e",
+        "route_long_name": "Maestranza - (M) Santa Ana",
+        "direction_id": "0",
+        "trip_headsign": "(M) Santa Ana",
+        "service_id": "L"
+      },
+      {
+        "route_id": "271",
+        "route_short_name": "271",
+        "route_long_name": "Santiago - San Bernardo",
+        "direction_id": "1",
+        "trip_headsign": "Santiago",
+        "service_id": "L"
+      }
+    ],
+    "service_window": {
+      "first_departure": "00:04:38",
+      "last_departure": "23:53:42",
+      "note": null
+    },
+    "peak_departures": {
+      "morning_peak": {
+        "window": "07:00:00-09:00:00",
+        "total_departures": 95
+      },
+      "afternoon_peak": {
+        "window": "17:00:00-19:00:00",
+        "total_departures": 88
+      }
+    },
+    "headway_by_route_direction": [
+      {
+        "route_id": "201",
+        "route_short_name": "201",
+        "route_long_name": "Mall Plaza Norte - San Bernardo",
+        "direction_id": "1",
+        "headway": {
+          "morning_peak": {
+            "scheduled_departures": 16,
+            "distinct_trip_id_patterns": 12,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 7.79,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 7.74,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          },
+          "afternoon_peak": {
+            "scheduled_departures": 15,
+            "distinct_trip_id_patterns": 12,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 8.83,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 8.05,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          }
+        }
+      },
+      {
+        "route_id": "201e",
+        "route_short_name": "201e",
+        "route_long_name": "(M) Santa Ana - San Bernardo",
+        "direction_id": "1",
+        "headway": {
+          "morning_peak": {
+            "scheduled_departures": 19,
+            "distinct_trip_id_patterns": 10,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 7.15,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 6.4,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          },
+          "afternoon_peak": {
+            "scheduled_departures": 24,
+            "distinct_trip_id_patterns": 10,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 5.32,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 5.03,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          }
+        }
+      },
+      {
+        "route_id": "211",
+        "route_short_name": "211",
+        "route_long_name": "La Florida - Nos",
+        "direction_id": "1",
+        "headway": {
+          "morning_peak": {
+            "scheduled_departures": 14,
+            "distinct_trip_id_patterns": 11,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 9.27,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 8.82,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          },
+          "afternoon_peak": {
+            "scheduled_departures": 14,
+            "distinct_trip_id_patterns": 11,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 9.22,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 8.84,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          }
+        }
+      },
+      {
+        "route_id": "211c",
+        "route_short_name": "211c",
+        "route_long_name": "(M) La Cisterna - San Bernardo",
+        "direction_id": "1",
+        "headway": {
+          "morning_peak": {
+            "scheduled_departures": 24,
+            "distinct_trip_id_patterns": 10,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 5.1,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 4.96,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          },
+          "afternoon_peak": {
+            "scheduled_departures": 21,
+            "distinct_trip_id_patterns": 10,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 5.9,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 5.76,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          }
+        }
+      },
+      {
+        "route_id": "217e",
+        "route_short_name": "217e",
+        "route_long_name": "Maestranza - (M) Santa Ana",
+        "direction_id": "0",
+        "headway": {
+          "morning_peak": {
+            "scheduled_departures": 7,
+            "distinct_trip_id_patterns": 5,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 19.79,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 19.03,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          },
+          "afternoon_peak": {
+            "scheduled_departures": 4,
+            "distinct_trip_id_patterns": 5,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 36.6,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 32.84,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          }
+        }
+      },
+      {
+        "route_id": "271",
+        "route_short_name": "271",
+        "route_long_name": "Santiago - San Bernardo",
+        "direction_id": "1",
+        "headway": {
+          "morning_peak": {
+            "scheduled_departures": 15,
+            "distinct_trip_id_patterns": 10,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 8.85,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 8.03,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          },
+          "afternoon_peak": {
+            "scheduled_departures": 10,
+            "distinct_trip_id_patterns": 10,
+            "concurrent_patterns_detected": true,
+            "weighted_block_headway_min": 11.72,
+            "method": "headway_ponderado_por_solapamiento_temporal_con_offset",
+            "effective_interval_from_generated_departures_min": 11.52,
+            "note": "Se detectaron bloques de distintos trip_id del mismo route_id+direction_id solapados en el tiempo dentro de esta ventana. weighted_block_headway_min es un promedio ponderado de los headways declarados, NO la frecuencia combinada real de servicios simultáneos (que sería menor)."
+          }
+        }
+      }
+    ],
+    "same_as_nearest_physical_stop": true
+  },
+  "area_analysis": {
+    "radius_500m": {
+      "radius_m": 500.0,
+      "stop_points": 23,
+      "active_routes": [
+        {
+          "route_id": "201",
+          "route_short_name": "201"
+        },
+        {
+          "route_id": "201e",
+          "route_short_name": "201e"
+        },
+        {
+          "route_id": "211",
+          "route_short_name": "211"
+        },
+        {
+          "route_id": "211c",
+          "route_short_name": "211c"
+        },
+        {
+          "route_id": "217e",
+          "route_short_name": "217e"
+        },
+        {
+          "route_id": "228",
+          "route_short_name": "228"
+        },
+        {
+          "route_id": "262N",
+          "route_short_name": "262n"
+        },
+        {
+          "route_id": "271",
+          "route_short_name": "271"
+        },
+        {
+          "route_id": "F03",
+          "route_short_name": "F03"
+        },
+        {
+          "route_id": "G02",
+          "route_short_name": "G02"
+        },
+        {
+          "route_id": "G07",
+          "route_short_name": "G07"
+        },
+        {
+          "route_id": "G08",
+          "route_short_name": "G08"
+        },
+        {
+          "route_id": "G08v",
+          "route_short_name": "G08v"
+        },
+        {
+          "route_id": "G09",
+          "route_short_name": "G09"
+        },
+        {
+          "route_id": "G14",
+          "route_short_name": "G14"
+        },
+        {
+          "route_id": "G22",
+          "route_short_name": "G22"
+        },
+        {
+          "route_id": "G27",
+          "route_short_name": "G27"
+        },
+        {
+          "route_id": "G28",
+          "route_short_name": "G28"
+        },
+        {
+          "route_id": "G32",
+          "route_short_name": "G32"
+        },
+        {
+          "route_id": "G37",
+          "route_short_name": "G37"
+        }
+      ],
+      "active_routes_count": 20,
+      "morning_peak": {
+        "window": "07:00:00-09:00:00",
+        "stop_departure_events": 1400,
+        "unique_trip_instances": 480,
+        "by_route": {
+          "201": {
+            "stop_departure_events": 47,
+            "unique_trip_instances": 27
+          },
+          "201e": {
+            "stop_departure_events": 116,
+            "unique_trip_instances": 40
+          },
+          "211": {
+            "stop_departure_events": 53,
+            "unique_trip_instances": 28
+          },
+          "211c": {
+            "stop_departure_events": 97,
+            "unique_trip_instances": 49
+          },
+          "217e": {
+            "stop_departure_events": 13,
+            "unique_trip_instances": 13
+          },
+          "228": {
+            "stop_departure_events": 23,
+            "unique_trip_instances": 23
+          },
+          "271": {
+            "stop_departure_events": 46,
+            "unique_trip_instances": 26
+          },
+          "F03": {
+            "stop_departure_events": 132,
+            "unique_trip_instances": 21
+          },
+          "G02": {
+            "stop_departure_events": 74,
+            "unique_trip_instances": 31
+          },
+          "G07": {
+            "stop_departure_events": 60,
+            "unique_trip_instances": 20
+          },
+          "G08": {
+            "stop_departure_events": 93,
+            "unique_trip_instances": 32
+          },
+          "G08v": {
+            "stop_departure_events": 121,
+            "unique_trip_instances": 28
+          },
+          "G09": {
+            "stop_departure_events": 140,
+            "unique_trip_instances": 20
+          },
+          "G14": {
+            "stop_departure_events": 135,
+            "unique_trip_instances": 25
+          },
+          "G22": {
+            "stop_departure_events": 95,
+            "unique_trip_instances": 48
+          },
+          "G27": {
+            "stop_departure_events": 31,
+            "unique_trip_instances": 11
+          },
+          "G28": {
+            "stop_departure_events": 109,
+            "unique_trip_instances": 23
+          },
+          "G32": {
+            "stop_departure_events": 13,
+            "unique_trip_instances": 13
+          },
+          "G37": {
+            "stop_departure_events": 2,
+            "unique_trip_instances": 2
+          }
+        }
+      },
+      "afternoon_peak": {
+        "window": "17:00:00-19:00:00",
+        "stop_departure_events": 1307,
+        "unique_trip_instances": 433,
+        "by_route": {
+          "201": {
+            "stop_departure_events": 58,
+            "unique_trip_instances": 30
+          },
+          "201e": {
+            "stop_departure_events": 127,
+            "unique_trip_instances": 43
+          },
+          "211": {
+            "stop_departure_events": 49,
+            "unique_trip_instances": 26
+          },
+          "211c": {
+            "stop_departure_events": 82,
+            "unique_trip_instances": 43
+          },
+          "217e": {
+            "stop_departure_events": 7,
+            "unique_trip_instances": 7
+          },
+          "228": {
+            "stop_departure_events": 17,
+            "unique_trip_instances": 17
+          },
+          "271": {
+            "stop_departure_events": 36,
+            "unique_trip_instances": 19
+          },
+          "F03": {
+            "stop_departure_events": 141,
+            "unique_trip_instances": 23
+          },
+          "G02": {
+            "stop_departure_events": 56,
+            "unique_trip_instances": 22
+          },
+          "G07": {
+            "stop_departure_events": 54,
+            "unique_trip_instances": 18
+          },
+          "G08": {
+            "stop_departure_events": 79,
+            "unique_trip_instances": 28
+          },
+          "G08v": {
+            "stop_departure_events": 93,
+            "unique_trip_instances": 21
+          },
+          "G09": {
+            "stop_departure_events": 124,
+            "unique_trip_instances": 18
+          },
+          "G14": {
+            "stop_departure_events": 135,
+            "unique_trip_instances": 25
+          },
+          "G22": {
+            "stop_departure_events": 94,
+            "unique_trip_instances": 47
+          },
+          "G27": {
+            "stop_departure_events": 29,
+            "unique_trip_instances": 10
+          },
+          "G28": {
+            "stop_departure_events": 114,
+            "unique_trip_instances": 24
+          },
+          "G32": {
+            "stop_departure_events": 11,
+            "unique_trip_instances": 11
+          },
+          "G37": {
+            "stop_departure_events": 1,
+            "unique_trip_instances": 1
+          }
+        }
+      }
+    },
+    "radius_800m": {
+      "radius_m": 800.0,
+      "stop_points": 57,
+      "active_routes": [
+        {
+          "route_id": "201",
+          "route_short_name": "201"
+        },
+        {
+          "route_id": "201e",
+          "route_short_name": "201e"
+        },
+        {
+          "route_id": "211",
+          "route_short_name": "211"
+        },
+        {
+          "route_id": "211c",
+          "route_short_name": "211c"
+        },
+        {
+          "route_id": "217e",
+          "route_short_name": "217e"
+        },
+        {
+          "route_id": "228",
+          "route_short_name": "228"
+        },
+        {
+          "route_id": "262N",
+          "route_short_name": "262n"
+        },
+        {
+          "route_id": "271",
+          "route_short_name": "271"
+        },
+        {
+          "route_id": "F03",
+          "route_short_name": "F03"
+        },
+        {
+          "route_id": "G02",
+          "route_short_name": "G02"
+        },
+        {
+          "route_id": "G07",
+          "route_short_name": "G07"
+        },
+        {
+          "route_id": "G08",
+          "route_short_name": "G08"
+        },
+        {
+          "route_id": "G08v",
+          "route_short_name": "G08v"
+        },
+        {
+          "route_id": "G09",
+          "route_short_name": "G09"
+        },
+        {
+          "route_id": "G14",
+          "route_short_name": "G14"
+        },
+        {
+          "route_id": "G22",
+          "route_short_name": "G22"
+        },
+        {
+          "route_id": "G27",
+          "route_short_name": "G27"
+        },
+        {
+          "route_id": "G28",
+          "route_short_name": "G28"
+        },
+        {
+          "route_id": "G32",
+          "route_short_name": "G32"
+        },
+        {
+          "route_id": "G37",
+          "route_short_name": "G37"
+        },
+        {
+          "route_id": "MTN",
+          "route_short_name": "MTN"
+        },
+        {
+          "route_id": "MTR",
+          "route_short_name": "MTR"
+        }
+      ],
+      "active_routes_count": 22,
+      "morning_peak": {
+        "window": "07:00:00-09:00:00",
+        "stop_departure_events": 3077,
+        "unique_trip_instances": 554,
+        "by_route": {
+          "201": {
+            "stop_departure_events": 140,
+            "unique_trip_instances": 27
+          },
+          "201e": {
+            "stop_departure_events": 214,
+            "unique_trip_instances": 41
+          },
+          "211": {
+            "stop_departure_events": 133,
+            "unique_trip_instances": 28
+          },
+          "211c": {
+            "stop_departure_events": 241,
+            "unique_trip_instances": 50
+          },
+          "217e": {
+            "stop_departure_events": 20,
+            "unique_trip_instances": 13
+          },
+          "228": {
+            "stop_departure_events": 164,
+            "unique_trip_instances": 48
+          },
+          "271": {
+            "stop_departure_events": 134,
+            "unique_trip_instances": 26
+          },
+          "F03": {
+            "stop_departure_events": 182,
+            "unique_trip_instances": 21
+          },
+          "G02": {
+            "stop_departure_events": 209,
+            "unique_trip_instances": 31
+          },
+          "G07": {
+            "stop_departure_events": 121,
+            "unique_trip_instances": 21
+          },
+          "G08": {
+            "stop_departure_events": 187,
+            "unique_trip_instances": 33
+          },
+          "G08v": {
+            "stop_departure_events": 194,
+            "unique_trip_instances": 30
+          },
+          "G09": {
+            "stop_departure_events": 217,
+            "unique_trip_instances": 20
+          },
+          "G14": {
+            "stop_departure_events": 223,
+            "unique_trip_instances": 27
+          },
+          "G22": {
+            "stop_departure_events": 262,
+            "unique_trip_instances": 48
+          },
+          "G27": {
+            "stop_departure_events": 104,
+            "unique_trip_instances": 11
+          },
+          "G28": {
+            "stop_departure_events": 201,
+            "unique_trip_instances": 24
+          },
+          "G32": {
+            "stop_departure_events": 79,
+            "unique_trip_instances": 14
+          },
+          "G37": {
+            "stop_departure_events": 16,
+            "unique_trip_instances": 5
+          },
+          "MTN": {
+            "stop_departure_events": 30,
+            "unique_trip_instances": 30
+          },
+          "MTR": {
+            "stop_departure_events": 6,
+            "unique_trip_instances": 6
+          }
+        }
+      },
+      "afternoon_peak": {
+        "window": "17:00:00-19:00:00",
+        "stop_departure_events": 2772,
+        "unique_trip_instances": 489,
+        "by_route": {
+          "201": {
+            "stop_departure_events": 159,
+            "unique_trip_instances": 30
+          },
+          "201e": {
+            "stop_departure_events": 234,
+            "unique_trip_instances": 43
+          },
+          "211": {
+            "stop_departure_events": 126,
+            "unique_trip_instances": 27
+          },
+          "211c": {
+            "stop_departure_events": 207,
+            "unique_trip_instances": 44
+          },
+          "217e": {
+            "stop_departure_events": 10,
+            "unique_trip_instances": 7
+          },
+          "228": {
+            "stop_departure_events": 114,
+            "unique_trip_instances": 32
+          },
+          "271": {
+            "stop_departure_events": 102,
+            "unique_trip_instances": 20
+          },
+          "F03": {
+            "stop_departure_events": 195,
+            "unique_trip_instances": 23
+          },
+          "G02": {
+            "stop_departure_events": 158,
+            "unique_trip_instances": 25
+          },
+          "G07": {
+            "stop_departure_events": 106,
+            "unique_trip_instances": 18
+          },
+          "G08": {
+            "stop_departure_events": 158,
+            "unique_trip_instances": 28
+          },
+          "G08v": {
+            "stop_departure_events": 145,
+            "unique_trip_instances": 22
+          },
+          "G09": {
+            "stop_departure_events": 191,
+            "unique_trip_instances": 18
+          },
+          "G14": {
+            "stop_departure_events": 221,
+            "unique_trip_instances": 26
+          },
+          "G22": {
+            "stop_departure_events": 247,
+            "unique_trip_instances": 47
+          },
+          "G27": {
+            "stop_departure_events": 96,
+            "unique_trip_instances": 10
+          },
+          "G28": {
+            "stop_departure_events": 197,
+            "unique_trip_instances": 24
+          },
+          "G32": {
+            "stop_departure_events": 67,
+            "unique_trip_instances": 12
+          },
+          "G37": {
+            "stop_departure_events": 9,
+            "unique_trip_instances": 3
+          },
+          "MTN": {
+            "stop_departure_events": 25,
+            "unique_trip_instances": 25
+          },
+          "MTR": {
+            "stop_departure_events": 5,
+            "unique_trip_instances": 5
+          }
+        }
+      }
+    }
+  },
+  "limitations": [
+    "geodesic_distance_m es distancia geodésica en línea recta (Haversine); no es una ruta caminable real y puede haber calles sin cruce, vías férreas, muros, autopistas u otras barreras no consideradas.",
+    "theoretical_walk_time_min asume 1.4 m/s (5 km/h) en línea recta; es una estimación teórica, no un tiempo de caminata verificado.",
+    "Las salidas se derivan del horario programado del feed GTFS estático; no reflejan atrasos, adelantos ni cancelaciones en tiempo real.",
+    "Cuando exact_times distinto de 1, las salidas generadas desde frequencies.txt son estimaciones de un viaje patrón, no el paso exacto observado del vehículo.",
+    "stop_departure_events cuenta eventos de paso en cada parada del radio (un mismo vehículo puede sumar varios si su recorrido cruza más de una parada dentro del radio); unique_trip_instances cuenta cada instancia de viaje una sola vez. Ninguna de las dos debe leerse como 'cantidad de buses' sin esta aclaración.",
+    "Se excluyeron de las cuentas de salida las filas de stop_times.txt con pickup_type=1 (sin abordaje permitido).",
+    "Feed vigente entre 20260829 y 20261231 (versión V167.20260829); no incluye datos en tiempo real ni fechas fuera de ese rango."
+  ]
+}

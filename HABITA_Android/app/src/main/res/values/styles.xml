@@ -1,0 +1,11 @@
+<resources>
+    <style name="Theme.Habita.Base" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:statusBarColor">#062441</item>
+        <item name="android:navigationBarColor">#062441</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:colorAccent">#096899</item>
+    </style>
+    <style name="Theme.Habita" parent="Theme.Habita.Base" />
+</resources>
