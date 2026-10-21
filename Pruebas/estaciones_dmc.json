@@ -1,0 +1,167 @@
+{
+  "version": "2026-10-21",
+  "estaciones": [
+    {
+      "codigo": "330019",
+      "nombre": "Eulogio Sánchez, Tobalaba Ad.",
+      "latitud": -33.455277,
+      "longitud": -70.54861,
+      "fuente": "https://climatologia.meteochile.gob.cl/application/informacion/fichaDeEstacion/330019",
+      "consultado": "2026-10-21",
+      "carpeta": "Eulogio Sánchez, Tobalaba Ad.",
+      "componentes_en_revision": []
+    },
+    {
+      "codigo": "330020",
+      "nombre": "Quinta Normal, Santiago",
+      "latitud": -33.444999,
+      "longitud": -70.682777,
+      "fuente": "https://climatologia.meteochile.gob.cl/application/informacion/fichaDeEstacion/330020",
+      "consultado": "2026-10-21",
+      "carpeta": "Quinta Normal, Santiago",
+      "componentes_en_revision": []
+    },
+    {
+      "codigo": "330021",
+      "nombre": "Pudahuel Santiago",
+      "latitud": -33.378332,
+      "longitud": -70.787777,
+      "fuente": "https://climatologia.meteochile.gob.cl/application/informacion/fichaDeEstacion/330021",
+      "consultado": "2026-10-21",
+      "carpeta": "Pudahuel Santiago",
+      "componentes_en_revision": []
+    },
+    {
+      "codigo": "330026",
+      "nombre": "La Platina (INIA)",
+      "latitud": -33.572777,
+      "longitud": -70.619721,
+      "fuente": "https://climatologia.meteochile.gob.cl/application/informacion/fichaDeEstacion/330026",
+      "consultado": "2026-10-21",
+      "carpeta": "La Platina (INIA)",
+      "componentes_en_revision": []
+    },
+    {
+      "codigo": "330065",
+      "nombre": "Los Tilos (INIA)",
+      "latitud": -33.711666,
+      "longitud": -70.711944,
+      "fuente": "https://climatologia.meteochile.gob.cl/application/informacion/fichaDeEstacion/330065",
+      "consultado": "2026-10-21",
+      "carpeta": "Los Tilos (INIA)",
+      "componentes_en_revision": []
+    },
+    {
+      "codigo": "330071",
+      "nombre": "Talagante",
+      "latitud": -33.670277,
+      "longitud": -70.849444,
+      "fuente": "https://climatologia.meteochile.gob.cl/application/informacion/fichaDeEstacion/330071",
+      "consultado": "2026-10-21",
+      "carpeta": "Talagante",
+      "componentes_en_revision": [
+        "humedad"
+      ]
+    },
+    {
+      "codigo": "330075",
+      "nombre": "Río Clarillo",
+      "latitud": -33.728332,
+      "longitud": -70.496666,
+      "fuente": "https://climatologia.meteochile.gob.cl/application/informacion/fichaDeEstacion/330075",
+      "consultado": "2026-10-21",
+      "carpeta": "Río Clarillo",
+      "componentes_en_revision": []
+    },
+    {
+      "codigo": "330076",
+      "nombre": "Chorombo Hacienda",
+      "latitud": -33.529443,
+      "longitud": -71.229166,
+      "fuente": "https://climatologia.meteochile.gob.cl/application/informacion/fichaDeEstacion/330076",
+      "consultado": "2026-10-21",
+      "carpeta": "Chorombo Hacienda",
+      "componentes_en_revision": []
+    },
+    {
+      "codigo": "330077",
+      "nombre": "El Colorado",
+      "latitud": -33.35,
+      "longitud": -70.29361,
+      "fuente": "https://climatologia.meteochile.gob.cl/application/informacion/fichaDeEstacion/330077",
+      "consultado": "2026-10-21",
+      "carpeta": "El Colorado",
+      "componentes_en_revision": []
+    },
+    {
+      "codigo": "330082",
+      "nombre": "Villa Alhué",
+      "latitud": -34.063888,
+      "longitud": -71.251944,
+      "fuente": "https://climatologia.meteochile.gob.cl/application/informacion/fichaDeEstacion/330082",
+      "consultado": "2026-10-21",
+      "carpeta": "Villa Alhué",
+      "componentes_en_revision": []
+    },
+    {
+      "codigo": "330121",
+      "nombre": "Curacaví Ad.",
+      "latitud": -33.411111,
+      "longitud": -71.167777,
+      "fuente": "https://climatologia.meteochile.gob.cl/application/informacion/fichaDeEstacion/330121",
+      "consultado": "2026-10-21",
+      "carpeta": "Curacaví Ad.",
+      "componentes_en_revision": []
+    },
+    {
+      "codigo": "330158",
+      "nombre": "San Pedro de Melipilla",
+      "latitud": -33.898055,
+      "longitud": -71.452777,
+      "fuente": "https://climatologia.meteochile.gob.cl/application/informacion/fichaDeEstacion/330158",
+      "consultado": "2026-10-21",
+      "carpeta": "San Pedro de Melipilla",
+      "componentes_en_revision": []
+    },
+    {
+      "codigo": "330162",
+      "nombre": "Colina (Reg.)",
+      "latitud": -33.162222,
+      "longitud": -70.643055,
+      "fuente": "https://climatologia.meteochile.gob.cl/application/informacion/fichaDeEstacion/330162",
+      "consultado": "2026-10-21",
+      "carpeta": "Colina (Reg.)",
+      "componentes_en_revision": []
+    },
+    {
+      "codigo": "330168",
+      "nombre": "Melipilla, San Diego",
+      "latitud": -33.703055,
+      "longitud": -71.371943,
+      "fuente": "https://climatologia.meteochile.gob.cl/application/informacion/fichaDeEstacion/330168",
+      "consultado": "2026-10-21",
+      "carpeta": "Melipilla, San Diego",
+      "componentes_en_revision": []
+    },
+    {
+      "codigo": "330169",
+      "nombre": "Tiltil Huechún",
+      "latitud": -33.077221,
+      "longitud": -70.752777,
+      "fuente": "https://climatologia.meteochile.gob.cl/application/informacion/fichaDeEstacion/330169",
+      "consultado": "2026-10-21",
+      "carpeta": "Tiltil Huechún",
+      "componentes_en_revision": []
+    },
+    {
+      "codigo": "330198",
+      "nombre": "Chorrillos",
+      "latitud": -33.34361,
+      "longitud": -70.81861,
+      "fuente": "https://climatologia.meteochile.gob.cl/application/informacion/fichaDeEstacion/330198",
+      "consultado": "2026-10-21",
+      "carpeta": "Chorrillos",
+      "componentes_en_revision": []
+    }
+  ]
+}

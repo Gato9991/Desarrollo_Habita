@@ -1,0 +1,315 @@
+{
+  "version": "2026-10-21",
+  "estaciones": [
+    {
+      "codigo": "116",
+      "nombre": "Cerrillos I",
+      "latitud": -33.492848789461,
+      "longitud": -70.719440279762,
+      "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/116",
+      "consultado": "2026-10-21",
+      "series": [
+        {
+          "archivo": "Estacion Cerrillos I - mp2.5 - 1 year.csv",
+          "componente": "mp25",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        }
+      ]
+    },
+    {
+      "codigo": "290",
+      "nombre": "Cerrillos II",
+      "latitud": -33.494627474144,
+      "longitud": -70.693298547943,
+      "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/290",
+      "consultado": "2026-10-21",
+      "series": [
+        {
+          "archivo": "Estacion Cerrillos II - mp2.5 - 1 year.csv",
+          "componente": "mp25",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        }
+      ]
+    },
+    {
+      "codigo": "228",
+      "nombre": "Cerro Navia",
+      "latitud": -33.433089610143,
+      "longitud": -70.732147868717,
+      "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/228",
+      "consultado": "2026-10-21",
+      "series": [
+        {
+          "archivo": "Cerro navia - mp2.5 - 1 year.csv",
+          "componente": "mp25",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        },
+        {
+          "archivo": "Estacion Cerro Navia - o3 - 1 year.csv",
+          "componente": "o3",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        }
+      ]
+    },
+    {
+      "codigo": "260",
+      "nombre": "El Bosque",
+      "latitud": -33.549943076417,
+      "longitud": -70.676525242141,
+      "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/260",
+      "consultado": "2026-10-21",
+      "series": [
+        {
+          "archivo": "ElBosque 2.5 1 year.csv",
+          "componente": "mp25",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        },
+        {
+          "archivo": "El bosque o3 - 1 year.csv",
+          "componente": "o3",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        }
+      ]
+    },
+    {
+      "codigo": "262",
+      "nombre": "La Florida",
+      "latitud": -33.516630362266,
+      "longitud": -70.588123961971,
+      "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/262",
+      "consultado": "2026-10-21",
+      "series": [
+        {
+          "archivo": "Estacion La Florida 2.5 -1 year.csv",
+          "componente": "mp25",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        },
+        {
+          "archivo": "Estacion la florida - o3 - 1 year.csv",
+          "componente": "o3",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        }
+      ]
+    },
+    {
+      "codigo": "239",
+      "nombre": "Las Condes",
+      "latitud": -33.37677352033,
+      "longitud": -70.523326784061,
+      "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/239",
+      "consultado": "2026-10-21",
+      "series": [
+        {
+          "archivo": "Las Condes - 2.5 - 1 year.csv",
+          "componente": "mp25",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        },
+        {
+          "archivo": "Las Condes - o3 - 1 year.csv",
+          "componente": "o3",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        }
+      ]
+    },
+    {
+      "codigo": "190",
+      "nombre": "Pudahuel",
+      "latitud": -33.437811379126,
+      "longitud": -70.750171233135,
+      "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/190",
+      "consultado": "2026-10-21",
+      "series": [
+        {
+          "archivo": "Estacion Pudahuel 2.5 - 1 YEAR.csv",
+          "componente": "mp25",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        },
+        {
+          "archivo": "Estacion Pudahuel o3 -1 year.csv",
+          "componente": "o3",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        }
+      ]
+    },
+    {
+      "codigo": "233",
+      "nombre": "Puente Alto",
+      "latitud": -33.591390623022,
+      "longitud": -70.594788,
+      "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/233",
+      "consultado": "2026-10-21",
+      "series": [
+        {
+          "archivo": "PUENTE ALTO MP2.5 - 1 YEAR.csv",
+          "componente": "mp25",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        },
+        {
+          "archivo": "PUENTE ALTO O3 - 1 YEAR.csv",
+          "componente": "o3",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        }
+      ]
+    },
+    {
+      "codigo": "271",
+      "nombre": "Quilicura",
+      "latitud": -33.349626928347,
+      "longitud": -70.723792612552,
+      "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/271",
+      "consultado": "2026-10-21",
+      "series": [
+        {
+          "archivo": "QUILICURA (DIFERENTE) - 2.5 - 1 YEAR.csv",
+          "componente": "mp25",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        }
+      ]
+    },
+    {
+      "codigo": "149",
+      "nombre": "Quilicura I",
+      "latitud": -33.365775677885,
+      "longitud": -70.748288055225,
+      "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/149",
+      "consultado": "2026-10-21",
+      "series": [
+        {
+          "archivo": "ESTACION QUILICURA I - 2.5 - 1 YEAR.csv",
+          "componente": "mp25",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        }
+      ]
+    },
+    {
+      "codigo": "273",
+      "nombre": "Parque O'Higgins",
+      "latitud": -33.464142,
+      "longitud": -70.660797,
+      "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+      "consultado": "2026-10-21",
+      "series": [
+        {
+          "archivo": "PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
+          "componente": "mp25",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        },
+        {
+          "archivo": "PARQUE OHHINGS - O3 - 1 YEAR.csv",
+          "componente": "o3",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        }
+      ]
+    },
+    {
+      "codigo": "197",
+      "nombre": "Talagante",
+      "latitud": -33.673752071375,
+      "longitud": -70.953064737434,
+      "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/197",
+      "consultado": "2026-10-21",
+      "series": [
+        {
+          "archivo": "TALAGANTE - 2.5 - 1 YEAR.csv",
+          "componente": "mp25",
+          "metadatos_confirmados": false,
+          "unidad": null,
+          "agregacion": null,
+          "huso_horario": null,
+          "evidencia": null,
+          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+        }
+      ]
+    }
+  ]
+}

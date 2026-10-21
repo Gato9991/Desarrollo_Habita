@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HABITA · Prueba de ocho ubicaciones</title>
+<style>
+:root{--ink:#15354d;--muted:#536b7c;--blue:#1179aa;--line:#d6e3eb;--light:#edf6fb;--warn:#835b08}
+*{box-sizing:border-box}body{margin:0;background:#f3f7fa;color:var(--ink);font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1580px;margin:auto;padding:36px 30px 70px}header{margin:0 0 25px}header .over{letter-spacing:.17em;text-transform:uppercase;font-size:12px;font-weight:750;color:var(--blue)}
+h1{font-size:clamp(30px,4vw,49px);line-height:1.12;letter-spacing:-.035em;margin:10px 0 14px;color:#112f47}
+h2{font-size:23px;margin:0 0 15px}h3{font-size:18px;margin:25px 0 10px}p{margin:9px 0}
+.subtitle{color:var(--muted);font-size:17px;max-width:900px}.pill{display:inline-block;padding:5px 12px;background:#fff0cb;color:var(--warn);font-size:12px;font-weight:700;border-radius:20px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}.card{background:white;border:1px solid var(--line);border-radius:14px;padding:18px 22px}.card strong{display:block;font-size:28px;color:#123e5c}.card span{font-size:13px;color:var(--muted)}
+section{background:#fff;border:1px solid var(--line);border-radius:17px;padding:25px;margin:22px 0}.scroll{overflow:auto;border:1px solid var(--line);border-radius:9px}table{width:100%;border-collapse:collapse;font-size:13px}th{padding:14px 12px;text-align:left;background:#153f5d;color:#fff;white-space:nowrap}td{padding:13px 12px;border-bottom:1px solid var(--line);border-right:1px solid #e6edf2;vertical-align:top}tbody tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#f3f8fb}tbody tr:hover{background:#e4f3fc}
+.main-table table{min-width:1100px}.main-table td:nth-child(2){min-width:260px;max-width:340px;font-weight:650}.main-table td:nth-child(n+3){white-space:nowrap;text-align:center}.main-table td:nth-child(7){background:#e8f4fc;font-size:17px;font-weight:800;color:#0b547e}
+.note{color:var(--muted);font-size:13px;margin-top:14px}.caution{background:#fff9e8;border-left:4px solid #d8aa32;padding:14px 17px;border-radius:4px;margin:16px 0}details{border:1px solid var(--line);border-radius:10px;margin:12px 0;background:#fff}summary{cursor:pointer;padding:17px 20px;font-weight:650}summary span{color:var(--blue);margin-right:12px}summary small{color:var(--muted);font-weight:400;margin-left:15px}.detail{padding:0 20px 22px}.detail table{font-size:13px}.paths{font:12px/1.7 ui-monospace,Consolas,monospace;overflow-wrap:anywhere;padding-left:20px;color:var(--muted)}a{color:#096e9e}.manifest table{font-size:11px}.manifest td{overflow-wrap:anywhere;max-width:600px}.manifest td:last-child{font-family:ui-monospace,Consolas,monospace;min-width:250px}.foot{font-size:12px;color:var(--muted);margin-top:28px}
+@media(max-width:700px){main{padding:24px 12px}section{padding:17px}.cards{grid-template-columns:1fr;gap:8px}.card{padding:12px 17px}.card strong{font-size:23px}summary small{display:block;margin:5px 0 0}}
+@media print{body{background:white}main{max-width:none;padding:0}section{break-inside:avoid}.manifest{display:none}details{break-inside:avoid}summary{font-weight:bold}}
+</style></head><body><main>
+<header><div class="over">HABITA / Laboratorio de cálculo</div>
+<h1>Ocho ubicaciones.<br>Un cálculo que se puede revisar.</h1>
+<p class="subtitle">Calidad del aire, accesibilidad a paraderos, accesibilidad a la salud y bienestar térmico. Resultados calculados desde los archivos del repositorio.</p>
+<span class="pill">PRUEBA · PENDIENTE DE APROBACIÓN</span></header>
+<div class="cards"><div class="card"><strong>8 ubicaciones</strong><span>Coordenadas entregadas por Daniel</span></div><div class="card"><strong>4 parámetros · 25 %</strong><span>Peso base por dimensión antes de faltantes</span></div><div class="card"><strong>{{COBERTURA}}</strong><span>Cobertura ponderada de componentes por ubicación</span></div></div>
+<section><h2>Resultados de la prueba</h2><p>Escala 0–10. Un puntaje mayor representa condiciones más favorables según la fórmula provisional.</p>
+<div class="main-table">{{TABLA}}</div>
+<div class="caution">{{NOTAS}}</div>
+<p class="note">Período de las series: 1 de julio a 13 de octubre de 2026. Octubre incluye 13 días. El global exige al menos 75 % de cobertura de componentes; cuando falta un componente se redistribuye explícitamente el peso disponible.</p>
+<p class="note">La cobertura no mide certeza ni completitud temporal. Los meses admisibles de cada serie se detallan abajo. Las distancias son en línea recta, no rutas a pie ni tiempos de viaje. La presencia de un centro de salud no garantiza cupos o capacidad de pago.</p></section>
+<section><h2>Abrir el cálculo de cada ubicación</h2><p class="note">Cada bloque muestra distancias, conteos, estación seleccionada, puntajes mensuales y rutas de los archivos leídos.</p>{{DETALLES}}</section>
+<section><h2>Control de lectura</h2>{{AVISOS}}<p class="note">Los archivos originales permanecen intactos. Este informe se genera localmente y no necesita conexión a internet.</p></section>
+<section class="manifest"><h2>Trazabilidad de los archivos</h2><p class="note">SHA256 de los bytes leídos. El JSON conserva también la auditoría completa de todas las estaciones, incluso las que no se asignaron a estas ubicaciones.</p>{{RUTAS}}</section>
+<p class="foot">Modelo 0.2.0-prueba.1 · Generado en UTC: {{FECHA}} · Fuentes: DMC, SINCA, MINSAL y GTFS Red. Los límites numéricos corresponden a la propuesta HABITA, sin validación oficial.</p>
+</main></body></html>
