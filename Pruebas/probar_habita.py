@@ -20,7 +20,8 @@ from pathlib import Path
 from fuentes import Fuentes
 from modelo import (
     FIN, INICIO, VERSION, PESOS, MIN_HORAS, MIN_FRACCION_DIAS, MIN_MESES,
-    RADIO_ESTACION_M, MIN_COBERTURA_GLOBAL, accesibilidad, combinar,
+    RADIO_ESTACION_M, MIN_COBERTURA_GLOBAL, INICIO_AIRE, FIN_AIRE,
+    MIN_FRACCION_DIAS_ANUAL, O3_PPB_A_UG_M3, coordenadas_validas, accesibilidad, combinar,
     distancia, elegir_estacion, global_habita,
 )
 
@@ -77,7 +78,7 @@ def parametro_estacion(nombre, lat, lon, estaciones):
     return resultado
 
 
-def calcular(raiz):
+def calcular(raiz, ubicaciones=None):
     fuentes = Fuentes(raiz)
     carpeta = Path(__file__).resolve().parent
     config_dmc = fuentes.json(carpeta / "estaciones_dmc.json")
@@ -91,7 +92,7 @@ def calcular(raiz):
     print("Verificando y leyendo las nueve partes del GTFS...", flush=True)
     paraderos = fuentes.paraderos()
     resultados = []
-    for nombre, (lat, lon) in UBICACIONES.items():
+    for nombre, (lat, lon) in (UBICACIONES if ubicaciones is None else ubicaciones).items():
         parametros = {
             "aire": parametro_estacion("aire", lat, lon, aire),
             "paraderos": accesibilidad("paraderos", lat, lon, paraderos, 500),
@@ -118,12 +119,17 @@ def calcular(raiz):
     return {
         "modelo": VERSION, "estado_modelo": "Prueba pendiente de aprobación",
         "generado_utc": datetime.now(timezone.utc).isoformat(),
+        "periodo_aire": {"inicio": INICIO_AIRE.isoformat(), "fin": FIN_AIRE.isoformat(),
+                         "resumen": "media anual de puntajes de registros diarios",
+                         "dias_esperados": (FIN_AIRE-INICIO_AIRE).days+1},
         "periodo": {"inicio": INICIO.isoformat(), "fin": FIN.isoformat(),
                     "octubre": "Parcial: 13 días; no se extrapola"},
         "reglas": {"pesos_globales": {k: .25 for k in PESOS}, "pesos_internos": PESOS,
                    "min_horas_dia": MIN_HORAS, "min_fraccion_dias_mes": MIN_FRACCION_DIAS,
                    "min_meses": MIN_MESES, "radio_estacion_m": RADIO_ESTACION_M,
-                   "min_cobertura_global": MIN_COBERTURA_GLOBAL},
+                   "min_cobertura_global": MIN_COBERTURA_GLOBAL,
+                   "aire_min_fraccion_dias_anual": MIN_FRACCION_DIAS_ANUAL,
+                   "o3_ppb_a_ug_m3": O3_PPB_A_UG_M3},
         "commit_fuentes_referencia": COMMIT_FUENTES_REFERENCIA,
         "commit_local": commit_local,
         "nota_trazabilidad": "Los SHA256 listados identifican los bytes realmente leídos; el commit de referencia no certifica una copia local modificada.",
@@ -137,6 +143,10 @@ def fmt(x, dec=1):
     return "Sin dato" if x is None else f"{x:.{dec}f}".replace(".", ",")
 
 
+def porcentaje(fraccion):
+    return fmt(100*fraccion,1).removesuffix(",0")+" %"
+
+
 def tabla_consola(datos):
     encabezado = ["Ubicación", "Aire /10", "Par. /10", "Salud /10", "Térm. /10", "HABITA /10", "Cobertura"]
     lineas = []
@@ -145,12 +155,12 @@ def tabla_consola(datos):
         lineas.append([f'{i}. {r["ubicacion"]}'] +
                       [fmt(p[k]["puntaje_100"]/10 if p[k]["puntaje_100"] is not None else None)
                        for k in NOMBRES] +
-                      [fmt(r["indice"]["puntaje_10"]), fmt(100*r["indice"]["cobertura"], 0)+" %"])
+                      [fmt(r["indice"]["puntaje_10"]), porcentaje(r["indice"]["cobertura"])])
     anchos = [max(len(x[j]) for x in [encabezado]+lineas) for j in range(len(encabezado))]
     borde = "+" + "+".join("-"*(a+2) for a in anchos) + "+"
     def linea(celdas):
         return "| " + " | ".join(str(c).ljust(a) for c, a in zip(celdas, anchos)) + " |"
-    print("\nHABITA — PRUEBA 0.2.0 | 01-07-2026 a 13-10-2026\n")
+    print("\nHABITA — "+VERSION+" | Aire: 14-10-2025 a 13-10-2026 | Térmico: 01-07-2026 a 13-10-2026\n")
     print(borde)
     print(linea(encabezado))
     print(borde)
@@ -175,11 +185,23 @@ def tabla_html(headers, rows):
 
 def resumen_serie_html(nombre, r):
     meses = r.get("meses", [])
+    unidad = r.get("unidad_original") or ("°C" if nombre == "temperatura" else "%" if nombre == "humedad" else "")
     texto = ("<p><b>"+e(nombre)+"</b> · "+e(r["estado"])+" · puntaje "+
              fmt(r["puntaje_100"]/10 if r["puntaje_100"] is not None else None)+
-             "/10 · valor medio "+fmt(r.get("valor_medio"))+"</p>")
+             "/10 · media de registros "+fmt(r.get("valor_medio"))+" "+e(unidad)+"</p>")
+    if r.get("tipo_resumen") == "media_anual_de_puntajes_diarios":
+        periodo = r["periodo"]
+        texto += ("<p>Ventana anual: "+e(periodo["inicio"])+" a "+e(periodo["fin"])+
+                  " · días admisibles: "+str(r["dias_admisibles"])+"/"+str(r["dias_esperados"])+
+                  " ("+fmt(100*r["fraccion_dias"],1)+" %) · mínimo requerido: 70 %.</p>")
+        texto += "<p>Estados de los días aceptados: "+e(r.get("estados_aceptados",{}))+"</p>"
+        if r.get("conversion"):
+            cv = r["conversion"]
+            texto += ("<p>O₃: 1 ppb = "+fmt(cv["factor"],6)+" µg/m³ a "+
+                      fmt(cv["temperatura_referencia_c"],0)+" °C y 1 atm, referencia del prototipo. "+
+                      "Media normalizada: "+fmt(r.get("valor_medio_normalizado_ug_m3"))+" µg/m³.</p>")
     if meses:
-        texto += tabla_html(["Mes", "Días válidos / esperados", "Admisible", "Puntaje /10", "Valor medio"],
+        texto += tabla_html(["Mes", "Días válidos / esperados", "Admisible", "Puntaje /10", "Media ("+unidad+")"],
                             [[m["mes"], f'{m["dias_admisibles"]} / {m["dias_esperados"]}',
                               "Sí" if m["admisible"] else "No",
                               fmt(m["puntaje_100"]/10 if m["puntaje_100"] is not None else None),
@@ -191,6 +213,22 @@ def resumen_serie_html(nombre, r):
     return texto
 
 
+def tabla_aire_estaciones(datos):
+    filas = []
+    for s in datos["auditoria_estaciones"]["aire"]:
+        m, o = s["resumenes"]["mp25"], s["resumenes"]["o3"]
+        score = s["indice"]["puntaje_100"]
+        filas.append([
+            s["codigo"]+" · "+s["nombre"], fmt(m.get("valor_medio")),
+            str(m.get("dias_admisibles",0))+"/365",
+            fmt(o.get("valor_medio")), str(o.get("dias_admisibles",0))+"/365",
+            fmt(score/10 if score is not None else None),
+            fmt(100*s["indice"]["cobertura"],0)+" %",
+        ])
+    return tabla_html(["Estación", "Media MP2,5 µg/m³", "Días MP2,5",
+                       "Media O₃ ppb", "Días O₃", "Aire /10", "Cobertura de componentes"], filas)
+
+
 def escribir_html(datos, destino):
     filas = []
     detalles = []
@@ -200,7 +238,7 @@ def escribir_html(datos, destino):
         for k in NOMBRES:
             v = p[k]["puntaje_100"]
             celdas.append(fmt(v/10 if v is not None else None))
-        celdas += [fmt(ind["puntaje_10"]), fmt(100*ind["cobertura"], 0)+" %", ind["estado"]]
+        celdas += [fmt(ind["puntaje_10"]), porcentaje(ind["cobertura"]), ind["estado"]]
         filas.append(celdas)
         texto = f'<details><summary><span>{i:02d}</span> {e(r["ubicacion"])} <small>Ver cálculo y fuentes</small></summary><div class="detail">'
         texto += f'<p>Latitud {r["latitud"]} · Longitud {r["longitud"]}</p>'
@@ -243,13 +281,28 @@ def escribir_html(datos, destino):
     salida = plantilla.replace("{{TABLA}}", tabla).replace("{{DETALLES}}", "".join(detalles))
     salida = salida.replace("{{RUTAS}}", rutas).replace("{{FECHA}}", e(datos["generado_utc"]))
     coberturas = [100*r["indice"]["cobertura"] for r in datos["resultados"]]
-    etiqueta = fmt(min(coberturas), 0)+" %" if min(coberturas) == max(coberturas) else fmt(min(coberturas), 0)+"–"+fmt(max(coberturas), 0)+" %"
+    etiqueta = porcentaje(min(coberturas)/100) if min(coberturas) == max(coberturas) else fmt(min(coberturas),1).removesuffix(",0")+"–"+fmt(max(coberturas),1).removesuffix(",0")+" %"
     salida = salida.replace("{{COBERTURA}}", etiqueta)
-    faltan_aire = any(r["parametros"]["aire"]["puntaje_100"] is None for r in datos["resultados"])
-    nota = "Aire sin puntaje mientras falten metadatos de su exportación. Sin dato no significa mala calidad del aire. El global mostrado es parcial." if faltan_aire else "Revisa cobertura y meses por componente antes de comparar ubicaciones. Los datos preliminares de aire conservan su condición."
+    faltan_aire = any(r["parametros"]["aire"]["cobertura"] < 1 for r in datos["resultados"])
+    nota = ("Aire usa el resumen anual de la estación admisible más cercana. Algunas series no alcanzan 70 % de días válidos: su componente queda Sin dato y el global se muestra parcial." if faltan_aire else "Los cuatro parámetros tienen componentes disponibles. Revisa aparte la cobertura temporal: 100 % de componentes no significa 365 días completos.")
+    nota += " Se admiten registros preliminares etiquetados; los no validados se excluyen."
     salida = salida.replace("{{NOTAS}}", nota)
+    salida = salida.replace("{{AIRE_ESTACIONES}}", tabla_aire_estaciones(datos))
+    salida = salida.replace("{{N_UBICACIONES}}", str(len(datos["resultados"])))
+    salida = salida.replace("{{VERSION}}", e(VERSION))
+    salida = salida.replace("{{TITULO}}", "Una ubicación." if len(datos["resultados"]) == 1 else str(len(datos["resultados"]))+" ubicaciones.")
     salida = salida.replace("{{AVISOS}}", "<ul>"+"".join("<li>"+e(a)+"</li>" for a in datos["avisos"])+"</ul>" if datos["avisos"] else "<p>Sin errores de lectura detectados.</p>")
     destino.write_text(salida, encoding="utf-8")
+
+
+def guardar_indices_aire(datos, destino):
+    with destino.open("w",encoding="utf-8-sig",newline="") as f:
+        w=csv.writer(f,delimiter=";")
+        w.writerow(["codigo","estacion","media_mp25_ug_m3","dias_mp25","media_o3_ppb","dias_o3","aire_0_10","cobertura_componentes_pct","inicio","fin"])
+        for s in datos["auditoria_estaciones"]["aire"]:
+            m,o=s["resumenes"]["mp25"],s["resumenes"]["o3"]
+            score=s["indice"]["puntaje_100"]
+            w.writerow([s["codigo"],s["nombre"],fmt(m.get("valor_medio"),6),m.get("dias_admisibles",0),fmt(o.get("valor_medio"),6),o.get("dias_admisibles",0),fmt(score/10 if score is not None else None,6),fmt(100*s["indice"]["cobertura"],2),INICIO_AIRE.isoformat(),FIN_AIRE.isoformat()])
 
 
 def guardar(datos, carpeta):
@@ -267,20 +320,32 @@ def guardar(datos, carpeta):
                         for k in NOMBRES] +
                        [fmt(r["indice"]["puntaje_10"], 6), fmt(100*r["indice"]["cobertura"], 2),
                         r["indice"]["estado"]])
+    guardar_indices_aire(datos, carpeta/"indices_aire_estaciones.csv")
     escribir_html(datos, carpeta/"resultados_habita.html")
 
 
 def main():
+    for flujo in (sys.stdout, sys.stderr):
+        if hasattr(flujo, "reconfigure"):
+            flujo.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--raiz", type=Path, default=Path(__file__).resolve().parents[1],
                         help="Raíz de Desarrollo_Habita; por defecto se deduce desde este script.")
     parser.add_argument("--salida", type=Path, default=Path(__file__).resolve().parent/"resultados")
+    parser.add_argument("--latitud", "--lat", type=float)
+    parser.add_argument("--longitud", "--lon", type=float)
+    parser.add_argument("--nombre", default="Ubicación ingresada")
     parser.add_argument("--no-abrir", action="store_true", help="No abrir el informe en el navegador.")
     args = parser.parse_args()
-    if hasattr(sys.stdout, "reconfigure"):
-        sys.stdout.reconfigure(encoding="utf-8")
     try:
-        datos = calcular(args.raiz.resolve())
+        if (args.latitud is None) != (args.longitud is None):
+            parser.error("Entrega latitud y longitud juntas.")
+        ubicaciones = None
+        if args.latitud is not None:
+            if not coordenadas_validas(args.latitud, args.longitud):
+                parser.error("Coordenadas inválidas: latitud [-90,90], longitud [-180,180].")
+            ubicaciones = {args.nombre: (args.latitud, args.longitud)}
+        datos = calcular(args.raiz.resolve(), ubicaciones)
         guardar(datos, args.salida.resolve())
     except (OSError, ValueError, KeyError, ImportError, StopIteration, zipfile.BadZipFile, csv.Error) as exc:
         parser.exit(1, "No se pudo calcular la prueba: "+str(exc)+

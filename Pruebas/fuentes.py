@@ -13,7 +13,8 @@ from datetime import date, datetime, time
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
-from modelo import INICIO, FIN, coordenadas_validas, numero, resumir_serie
+from modelo import (INICIO, FIN, INICIO_AIRE, FIN_AIRE, coordenadas_validas,
+                    numero, resumir_serie, resumir_aire_anual, combinar)
 
 
 def normalizar(texto):
@@ -144,35 +145,38 @@ class Fuentes:
                 componente = serie["componente"]
                 archivo = base / serie["archivo"]
                 self.registrar(archivo)
-                datos, conteos, errores = leer_csv_aire(archivo)
-                confirmado = (
-                    serie.get("metadatos_confirmados") is True
-                    and serie.get("unidad") == "ug/m3"
-                    and serie.get("agregacion") in ("horaria", "diaria")
-                    and bool(serie.get("huso_horario"))
-                    and bool(serie.get("evidencia"))
-                )
-                if confirmado:
-                    resumen = resumir_serie(datos, componente, serie["agregacion"])
-                else:
-                    resumen = {"puntaje_100": None, "valor_medio": None,
-                               "estado": "Metadatos de exportación pendientes",
-                               "meses_usados": [], "meses": []}
+                datos, conteos, errores = leer_csv_aire(
+                    archivo, INICIO_AIRE, FIN_AIRE, con_estado=True)
+                unidad = serie.get("unidad")
+                compatible = (componente == "mp25" and unidad == "ug/m3"
+                              or componente == "o3" and unidad in ("ppb", "ug/m3"))
+                confirmado = (serie.get("metadatos_confirmados") is True
+                              and compatible and serie.get("agregacion") == "diaria"
+                              and bool(serie.get("evidencia")))
+                resumen = resumir_aire_anual(datos if confirmado else [], componente, unidad)
+                if not confirmado:
+                    resumen["estado"] = "Metadatos diarios o unidades pendientes"
                 resumen.update(
                     archivo=archivo.relative_to(self.raiz).as_posix(),
                     conteos_validacion_en_periodo=conteos, errores_csv=errores,
-                    metadatos=serie,
+                    metadatos=serie, no_validados_excluidos=conteos.get("no_validados",0),
                 )
                 estacion["resumenes"][componente] = resumen
             for componente in ("mp25", "o3"):
-                estacion["resumenes"].setdefault(componente, {
-                    "puntaje_100": None, "valor_medio": None,
-                    "estado": "Sin archivo", "meses_usados": [], "meses": []})
+                if componente not in estacion["resumenes"]:
+                    resumen = resumir_aire_anual(
+                        [], componente, "ug/m3" if componente == "mp25" else "ppb")
+                    resumen["estado"] = "Sin archivo"
+                    estacion["resumenes"][componente] = resumen
+            estacion["indice"] = combinar("aire", {
+                c: r["puntaje_100"] for c, r in estacion["resumenes"].items()})
             estaciones.append(estacion)
         self.catalogos["aire"] = {
             "estaciones": len(estaciones),
             "csv": sum(len(s["series"]) for s in config["estaciones"]),
-            "nota": "Sin metadatos confirmados no se calcula aire; no validados excluidos.",
+            "estaciones_con_puntaje": sum(s["indice"]["puntaje_100"] is not None for s in estaciones),
+            "periodo": {"inicio": INICIO_AIRE.isoformat(), "fin": FIN_AIRE.isoformat()},
+            "nota": "Resumen anual de registros diarios. Validado prioritario; preliminar etiquetado; no validados excluidos.",
         }
         return estaciones
 
@@ -308,7 +312,7 @@ def leer_dbf(b):
     return filas
 
 
-def leer_csv_aire(archivo):
+def leer_csv_aire(archivo, inicio=INICIO, fin=FIN, con_estado=False):
     conteos = Counter()
     candidatos = defaultdict(list)
     errores = 0
@@ -327,7 +331,7 @@ def leer_csv_aire(archivo):
         except (ValueError, IndexError):
             errores += 1
             continue
-        if not INICIO <= dia <= FIN:
+        if not inicio <= dia <= fin:
             continue
         for i, etiqueta in ((2, "validados"), (3, "preliminares"), (4, "no_validados")):
             if len(r) > i and r[i].strip():
@@ -343,5 +347,9 @@ def leer_csv_aire(archivo):
         # Resumir_serie elimina conflictos de mismo estado/misma marca.
         elegidos = [x for x in valores if x[0] == prioridad]
         conteos["seleccionados_"+("validados" if prioridad == 2 else "preliminares")] += len(elegidos)
-        datos.extend((marca, x[1]) for x in elegidos)
+        estado = "validados" if prioridad == 2 else "preliminares"
+        if con_estado:
+            datos.extend((marca, x[1], estado) for x in elegidos)
+        else:
+            datos.extend((marca, x[1]) for x in elegidos)
     return datos, dict(conteos), errores

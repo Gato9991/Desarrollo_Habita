@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-21",
+  "version": "2026-10-21-anual",
   "estaciones": [
     {
       "codigo": "116",
@@ -12,12 +12,14 @@
         {
           "archivo": "Estacion Cerrillos I - mp2.5 - 1 year.csv",
           "componente": "mp25",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ug/m3",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/116",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Cerrillos I&macropath=./RM/D16/Cal/PM25&macro=PM25.diario.diario&from=080507&to=170111&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         }
       ]
     },
@@ -32,12 +34,14 @@
         {
           "archivo": "Estacion Cerrillos II - mp2.5 - 1 year.csv",
           "componente": "mp25",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ug/m3",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/290",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Cerrillos II&macropath=./RM/D35/Cal/PM25&macro=PM25.diario.diario&from=220401&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         }
       ]
     },
@@ -52,22 +56,26 @@
         {
           "archivo": "Cerro navia - mp2.5 - 1 year.csv",
           "componente": "mp25",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ug/m3",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/228",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Cerro Navia&macropath=./RM/D18/Cal/PM25&macro=PM25.diario.diario&from=080510&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         },
         {
           "archivo": "Estacion Cerro Navia - o3 - 1 year.csv",
           "componente": "o3",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ppb",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/228",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Cerro Navia&macropath=./RM/D18/Cal/0008&macro=0008.diario.diario&from=010401&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         }
       ]
     },
@@ -82,22 +90,26 @@
         {
           "archivo": "ElBosque 2.5 1 year.csv",
           "componente": "mp25",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ug/m3",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/260",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=El Bosque (Acreditada)&macropath=./RM/D17/Cal/PM25&macro=PM25.diario.diario&from=080501&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         },
         {
           "archivo": "El bosque o3 - 1 year.csv",
           "componente": "o3",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ppb",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/260",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=El Bosque (Acreditada)&macropath=./RM/D17/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         }
       ]
     },
@@ -112,22 +124,26 @@
         {
           "archivo": "Estacion La Florida 2.5 -1 year.csv",
           "componente": "mp25",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ug/m3",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/262",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=La Florida (Acreditada)&macropath=./RM/D12/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         },
         {
           "archivo": "Estacion la florida - o3 - 1 year.csv",
           "componente": "o3",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ppb",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/262",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=La Florida (Acreditada)&macropath=./RM/D12/Cal/0008&macro=0008.diario.diario&from=970416&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         }
       ]
     },
@@ -142,22 +158,26 @@
         {
           "archivo": "Las Condes - 2.5 - 1 year.csv",
           "componente": "mp25",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ug/m3",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/239",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Las Condes (Acreditada)&macropath=./RM/D13/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         },
         {
           "archivo": "Las Condes - o3 - 1 year.csv",
           "componente": "o3",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ppb",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/239",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Las Condes (Acreditada)&macropath=./RM/D13/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         }
       ]
     },
@@ -172,22 +192,26 @@
         {
           "archivo": "Estacion Pudahuel 2.5 - 1 YEAR.csv",
           "componente": "mp25",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ug/m3",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/190",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Pudahuel (Acreditada)&macropath=./RM/D15/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         },
         {
           "archivo": "Estacion Pudahuel o3 -1 year.csv",
           "componente": "o3",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ppb",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/190",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Pudahuel (Acreditada)&macropath=./RM/D15/Cal/0008&macro=0008.diario.diario&from=970601&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         }
       ]
     },
@@ -202,22 +226,26 @@
         {
           "archivo": "PUENTE ALTO MP2.5 - 1 YEAR.csv",
           "componente": "mp25",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ug/m3",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/233",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Puente Alto&macropath=./RM/D27/Cal/PM25&macro=PM25.diario.diario&from=080521&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         },
         {
           "archivo": "PUENTE ALTO O3 - 1 YEAR.csv",
           "componente": "o3",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ppb",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/233",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Puente Alto&macropath=./RM/D27/Cal/0008&macro=0008.diario.diario&from=090123&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         }
       ]
     },
@@ -232,12 +260,14 @@
         {
           "archivo": "QUILICURA (DIFERENTE) - 2.5 - 1 YEAR.csv",
           "componente": "mp25",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ug/m3",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/271",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Quilicura&macropath=./RM/D30/Cal/PM25&macro=PM25.diario.diario&from=160422&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         }
       ]
     },
@@ -252,12 +282,14 @@
         {
           "archivo": "ESTACION QUILICURA I - 2.5 - 1 YEAR.csv",
           "componente": "mp25",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ug/m3",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/149",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Quilicura I&macropath=./RM/D29/Cal/PM25&macro=PM25.diario.diario&from=080519&to=160629&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         }
       ]
     },
@@ -272,22 +304,26 @@
         {
           "archivo": "PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
           "componente": "mp25",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ug/m3",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         },
         {
           "archivo": "PARQUE OHHINGS - O3 - 1 YEAR.csv",
           "componente": "o3",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ppb",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         }
       ]
     },
@@ -302,14 +338,17 @@
         {
           "archivo": "TALAGANTE - 2.5 - 1 YEAR.csv",
           "componente": "mp25",
-          "metadatos_confirmados": false,
-          "unidad": null,
-          "agregacion": null,
+          "metadatos_confirmados": true,
+          "unidad": "ug/m3",
+          "agregacion": "diaria",
           "huso_horario": null,
-          "evidencia": null,
-          "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+          "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/197",
+          "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+          "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Talagante&macropath=./RM/D28/Cal/PM25&macro=PM25.diario.diario&from=080526&to=261020&",
+          "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
         }
       ]
     }
-  ]
+  ],
+  "resumen_solicitado": "Puntaje anual a partir de registros diarios; ventana común de 365 días"
 }

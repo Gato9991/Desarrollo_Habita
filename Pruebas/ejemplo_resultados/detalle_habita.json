@@ -1,7 +1,13 @@
 {
-  "modelo": "0.2.0-prueba.1",
+  "modelo": "0.3.0-prueba.1",
   "estado_modelo": "Prueba pendiente de aprobación",
-  "generado_utc": "2026-10-21T18:59:28.529823+00:00",
+  "generado_utc": "2026-10-21T19:36:05.662320+00:00",
+  "periodo_aire": {
+    "inicio": "2025-10-14",
+    "fin": "2026-10-13",
+    "resumen": "media anual de puntajes de registros diarios",
+    "dias_esperados": 365
+  },
   "periodo": {
     "inicio": "2026-07-01",
     "fin": "2026-10-13",
@@ -36,7 +42,9 @@
     "min_fraccion_dias_mes": 0.7,
     "min_meses": 2,
     "radio_estacion_m": 30000,
-    "min_cobertura_global": 0.75
+    "min_cobertura_global": 0.75,
+    "aire_min_fraccion_dias_anual": 0.7,
+    "o3_ppb_a_ug_m3": 1.9619541371316533
   },
   "commit_fuentes_referencia": "ee17d1d6b471619d2f50a214fe588a1cb3b267f7",
   "commit_local": null,
@@ -49,7 +57,12 @@
     "aire": {
       "estaciones": 12,
       "csv": 19,
-      "nota": "Sin metadatos confirmados no se calcula aire; no validados excluidos."
+      "estaciones_con_puntaje": 9,
+      "periodo": {
+        "inicio": "2025-10-14",
+        "fin": "2026-10-13"
+      },
+      "nota": "Resumen anual de registros diarios. Validado prioritario; preliminar etiquetado; no validados excluidos."
     },
     "salud": {
       "archivo": "FUENTES/fuentes cercania a establecimiento de salud/ESTABLECIMIENTOS_12062026_DES.zip",
@@ -2185,41 +2198,96 @@
           {
             "archivo": "Estacion Cerrillos I - mp2.5 - 1 year.csv",
             "componente": "mp25",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ug/m3",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/116",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Cerrillos I&macropath=./RM/D16/Cal/PM25&macro=PM25.diario.diario&from=080507&to=170111&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           }
         ],
         "resumenes": {
           "mp25": {
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
             "puntaje_100": null,
             "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
+            "valor_medio_normalizado_ug_m3": null,
+            "unidad_original": "ug/m3",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 0,
+            "dias_ausentes_o_excluidos": 365,
+            "fraccion_dias": 0.0,
+            "min_fraccion_dias": 0.7,
+            "estado": "Cobertura anual insuficiente",
+            "estados_aceptados": {},
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
             "meses_usados": [],
             "meses": [],
+            "conversion": null,
             "archivo": "FUENTES/fuentes climaticas usadas/Estacion Cerrillos I - mp2.5 - 1 year.csv",
             "conteos_validacion_en_periodo": {},
             "errores_csv": 0,
             "metadatos": {
               "archivo": "Estacion Cerrillos I - mp2.5 - 1 year.csv",
               "componente": "mp25",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ug/m3",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/116",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Cerrillos I&macropath=./RM/D16/Cal/PM25&macro=PM25.diario.diario&from=080507&to=170111&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
           },
           "o3": {
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
             "puntaje_100": null,
             "valor_medio": null,
+            "valor_medio_normalizado_ug_m3": null,
+            "unidad_original": "ppb",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 0,
+            "dias_ausentes_o_excluidos": 365,
+            "fraccion_dias": 0.0,
+            "min_fraccion_dias": 0.7,
             "estado": "Sin archivo",
+            "estados_aceptados": {},
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
             "meses_usados": [],
-            "meses": []
+            "meses": [],
+            "conversion": {
+              "origen": "ppb",
+              "destino": "ug/m3",
+              "factor": 1.9619541371316533,
+              "temperatura_referencia_c": 25.0,
+              "presion_referencia_pa": 101325.0,
+              "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+            }
+          }
+        },
+        "indice": {
+          "puntaje_100": null,
+          "cobertura": 0,
+          "componentes": {
+            "mp25": null,
+            "o3": null
           }
         }
       },
@@ -2234,46 +2302,118 @@
           {
             "archivo": "Estacion Cerrillos II - mp2.5 - 1 year.csv",
             "componente": "mp25",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ug/m3",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/290",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Cerrillos II&macropath=./RM/D35/Cal/PM25&macro=PM25.diario.diario&from=220401&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           }
         ],
         "resumenes": {
           "mp25": {
-            "puntaje_100": null,
-            "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
-            "meses_usados": [],
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
+            "puntaje_100": 78.44225352112676,
+            "valor_medio": 21.557746478873238,
+            "valor_medio_normalizado_ug_m3": 21.557746478873238,
+            "unidad_original": "ug/m3",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 355,
+            "dias_ausentes_o_excluidos": 10,
+            "fraccion_dias": 0.9726027397260274,
+            "min_fraccion_dias": 0.7,
+            "estado": "Parcial temporal",
+            "estados_aceptados": {
+              "validados": 308,
+              "preliminares": 47
+            },
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
+            "meses_usados": [
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01",
+              "2026-02",
+              "2026-03",
+              "2026-04",
+              "2026-05",
+              "2026-06",
+              "2026-07",
+              "2026-08",
+              "2026-09",
+              "2026-10"
+            ],
             "meses": [],
+            "conversion": null,
             "archivo": "FUENTES/fuentes climaticas usadas/Estacion Cerrillos II - mp2.5 - 1 year.csv",
             "conteos_validacion_en_periodo": {
-              "validados": 58,
+              "validados": 308,
               "preliminares": 47,
-              "seleccionados_validados": 58,
+              "seleccionados_validados": 308,
               "seleccionados_preliminares": 47
             },
             "errores_csv": 0,
             "metadatos": {
               "archivo": "Estacion Cerrillos II - mp2.5 - 1 year.csv",
               "componente": "mp25",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ug/m3",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/290",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Cerrillos II&macropath=./RM/D35/Cal/PM25&macro=PM25.diario.diario&from=220401&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
           },
           "o3": {
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
             "puntaje_100": null,
             "valor_medio": null,
+            "valor_medio_normalizado_ug_m3": null,
+            "unidad_original": "ppb",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 0,
+            "dias_ausentes_o_excluidos": 365,
+            "fraccion_dias": 0.0,
+            "min_fraccion_dias": 0.7,
             "estado": "Sin archivo",
+            "estados_aceptados": {},
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
             "meses_usados": [],
-            "meses": []
+            "meses": [],
+            "conversion": {
+              "origen": "ppb",
+              "destino": "ug/m3",
+              "factor": 1.9619541371316533,
+              "temperatura_referencia_c": 25.0,
+              "presion_referencia_pa": 101325.0,
+              "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+            }
+          }
+        },
+        "indice": {
+          "puntaje_100": 78.44225352112676,
+          "cobertura": 0.7,
+          "componentes": {
+            "mp25": 78.44225352112676,
+            "o3": null
           }
         }
       },
@@ -2288,71 +2428,164 @@
           {
             "archivo": "Cerro navia - mp2.5 - 1 year.csv",
             "componente": "mp25",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ug/m3",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/228",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Cerro Navia&macropath=./RM/D18/Cal/PM25&macro=PM25.diario.diario&from=080510&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           },
           {
             "archivo": "Estacion Cerro Navia - o3 - 1 year.csv",
             "componente": "o3",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ppb",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/228",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Cerro Navia&macropath=./RM/D18/Cal/0008&macro=0008.diario.diario&from=010401&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           }
         ],
         "resumenes": {
           "mp25": {
-            "puntaje_100": null,
-            "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
-            "meses_usados": [],
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
+            "puntaje_100": 78.1058495821727,
+            "valor_medio": 21.92757660167131,
+            "valor_medio_normalizado_ug_m3": 21.92757660167131,
+            "unidad_original": "ug/m3",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 359,
+            "dias_ausentes_o_excluidos": 6,
+            "fraccion_dias": 0.9835616438356164,
+            "min_fraccion_dias": 0.7,
+            "estado": "Parcial temporal",
+            "estados_aceptados": {
+              "validados": 308,
+              "preliminares": 51
+            },
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
+            "meses_usados": [
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01",
+              "2026-02",
+              "2026-03",
+              "2026-04",
+              "2026-05",
+              "2026-06",
+              "2026-07",
+              "2026-08",
+              "2026-09",
+              "2026-10"
+            ],
             "meses": [],
+            "conversion": null,
             "archivo": "FUENTES/fuentes climaticas usadas/Cerro navia - mp2.5 - 1 year.csv",
             "conteos_validacion_en_periodo": {
-              "validados": 54,
+              "validados": 308,
               "preliminares": 51,
-              "seleccionados_validados": 54,
+              "seleccionados_validados": 308,
               "seleccionados_preliminares": 51
             },
             "errores_csv": 0,
             "metadatos": {
               "archivo": "Cerro navia - mp2.5 - 1 year.csv",
               "componente": "mp25",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ug/m3",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/228",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Cerro Navia&macropath=./RM/D18/Cal/PM25&macro=PM25.diario.diario&from=080510&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
           },
           "o3": {
-            "puntaje_100": null,
-            "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
-            "meses_usados": [],
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
+            "puntaje_100": 80.46061628798262,
+            "valor_medio": 19.91828793774319,
+            "valor_medio_normalizado_ug_m3": 39.07876742403476,
+            "unidad_original": "ppb",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 257,
+            "dias_ausentes_o_excluidos": 108,
+            "fraccion_dias": 0.7041095890410959,
+            "min_fraccion_dias": 0.7,
+            "estado": "Parcial temporal",
+            "estados_aceptados": {
+              "validados": 78,
+              "preliminares": 179
+            },
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 62,
+            "fuera_periodo": 0,
+            "meses_usados": [
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01",
+              "2026-02",
+              "2026-03",
+              "2026-04",
+              "2026-05",
+              "2026-06"
+            ],
             "meses": [],
+            "conversion": {
+              "origen": "ppb",
+              "destino": "ug/m3",
+              "factor": 1.9619541371316533,
+              "temperatura_referencia_c": 25.0,
+              "presion_referencia_pa": 101325.0,
+              "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+            },
             "archivo": "FUENTES/fuentes climaticas usadas/Estacion Cerro Navia - o3 - 1 year.csv",
             "conteos_validacion_en_periodo": {
-              "no_validados": 62
+              "validados": 78,
+              "preliminares": 179,
+              "no_validados": 62,
+              "seleccionados_validados": 78,
+              "seleccionados_preliminares": 179
             },
             "errores_csv": 0,
             "metadatos": {
               "archivo": "Estacion Cerro Navia - o3 - 1 year.csv",
               "componente": "o3",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ppb",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/228",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Cerro Navia&macropath=./RM/D18/Cal/0008&macro=0008.diario.diario&from=010401&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
+          }
+        },
+        "indice": {
+          "puntaje_100": 78.81227959391568,
+          "cobertura": 1.0,
+          "componentes": {
+            "mp25": 78.1058495821727,
+            "o3": 80.46061628798262
           }
         }
       },
@@ -2367,56 +2600,115 @@
           {
             "archivo": "ElBosque 2.5 1 year.csv",
             "componente": "mp25",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ug/m3",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/260",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=El Bosque (Acreditada)&macropath=./RM/D17/Cal/PM25&macro=PM25.diario.diario&from=080501&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           },
           {
             "archivo": "El bosque o3 - 1 year.csv",
             "componente": "o3",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ppb",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/260",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=El Bosque (Acreditada)&macropath=./RM/D17/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           }
         ],
         "resumenes": {
           "mp25": {
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
             "puntaje_100": null,
-            "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
-            "meses_usados": [],
+            "valor_medio": 32.225806451612904,
+            "valor_medio_normalizado_ug_m3": 32.225806451612904,
+            "unidad_original": "ug/m3",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 155,
+            "dias_ausentes_o_excluidos": 210,
+            "fraccion_dias": 0.4246575342465753,
+            "min_fraccion_dias": 0.7,
+            "estado": "Cobertura anual insuficiente",
+            "estados_aceptados": {
+              "validados": 105,
+              "preliminares": 50
+            },
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
+            "meses_usados": [
+              "2026-05",
+              "2026-06",
+              "2026-07",
+              "2026-08",
+              "2026-09",
+              "2026-10"
+            ],
             "meses": [],
+            "conversion": null,
             "archivo": "FUENTES/fuentes climaticas usadas/ElBosque 2.5 1 year.csv",
             "conteos_validacion_en_periodo": {
-              "validados": 54,
+              "validados": 105,
               "preliminares": 50,
-              "seleccionados_validados": 54,
+              "seleccionados_validados": 105,
               "seleccionados_preliminares": 50
             },
             "errores_csv": 0,
             "metadatos": {
               "archivo": "ElBosque 2.5 1 year.csv",
               "componente": "mp25",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ug/m3",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/260",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=El Bosque (Acreditada)&macropath=./RM/D17/Cal/PM25&macro=PM25.diario.diario&from=080501&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
           },
           "o3": {
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
             "puntaje_100": null,
             "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
+            "valor_medio_normalizado_ug_m3": null,
+            "unidad_original": "ppb",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 0,
+            "dias_ausentes_o_excluidos": 365,
+            "fraccion_dias": 0.0,
+            "min_fraccion_dias": 0.7,
+            "estado": "Cobertura anual insuficiente",
+            "estados_aceptados": {},
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 98,
+            "fuera_periodo": 0,
             "meses_usados": [],
             "meses": [],
+            "conversion": {
+              "origen": "ppb",
+              "destino": "ug/m3",
+              "factor": 1.9619541371316533,
+              "temperatura_referencia_c": 25.0,
+              "presion_referencia_pa": 101325.0,
+              "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+            },
             "archivo": "FUENTES/fuentes climaticas usadas/El bosque o3 - 1 year.csv",
             "conteos_validacion_en_periodo": {
               "no_validados": 98
@@ -2425,13 +2717,23 @@
             "metadatos": {
               "archivo": "El bosque o3 - 1 year.csv",
               "componente": "o3",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ppb",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/260",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=El Bosque (Acreditada)&macropath=./RM/D17/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
+          }
+        },
+        "indice": {
+          "puntaje_100": null,
+          "cobertura": 0,
+          "componentes": {
+            "mp25": null,
+            "o3": null
           }
         }
       },
@@ -2446,71 +2748,164 @@
           {
             "archivo": "Estacion La Florida 2.5 -1 year.csv",
             "componente": "mp25",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ug/m3",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/262",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=La Florida (Acreditada)&macropath=./RM/D12/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           },
           {
             "archivo": "Estacion la florida - o3 - 1 year.csv",
             "componente": "o3",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ppb",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/262",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=La Florida (Acreditada)&macropath=./RM/D12/Cal/0008&macro=0008.diario.diario&from=970416&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           }
         ],
         "resumenes": {
           "mp25": {
-            "puntaje_100": null,
-            "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
-            "meses_usados": [],
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
+            "puntaje_100": 78.58707865168539,
+            "valor_medio": 21.415730337078653,
+            "valor_medio_normalizado_ug_m3": 21.415730337078653,
+            "unidad_original": "ug/m3",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 356,
+            "dias_ausentes_o_excluidos": 9,
+            "fraccion_dias": 0.9753424657534246,
+            "min_fraccion_dias": 0.7,
+            "estado": "Parcial temporal",
+            "estados_aceptados": {
+              "validados": 305,
+              "preliminares": 51
+            },
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
+            "meses_usados": [
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01",
+              "2026-02",
+              "2026-03",
+              "2026-04",
+              "2026-05",
+              "2026-06",
+              "2026-07",
+              "2026-08",
+              "2026-09",
+              "2026-10"
+            ],
             "meses": [],
+            "conversion": null,
             "archivo": "FUENTES/fuentes climaticas usadas/Estacion La Florida 2.5 -1 year.csv",
             "conteos_validacion_en_periodo": {
-              "validados": 54,
+              "validados": 305,
               "preliminares": 51,
-              "seleccionados_validados": 54,
+              "seleccionados_validados": 305,
               "seleccionados_preliminares": 51
             },
             "errores_csv": 0,
             "metadatos": {
               "archivo": "Estacion La Florida 2.5 -1 year.csv",
               "componente": "mp25",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ug/m3",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/262",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=La Florida (Acreditada)&macropath=./RM/D12/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
           },
           "o3": {
-            "puntaje_100": null,
-            "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
-            "meses_usados": [],
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
+            "puntaje_100": 79.8231720449846,
+            "valor_medio": 20.56809338521401,
+            "valor_medio_normalizado_ug_m3": 40.35365591003082,
+            "unidad_original": "ppb",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 257,
+            "dias_ausentes_o_excluidos": 108,
+            "fraccion_dias": 0.7041095890410959,
+            "min_fraccion_dias": 0.7,
+            "estado": "Parcial temporal",
+            "estados_aceptados": {
+              "validados": 76,
+              "preliminares": 181
+            },
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 105,
+            "fuera_periodo": 0,
+            "meses_usados": [
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01",
+              "2026-02",
+              "2026-03",
+              "2026-04",
+              "2026-05",
+              "2026-06"
+            ],
             "meses": [],
+            "conversion": {
+              "origen": "ppb",
+              "destino": "ug/m3",
+              "factor": 1.9619541371316533,
+              "temperatura_referencia_c": 25.0,
+              "presion_referencia_pa": 101325.0,
+              "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+            },
             "archivo": "FUENTES/fuentes climaticas usadas/Estacion la florida - o3 - 1 year.csv",
             "conteos_validacion_en_periodo": {
-              "no_validados": 105
+              "validados": 76,
+              "preliminares": 181,
+              "no_validados": 105,
+              "seleccionados_validados": 76,
+              "seleccionados_preliminares": 181
             },
             "errores_csv": 0,
             "metadatos": {
               "archivo": "Estacion la florida - o3 - 1 year.csv",
               "componente": "o3",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ppb",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/262",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=La Florida (Acreditada)&macropath=./RM/D12/Cal/0008&macro=0008.diario.diario&from=970416&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
+          }
+        },
+        "indice": {
+          "puntaje_100": 78.95790666967514,
+          "cobertura": 1.0,
+          "componentes": {
+            "mp25": 78.58707865168539,
+            "o3": 79.8231720449846
           }
         }
       },
@@ -2525,71 +2920,159 @@
           {
             "archivo": "Las Condes - 2.5 - 1 year.csv",
             "componente": "mp25",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ug/m3",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/239",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Las Condes (Acreditada)&macropath=./RM/D13/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           },
           {
             "archivo": "Las Condes - o3 - 1 year.csv",
             "componente": "o3",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ppb",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/239",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Las Condes (Acreditada)&macropath=./RM/D13/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           }
         ],
         "resumenes": {
           "mp25": {
-            "puntaje_100": null,
-            "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
-            "meses_usados": [],
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
+            "puntaje_100": 83.34507042253522,
+            "valor_medio": 16.654929577464788,
+            "valor_medio_normalizado_ug_m3": 16.654929577464788,
+            "unidad_original": "ug/m3",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 284,
+            "dias_ausentes_o_excluidos": 81,
+            "fraccion_dias": 0.7780821917808219,
+            "min_fraccion_dias": 0.7,
+            "estado": "Parcial temporal",
+            "estados_aceptados": {
+              "validados": 233,
+              "preliminares": 51
+            },
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
+            "meses_usados": [
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01",
+              "2026-04",
+              "2026-05",
+              "2026-06",
+              "2026-07",
+              "2026-08",
+              "2026-09",
+              "2026-10"
+            ],
             "meses": [],
+            "conversion": null,
             "archivo": "FUENTES/fuentes climaticas usadas/Las Condes - 2.5 - 1 year.csv",
             "conteos_validacion_en_periodo": {
-              "validados": 54,
+              "validados": 233,
               "preliminares": 51,
-              "seleccionados_validados": 54,
+              "seleccionados_validados": 233,
               "seleccionados_preliminares": 51
             },
             "errores_csv": 0,
             "metadatos": {
               "archivo": "Las Condes - 2.5 - 1 year.csv",
               "componente": "mp25",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ug/m3",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/239",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Las Condes (Acreditada)&macropath=./RM/D13/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
           },
           "o3": {
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
             "puntaje_100": null,
-            "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
-            "meses_usados": [],
+            "valor_medio": 26.204918032786885,
+            "valor_medio_normalizado_ug_m3": 51.4128473476221,
+            "unidad_original": "ppb",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 122,
+            "dias_ausentes_o_excluidos": 243,
+            "fraccion_dias": 0.33424657534246577,
+            "min_fraccion_dias": 0.7,
+            "estado": "Cobertura anual insuficiente",
+            "estados_aceptados": {
+              "validados": 76,
+              "preliminares": 46
+            },
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 105,
+            "fuera_periodo": 0,
+            "meses_usados": [
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01",
+              "2026-05",
+              "2026-06"
+            ],
             "meses": [],
+            "conversion": {
+              "origen": "ppb",
+              "destino": "ug/m3",
+              "factor": 1.9619541371316533,
+              "temperatura_referencia_c": 25.0,
+              "presion_referencia_pa": 101325.0,
+              "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+            },
             "archivo": "FUENTES/fuentes climaticas usadas/Las Condes - o3 - 1 year.csv",
             "conteos_validacion_en_periodo": {
-              "no_validados": 105
+              "validados": 76,
+              "preliminares": 46,
+              "no_validados": 105,
+              "seleccionados_validados": 76,
+              "seleccionados_preliminares": 46
             },
             "errores_csv": 0,
             "metadatos": {
               "archivo": "Las Condes - o3 - 1 year.csv",
               "componente": "o3",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ppb",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/239",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Las Condes (Acreditada)&macropath=./RM/D13/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
+          }
+        },
+        "indice": {
+          "puntaje_100": 83.34507042253522,
+          "cobertura": 0.7,
+          "componentes": {
+            "mp25": 83.34507042253522,
+            "o3": null
           }
         }
       },
@@ -2604,71 +3087,164 @@
           {
             "archivo": "Estacion Pudahuel 2.5 - 1 YEAR.csv",
             "componente": "mp25",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ug/m3",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/190",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Pudahuel (Acreditada)&macropath=./RM/D15/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           },
           {
             "archivo": "Estacion Pudahuel o3 -1 year.csv",
             "componente": "o3",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ppb",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/190",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Pudahuel (Acreditada)&macropath=./RM/D15/Cal/0008&macro=0008.diario.diario&from=970601&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           }
         ],
         "resumenes": {
           "mp25": {
-            "puntaje_100": null,
-            "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
-            "meses_usados": [],
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
+            "puntaje_100": 77.79494382022472,
+            "valor_medio": 22.213483146067414,
+            "valor_medio_normalizado_ug_m3": 22.213483146067414,
+            "unidad_original": "ug/m3",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 356,
+            "dias_ausentes_o_excluidos": 9,
+            "fraccion_dias": 0.9753424657534246,
+            "min_fraccion_dias": 0.7,
+            "estado": "Parcial temporal",
+            "estados_aceptados": {
+              "validados": 305,
+              "preliminares": 51
+            },
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
+            "meses_usados": [
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01",
+              "2026-02",
+              "2026-03",
+              "2026-04",
+              "2026-05",
+              "2026-06",
+              "2026-07",
+              "2026-08",
+              "2026-09",
+              "2026-10"
+            ],
             "meses": [],
+            "conversion": null,
             "archivo": "FUENTES/fuentes climaticas usadas/Estacion Pudahuel 2.5 - 1 YEAR.csv",
             "conteos_validacion_en_periodo": {
-              "validados": 54,
+              "validados": 305,
               "preliminares": 51,
-              "seleccionados_validados": 54,
+              "seleccionados_validados": 305,
               "seleccionados_preliminares": 51
             },
             "errores_csv": 0,
             "metadatos": {
               "archivo": "Estacion Pudahuel 2.5 - 1 YEAR.csv",
               "componente": "mp25",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ug/m3",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/190",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Pudahuel (Acreditada)&macropath=./RM/D15/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
           },
           "o3": {
-            "puntaje_100": null,
-            "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
-            "meses_usados": [],
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
+            "puntaje_100": 79.9259518787688,
+            "valor_medio": 20.463320463320464,
+            "valor_medio_normalizado_ug_m3": 40.1480962424624,
+            "unidad_original": "ppb",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 259,
+            "dias_ausentes_o_excluidos": 106,
+            "fraccion_dias": 0.7095890410958904,
+            "min_fraccion_dias": 0.7,
+            "estado": "Parcial temporal",
+            "estados_aceptados": {
+              "validados": 78,
+              "preliminares": 181
+            },
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 97,
+            "fuera_periodo": 0,
+            "meses_usados": [
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01",
+              "2026-02",
+              "2026-03",
+              "2026-04",
+              "2026-05",
+              "2026-06"
+            ],
             "meses": [],
+            "conversion": {
+              "origen": "ppb",
+              "destino": "ug/m3",
+              "factor": 1.9619541371316533,
+              "temperatura_referencia_c": 25.0,
+              "presion_referencia_pa": 101325.0,
+              "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+            },
             "archivo": "FUENTES/fuentes climaticas usadas/Estacion Pudahuel o3 -1 year.csv",
             "conteos_validacion_en_periodo": {
-              "no_validados": 97
+              "validados": 78,
+              "preliminares": 181,
+              "no_validados": 97,
+              "seleccionados_validados": 78,
+              "seleccionados_preliminares": 181
             },
             "errores_csv": 0,
             "metadatos": {
               "archivo": "Estacion Pudahuel o3 -1 year.csv",
               "componente": "o3",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ppb",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/190",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Pudahuel (Acreditada)&macropath=./RM/D15/Cal/0008&macro=0008.diario.diario&from=970601&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
+          }
+        },
+        "indice": {
+          "puntaje_100": 78.43424623778793,
+          "cobertura": 1.0,
+          "componentes": {
+            "mp25": 77.79494382022472,
+            "o3": 79.9259518787688
           }
         }
       },
@@ -2683,71 +3259,164 @@
           {
             "archivo": "PUENTE ALTO MP2.5 - 1 YEAR.csv",
             "componente": "mp25",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ug/m3",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/233",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Puente Alto&macropath=./RM/D27/Cal/PM25&macro=PM25.diario.diario&from=080521&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           },
           {
             "archivo": "PUENTE ALTO O3 - 1 YEAR.csv",
             "componente": "o3",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ppb",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/233",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Puente Alto&macropath=./RM/D27/Cal/0008&macro=0008.diario.diario&from=090123&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           }
         ],
         "resumenes": {
           "mp25": {
-            "puntaje_100": null,
-            "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
-            "meses_usados": [],
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
+            "puntaje_100": 80.84122562674095,
+            "valor_medio": 19.158774373259053,
+            "valor_medio_normalizado_ug_m3": 19.158774373259053,
+            "unidad_original": "ug/m3",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 359,
+            "dias_ausentes_o_excluidos": 6,
+            "fraccion_dias": 0.9835616438356164,
+            "min_fraccion_dias": 0.7,
+            "estado": "Parcial temporal",
+            "estados_aceptados": {
+              "validados": 308,
+              "preliminares": 51
+            },
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
+            "meses_usados": [
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01",
+              "2026-02",
+              "2026-03",
+              "2026-04",
+              "2026-05",
+              "2026-06",
+              "2026-07",
+              "2026-08",
+              "2026-09",
+              "2026-10"
+            ],
             "meses": [],
+            "conversion": null,
             "archivo": "FUENTES/fuentes climaticas usadas/PUENTE ALTO MP2.5 - 1 YEAR.csv",
             "conteos_validacion_en_periodo": {
-              "validados": 54,
+              "validados": 308,
               "preliminares": 51,
-              "seleccionados_validados": 54,
+              "seleccionados_validados": 308,
               "seleccionados_preliminares": 51
             },
             "errores_csv": 0,
             "metadatos": {
               "archivo": "PUENTE ALTO MP2.5 - 1 YEAR.csv",
               "componente": "mp25",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ug/m3",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/233",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Puente Alto&macropath=./RM/D27/Cal/PM25&macro=PM25.diario.diario&from=080521&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
           },
           "o3": {
-            "puntaje_100": null,
-            "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
-            "meses_usados": [],
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
+            "puntaje_100": 78.00406069126625,
+            "valor_medio": 22.42248062015504,
+            "valor_medio_normalizado_ug_m3": 43.9918786174675,
+            "unidad_original": "ppb",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 258,
+            "dias_ausentes_o_excluidos": 107,
+            "fraccion_dias": 0.7068493150684931,
+            "min_fraccion_dias": 0.7,
+            "estado": "Parcial temporal",
+            "estados_aceptados": {
+              "validados": 78,
+              "preliminares": 180
+            },
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 100,
+            "fuera_periodo": 0,
+            "meses_usados": [
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01",
+              "2026-02",
+              "2026-03",
+              "2026-04",
+              "2026-05",
+              "2026-06"
+            ],
             "meses": [],
+            "conversion": {
+              "origen": "ppb",
+              "destino": "ug/m3",
+              "factor": 1.9619541371316533,
+              "temperatura_referencia_c": 25.0,
+              "presion_referencia_pa": 101325.0,
+              "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+            },
             "archivo": "FUENTES/fuentes climaticas usadas/PUENTE ALTO O3 - 1 YEAR.csv",
             "conteos_validacion_en_periodo": {
-              "no_validados": 100
+              "validados": 78,
+              "preliminares": 180,
+              "no_validados": 100,
+              "seleccionados_validados": 78,
+              "seleccionados_preliminares": 180
             },
             "errores_csv": 0,
             "metadatos": {
               "archivo": "PUENTE ALTO O3 - 1 YEAR.csv",
               "componente": "o3",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ppb",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/233",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Puente Alto&macropath=./RM/D27/Cal/0008&macro=0008.diario.diario&from=090123&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
+          }
+        },
+        "indice": {
+          "puntaje_100": 79.99007614609853,
+          "cobertura": 1.0,
+          "componentes": {
+            "mp25": 80.84122562674095,
+            "o3": 78.00406069126625
           }
         }
       },
@@ -2762,46 +3431,118 @@
           {
             "archivo": "QUILICURA (DIFERENTE) - 2.5 - 1 YEAR.csv",
             "componente": "mp25",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ug/m3",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/271",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Quilicura&macropath=./RM/D30/Cal/PM25&macro=PM25.diario.diario&from=160422&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           }
         ],
         "resumenes": {
           "mp25": {
-            "puntaje_100": null,
-            "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
-            "meses_usados": [],
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
+            "puntaje_100": 80.35277777777777,
+            "valor_medio": 19.65277777777778,
+            "valor_medio_normalizado_ug_m3": 19.65277777777778,
+            "unidad_original": "ug/m3",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 360,
+            "dias_ausentes_o_excluidos": 5,
+            "fraccion_dias": 0.9863013698630136,
+            "min_fraccion_dias": 0.7,
+            "estado": "Parcial temporal",
+            "estados_aceptados": {
+              "validados": 309,
+              "preliminares": 51
+            },
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
+            "meses_usados": [
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01",
+              "2026-02",
+              "2026-03",
+              "2026-04",
+              "2026-05",
+              "2026-06",
+              "2026-07",
+              "2026-08",
+              "2026-09",
+              "2026-10"
+            ],
             "meses": [],
+            "conversion": null,
             "archivo": "FUENTES/fuentes climaticas usadas/QUILICURA (DIFERENTE) - 2.5 - 1 YEAR.csv",
             "conteos_validacion_en_periodo": {
-              "validados": 54,
+              "validados": 309,
               "preliminares": 51,
-              "seleccionados_validados": 54,
+              "seleccionados_validados": 309,
               "seleccionados_preliminares": 51
             },
             "errores_csv": 0,
             "metadatos": {
               "archivo": "QUILICURA (DIFERENTE) - 2.5 - 1 YEAR.csv",
               "componente": "mp25",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ug/m3",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/271",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Quilicura&macropath=./RM/D30/Cal/PM25&macro=PM25.diario.diario&from=160422&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
           },
           "o3": {
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
             "puntaje_100": null,
             "valor_medio": null,
+            "valor_medio_normalizado_ug_m3": null,
+            "unidad_original": "ppb",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 0,
+            "dias_ausentes_o_excluidos": 365,
+            "fraccion_dias": 0.0,
+            "min_fraccion_dias": 0.7,
             "estado": "Sin archivo",
+            "estados_aceptados": {},
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
             "meses_usados": [],
-            "meses": []
+            "meses": [],
+            "conversion": {
+              "origen": "ppb",
+              "destino": "ug/m3",
+              "factor": 1.9619541371316533,
+              "temperatura_referencia_c": 25.0,
+              "presion_referencia_pa": 101325.0,
+              "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+            }
+          }
+        },
+        "indice": {
+          "puntaje_100": 80.35277777777777,
+          "cobertura": 0.7,
+          "componentes": {
+            "mp25": 80.35277777777777,
+            "o3": null
           }
         }
       },
@@ -2816,41 +3557,96 @@
           {
             "archivo": "ESTACION QUILICURA I - 2.5 - 1 YEAR.csv",
             "componente": "mp25",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ug/m3",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/149",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Quilicura I&macropath=./RM/D29/Cal/PM25&macro=PM25.diario.diario&from=080519&to=160629&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           }
         ],
         "resumenes": {
           "mp25": {
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
             "puntaje_100": null,
             "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
+            "valor_medio_normalizado_ug_m3": null,
+            "unidad_original": "ug/m3",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 0,
+            "dias_ausentes_o_excluidos": 365,
+            "fraccion_dias": 0.0,
+            "min_fraccion_dias": 0.7,
+            "estado": "Cobertura anual insuficiente",
+            "estados_aceptados": {},
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
             "meses_usados": [],
             "meses": [],
+            "conversion": null,
             "archivo": "FUENTES/fuentes climaticas usadas/ESTACION QUILICURA I - 2.5 - 1 YEAR.csv",
             "conteos_validacion_en_periodo": {},
             "errores_csv": 0,
             "metadatos": {
               "archivo": "ESTACION QUILICURA I - 2.5 - 1 YEAR.csv",
               "componente": "mp25",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ug/m3",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/149",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Quilicura I&macropath=./RM/D29/Cal/PM25&macro=PM25.diario.diario&from=080519&to=160629&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
           },
           "o3": {
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
             "puntaje_100": null,
             "valor_medio": null,
+            "valor_medio_normalizado_ug_m3": null,
+            "unidad_original": "ppb",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 0,
+            "dias_ausentes_o_excluidos": 365,
+            "fraccion_dias": 0.0,
+            "min_fraccion_dias": 0.7,
             "estado": "Sin archivo",
+            "estados_aceptados": {},
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
             "meses_usados": [],
-            "meses": []
+            "meses": [],
+            "conversion": {
+              "origen": "ppb",
+              "destino": "ug/m3",
+              "factor": 1.9619541371316533,
+              "temperatura_referencia_c": 25.0,
+              "presion_referencia_pa": 101325.0,
+              "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+            }
+          }
+        },
+        "indice": {
+          "puntaje_100": null,
+          "cobertura": 0,
+          "componentes": {
+            "mp25": null,
+            "o3": null
           }
         }
       },
@@ -2865,71 +3661,164 @@
           {
             "archivo": "PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
             "componente": "mp25",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ug/m3",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           },
           {
             "archivo": "PARQUE OHHINGS - O3 - 1 YEAR.csv",
             "componente": "o3",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ppb",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           }
         ],
         "resumenes": {
           "mp25": {
-            "puntaje_100": null,
-            "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
-            "meses_usados": [],
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
+            "puntaje_100": 79.23398328690807,
+            "valor_medio": 20.766016713091922,
+            "valor_medio_normalizado_ug_m3": 20.766016713091922,
+            "unidad_original": "ug/m3",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 359,
+            "dias_ausentes_o_excluidos": 6,
+            "fraccion_dias": 0.9835616438356164,
+            "min_fraccion_dias": 0.7,
+            "estado": "Parcial temporal",
+            "estados_aceptados": {
+              "validados": 308,
+              "preliminares": 51
+            },
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
+            "meses_usados": [
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01",
+              "2026-02",
+              "2026-03",
+              "2026-04",
+              "2026-05",
+              "2026-06",
+              "2026-07",
+              "2026-08",
+              "2026-09",
+              "2026-10"
+            ],
             "meses": [],
+            "conversion": null,
             "archivo": "FUENTES/fuentes climaticas usadas/PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
             "conteos_validacion_en_periodo": {
-              "validados": 54,
+              "validados": 308,
               "preliminares": 51,
-              "seleccionados_validados": 54,
+              "seleccionados_validados": 308,
               "seleccionados_preliminares": 51
             },
             "errores_csv": 0,
             "metadatos": {
               "archivo": "PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
               "componente": "mp25",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ug/m3",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
           },
           "o3": {
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
             "puntaje_100": null,
-            "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
-            "meses_usados": [],
+            "valor_medio": 19.024193548387096,
+            "valor_medio_normalizado_ug_m3": 37.32459523785137,
+            "unidad_original": "ppb",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 248,
+            "dias_ausentes_o_excluidos": 117,
+            "fraccion_dias": 0.6794520547945205,
+            "min_fraccion_dias": 0.7,
+            "estado": "Cobertura anual insuficiente",
+            "estados_aceptados": {
+              "validados": 78,
+              "preliminares": 170
+            },
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 97,
+            "fuera_periodo": 0,
+            "meses_usados": [
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01",
+              "2026-02",
+              "2026-03",
+              "2026-04",
+              "2026-05",
+              "2026-06"
+            ],
             "meses": [],
+            "conversion": {
+              "origen": "ppb",
+              "destino": "ug/m3",
+              "factor": 1.9619541371316533,
+              "temperatura_referencia_c": 25.0,
+              "presion_referencia_pa": 101325.0,
+              "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+            },
             "archivo": "FUENTES/fuentes climaticas usadas/PARQUE OHHINGS - O3 - 1 YEAR.csv",
             "conteos_validacion_en_periodo": {
-              "no_validados": 97
+              "validados": 78,
+              "preliminares": 170,
+              "no_validados": 97,
+              "seleccionados_validados": 78,
+              "seleccionados_preliminares": 170
             },
             "errores_csv": 0,
             "metadatos": {
               "archivo": "PARQUE OHHINGS - O3 - 1 YEAR.csv",
               "componente": "o3",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ppb",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
+          }
+        },
+        "indice": {
+          "puntaje_100": 79.23398328690807,
+          "cobertura": 0.7,
+          "componentes": {
+            "mp25": 79.23398328690807,
+            "o3": null
           }
         }
       },
@@ -2944,46 +3833,118 @@
           {
             "archivo": "TALAGANTE - 2.5 - 1 YEAR.csv",
             "componente": "mp25",
-            "metadatos_confirmados": false,
-            "unidad": null,
-            "agregacion": null,
+            "metadatos_confirmados": true,
+            "unidad": "ug/m3",
+            "agregacion": "diaria",
             "huso_horario": null,
-            "evidencia": null,
-            "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+            "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/197",
+            "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+            "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Talagante&macropath=./RM/D28/Cal/PM25&macro=PM25.diario.diario&from=080526&to=261020&",
+            "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
           }
         ],
         "resumenes": {
           "mp25": {
-            "puntaje_100": null,
-            "valor_medio": null,
-            "estado": "Metadatos de exportación pendientes",
-            "meses_usados": [],
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
+            "puntaje_100": 80.75428571428571,
+            "valor_medio": 19.245714285714286,
+            "valor_medio_normalizado_ug_m3": 19.245714285714286,
+            "unidad_original": "ug/m3",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 350,
+            "dias_ausentes_o_excluidos": 15,
+            "fraccion_dias": 0.958904109589041,
+            "min_fraccion_dias": 0.7,
+            "estado": "Parcial temporal",
+            "estados_aceptados": {
+              "validados": 299,
+              "preliminares": 51
+            },
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
+            "meses_usados": [
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01",
+              "2026-02",
+              "2026-03",
+              "2026-04",
+              "2026-05",
+              "2026-06",
+              "2026-07",
+              "2026-08",
+              "2026-09",
+              "2026-10"
+            ],
             "meses": [],
+            "conversion": null,
             "archivo": "FUENTES/fuentes climaticas usadas/TALAGANTE - 2.5 - 1 YEAR.csv",
             "conteos_validacion_en_periodo": {
-              "validados": 54,
+              "validados": 299,
               "preliminares": 51,
-              "seleccionados_validados": 54,
+              "seleccionados_validados": 299,
               "seleccionados_preliminares": 51
             },
             "errores_csv": 0,
             "metadatos": {
               "archivo": "TALAGANTE - 2.5 - 1 YEAR.csv",
               "componente": "mp25",
-              "metadatos_confirmados": false,
-              "unidad": null,
-              "agregacion": null,
+              "metadatos_confirmados": true,
+              "unidad": "ug/m3",
+              "agregacion": "diaria",
               "huso_horario": null,
-              "evidencia": null,
-              "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+              "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/197",
+              "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+              "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Talagante&macropath=./RM/D28/Cal/PM25&macro=PM25.diario.diario&from=080526&to=261020&",
+              "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
             }
           },
           "o3": {
+            "tipo_resumen": "media_anual_de_puntajes_diarios",
             "puntaje_100": null,
             "valor_medio": null,
+            "valor_medio_normalizado_ug_m3": null,
+            "unidad_original": "ppb",
+            "periodo": {
+              "inicio": "2025-10-14",
+              "fin": "2026-10-13"
+            },
+            "dias_esperados": 365,
+            "dias_admisibles": 0,
+            "dias_ausentes_o_excluidos": 365,
+            "fraccion_dias": 0.0,
+            "min_fraccion_dias": 0.7,
             "estado": "Sin archivo",
+            "estados_aceptados": {},
+            "filas_invalidas": 0,
+            "dias_en_conflicto": 0,
+            "no_validados_excluidos": 0,
+            "fuera_periodo": 0,
             "meses_usados": [],
-            "meses": []
+            "meses": [],
+            "conversion": {
+              "origen": "ppb",
+              "destino": "ug/m3",
+              "factor": 1.9619541371316533,
+              "temperatura_referencia_c": 25.0,
+              "presion_referencia_pa": 101325.0,
+              "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+            }
+          }
+        },
+        "indice": {
+          "puntaje_100": 80.75428571428571,
+          "cobertura": 0.7,
+          "componentes": {
+            "mp25": 80.75428571428571,
+            "o3": null
           }
         }
       }
@@ -2997,8 +3958,8 @@
     },
     {
       "ruta": "Pruebas/estaciones_aire.json",
-      "bytes": 10624,
-      "sha256": "ec02e318e4bc7e76137b7533bdcb3fd19261b7e87d808e504e0d184e44983bf1"
+      "bytes": 19781,
+      "sha256": "d5f066d0a351e5f1a1b7312aea8432776e4d5f403504d628f115047097e88209"
     },
     {
       "ruta": "FUENTES/CONFORT TERMICO/Eulogio Sánchez, Tobalaba Ad./[Eulogio Sánchez, Tobalaba Ad.] [Humedad relativa del aire] - [AGOSTO].xlsx",
@@ -3787,28 +4748,33 @@
     },
     {
       "ruta": "Pruebas/fuentes.py",
-      "bytes": 16185,
-      "sha256": "e1fe361e30e8a163421aa042d263cc17929d527ebe7da865166b4dbbe87ca832"
+      "bytes": 16989,
+      "sha256": "a3af49f479d28a4d4dcbc755085662a61a915bc970eaacb903e3eb39b8d7b0f6"
     },
     {
       "ruta": "Pruebas/modelo.py",
-      "bytes": 8268,
-      "sha256": "b3631154c6b804d39ddf65ec39c31f5f93d6aa2ec1f4ed72cc0da1259c7d4ebe"
+      "bytes": 12757,
+      "sha256": "3f2b17855e15672b3ba81a823e3f76ea686983791bef2d827ee4e551aff7d452"
     },
     {
       "ruta": "Pruebas/probar_habita.py",
-      "bytes": 15435,
-      "sha256": "426830018f8329a9d1c141109a401b0d86862edaa999eae064e7693139ce91f9"
+      "bytes": 19800,
+      "sha256": "84e5d9cd352e414d40ba3e518f5ff97b5f924bf35b2827824e87128882c3f122"
+    },
+    {
+      "ruta": "Pruebas/test_aire_anual.py",
+      "bytes": 6138,
+      "sha256": "e23c276ab0f2a4184d997e1c446938232219fb32b34b6401b710fb1e3a797db6"
     },
     {
       "ruta": "Pruebas/test_pruebas.py",
-      "bytes": 11399,
-      "sha256": "dff37f4d32b9d80085b5a551b361d6f301486b44d9df59e209a8b69968e1ef92"
+      "bytes": 11676,
+      "sha256": "84711f72f10e9f7c5f1d376e158886faec528014ccaa791f0c950b0da8284f9d"
     },
     {
       "ruta": "Pruebas/plantilla.html",
-      "bytes": 5683,
-      "sha256": "f20c34b7bf5ce9a7c2bf1db966d8fdaf83de56a03efdc49092f10c0ac1cd749c"
+      "bytes": 6413,
+      "sha256": "3cc1990c3c75784db147a68a450f87dc79658e6c16dc111a50630521abfff340"
     }
   ],
   "resultados": [
@@ -3817,85 +4783,203 @@
       "latitud": -33.4422475,
       "longitud": -70.653898,
       "indice": {
-        "puntaje_100": 78.24644829874019,
-        "puntaje_10": 7.824644829874019,
-        "cobertura": 0.75,
+        "puntaje_100": 78.43327924244763,
+        "puntaje_10": 7.843327924244763,
+        "cobertura": 0.925,
         "estado": "Parcial",
         "participacion_final": {
-          "aire": 0.0,
-          "paraderos": 0.3333333333333333,
-          "salud": 0.3333333333333333,
-          "bienestar": 0.3333333333333333
+          "aire": 0.18918918918918917,
+          "paraderos": 0.27027027027027023,
+          "salud": 0.27027027027027023,
+          "bienestar": 0.27027027027027023
         }
       },
       "parametros": {
         "aire": {
-          "puntaje_100": null,
-          "cobertura": 0,
+          "puntaje_100": 79.23398328690807,
+          "cobertura": 0.7,
           "componentes": {
-            "mp25": null,
+            "mp25": 79.23398328690807,
             "o3": null
           },
-          "estacion": null,
-          "estado": "Sin estación admisible",
-          "observaciones": [
-            "Ninguna estación admisible a 30 km o menos."
-          ],
-          "referencia_no_asignada": {
+          "estacion": {
             "codigo": "273",
             "nombre": "Parque O'Higgins",
-            "distancia_m": 2517.2863087868222,
+            "latitud": -33.464142,
+            "longitud": -70.660797,
+            "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+            "consultado": "2026-10-21",
+            "series": [
+              {
+                "archivo": "PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
+                "componente": "mp25",
+                "metadatos_confirmados": true,
+                "unidad": "ug/m3",
+                "agregacion": "diaria",
+                "huso_horario": null,
+                "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+                "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+                "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
+              },
+              {
+                "archivo": "PARQUE OHHINGS - O3 - 1 YEAR.csv",
+                "componente": "o3",
+                "metadatos_confirmados": true,
+                "unidad": "ppb",
+                "agregacion": "diaria",
+                "huso_horario": null,
+                "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+                "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+                "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
+              }
+            ],
             "resumenes": {
               "mp25": {
-                "puntaje_100": null,
-                "valor_medio": null,
-                "estado": "Metadatos de exportación pendientes",
-                "meses_usados": [],
+                "tipo_resumen": "media_anual_de_puntajes_diarios",
+                "puntaje_100": 79.23398328690807,
+                "valor_medio": 20.766016713091922,
+                "valor_medio_normalizado_ug_m3": 20.766016713091922,
+                "unidad_original": "ug/m3",
+                "periodo": {
+                  "inicio": "2025-10-14",
+                  "fin": "2026-10-13"
+                },
+                "dias_esperados": 365,
+                "dias_admisibles": 359,
+                "dias_ausentes_o_excluidos": 6,
+                "fraccion_dias": 0.9835616438356164,
+                "min_fraccion_dias": 0.7,
+                "estado": "Parcial temporal",
+                "estados_aceptados": {
+                  "validados": 308,
+                  "preliminares": 51
+                },
+                "filas_invalidas": 0,
+                "dias_en_conflicto": 0,
+                "no_validados_excluidos": 0,
+                "fuera_periodo": 0,
+                "meses_usados": [
+                  "2025-10",
+                  "2025-11",
+                  "2025-12",
+                  "2026-01",
+                  "2026-02",
+                  "2026-03",
+                  "2026-04",
+                  "2026-05",
+                  "2026-06",
+                  "2026-07",
+                  "2026-08",
+                  "2026-09",
+                  "2026-10"
+                ],
                 "meses": [],
+                "conversion": null,
                 "archivo": "FUENTES/fuentes climaticas usadas/PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
                 "conteos_validacion_en_periodo": {
-                  "validados": 54,
+                  "validados": 308,
                   "preliminares": 51,
-                  "seleccionados_validados": 54,
+                  "seleccionados_validados": 308,
                   "seleccionados_preliminares": 51
                 },
                 "errores_csv": 0,
                 "metadatos": {
                   "archivo": "PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
                   "componente": "mp25",
-                  "metadatos_confirmados": false,
-                  "unidad": null,
-                  "agregacion": null,
+                  "metadatos_confirmados": true,
+                  "unidad": "ug/m3",
+                  "agregacion": "diaria",
                   "huso_horario": null,
-                  "evidencia": null,
-                  "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+                  "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+                  "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                  "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+                  "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
                 }
               },
               "o3": {
+                "tipo_resumen": "media_anual_de_puntajes_diarios",
                 "puntaje_100": null,
-                "valor_medio": null,
-                "estado": "Metadatos de exportación pendientes",
-                "meses_usados": [],
+                "valor_medio": 19.024193548387096,
+                "valor_medio_normalizado_ug_m3": 37.32459523785137,
+                "unidad_original": "ppb",
+                "periodo": {
+                  "inicio": "2025-10-14",
+                  "fin": "2026-10-13"
+                },
+                "dias_esperados": 365,
+                "dias_admisibles": 248,
+                "dias_ausentes_o_excluidos": 117,
+                "fraccion_dias": 0.6794520547945205,
+                "min_fraccion_dias": 0.7,
+                "estado": "Cobertura anual insuficiente",
+                "estados_aceptados": {
+                  "validados": 78,
+                  "preliminares": 170
+                },
+                "filas_invalidas": 0,
+                "dias_en_conflicto": 0,
+                "no_validados_excluidos": 97,
+                "fuera_periodo": 0,
+                "meses_usados": [
+                  "2025-10",
+                  "2025-11",
+                  "2025-12",
+                  "2026-01",
+                  "2026-02",
+                  "2026-03",
+                  "2026-04",
+                  "2026-05",
+                  "2026-06"
+                ],
                 "meses": [],
+                "conversion": {
+                  "origen": "ppb",
+                  "destino": "ug/m3",
+                  "factor": 1.9619541371316533,
+                  "temperatura_referencia_c": 25.0,
+                  "presion_referencia_pa": 101325.0,
+                  "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+                },
                 "archivo": "FUENTES/fuentes climaticas usadas/PARQUE OHHINGS - O3 - 1 YEAR.csv",
                 "conteos_validacion_en_periodo": {
-                  "no_validados": 97
+                  "validados": 78,
+                  "preliminares": 170,
+                  "no_validados": 97,
+                  "seleccionados_validados": 78,
+                  "seleccionados_preliminares": 170
                 },
                 "errores_csv": 0,
                 "metadatos": {
                   "archivo": "PARQUE OHHINGS - O3 - 1 YEAR.csv",
                   "componente": "o3",
-                  "metadatos_confirmados": false,
-                  "unidad": null,
-                  "agregacion": null,
+                  "metadatos_confirmados": true,
+                  "unidad": "ppb",
+                  "agregacion": "diaria",
                   "huso_horario": null,
-                  "evidencia": null,
-                  "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+                  "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+                  "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                  "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+                  "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
                 }
               }
             },
-            "nota": "Solo referencia geográfica: NO se usó para calcular."
-          }
+            "indice": {
+              "puntaje_100": 79.23398328690807,
+              "cobertura": 0.7,
+              "componentes": {
+                "mp25": 79.23398328690807,
+                "o3": null
+              }
+            },
+            "distancia_m": 2517.2863087868222
+          },
+          "estado": "Parcial",
+          "observaciones": [
+            "mp25: Parcial temporal",
+            "o3: Cobertura anual insuficiente"
+          ]
         },
         "paraderos": {
           "puntaje_100": 88.12811061446057,
@@ -4085,85 +5169,203 @@
       "latitud": -33.4173748,
       "longitud": -70.6072617,
       "indice": {
-        "puntaje_100": 80.17926817963236,
-        "puntaje_10": 8.017926817963236,
-        "cobertura": 0.75,
+        "puntaje_100": 80.00043049722505,
+        "puntaje_10": 8.000043049722505,
+        "cobertura": 0.925,
         "estado": "Parcial",
         "participacion_final": {
-          "aire": 0.0,
-          "paraderos": 0.3333333333333333,
-          "salud": 0.3333333333333333,
-          "bienestar": 0.3333333333333333
+          "aire": 0.18918918918918917,
+          "paraderos": 0.27027027027027023,
+          "salud": 0.27027027027027023,
+          "bienestar": 0.27027027027027023
         }
       },
       "parametros": {
         "aire": {
-          "puntaje_100": null,
-          "cobertura": 0,
+          "puntaje_100": 79.23398328690807,
+          "cobertura": 0.7,
           "componentes": {
-            "mp25": null,
+            "mp25": 79.23398328690807,
             "o3": null
           },
-          "estacion": null,
-          "estado": "Sin estación admisible",
-          "observaciones": [
-            "Ninguna estación admisible a 30 km o menos."
-          ],
-          "referencia_no_asignada": {
+          "estacion": {
             "codigo": "273",
             "nombre": "Parque O'Higgins",
-            "distancia_m": 7191.513895643189,
+            "latitud": -33.464142,
+            "longitud": -70.660797,
+            "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+            "consultado": "2026-10-21",
+            "series": [
+              {
+                "archivo": "PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
+                "componente": "mp25",
+                "metadatos_confirmados": true,
+                "unidad": "ug/m3",
+                "agregacion": "diaria",
+                "huso_horario": null,
+                "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+                "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+                "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
+              },
+              {
+                "archivo": "PARQUE OHHINGS - O3 - 1 YEAR.csv",
+                "componente": "o3",
+                "metadatos_confirmados": true,
+                "unidad": "ppb",
+                "agregacion": "diaria",
+                "huso_horario": null,
+                "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+                "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+                "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
+              }
+            ],
             "resumenes": {
               "mp25": {
-                "puntaje_100": null,
-                "valor_medio": null,
-                "estado": "Metadatos de exportación pendientes",
-                "meses_usados": [],
+                "tipo_resumen": "media_anual_de_puntajes_diarios",
+                "puntaje_100": 79.23398328690807,
+                "valor_medio": 20.766016713091922,
+                "valor_medio_normalizado_ug_m3": 20.766016713091922,
+                "unidad_original": "ug/m3",
+                "periodo": {
+                  "inicio": "2025-10-14",
+                  "fin": "2026-10-13"
+                },
+                "dias_esperados": 365,
+                "dias_admisibles": 359,
+                "dias_ausentes_o_excluidos": 6,
+                "fraccion_dias": 0.9835616438356164,
+                "min_fraccion_dias": 0.7,
+                "estado": "Parcial temporal",
+                "estados_aceptados": {
+                  "validados": 308,
+                  "preliminares": 51
+                },
+                "filas_invalidas": 0,
+                "dias_en_conflicto": 0,
+                "no_validados_excluidos": 0,
+                "fuera_periodo": 0,
+                "meses_usados": [
+                  "2025-10",
+                  "2025-11",
+                  "2025-12",
+                  "2026-01",
+                  "2026-02",
+                  "2026-03",
+                  "2026-04",
+                  "2026-05",
+                  "2026-06",
+                  "2026-07",
+                  "2026-08",
+                  "2026-09",
+                  "2026-10"
+                ],
                 "meses": [],
+                "conversion": null,
                 "archivo": "FUENTES/fuentes climaticas usadas/PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
                 "conteos_validacion_en_periodo": {
-                  "validados": 54,
+                  "validados": 308,
                   "preliminares": 51,
-                  "seleccionados_validados": 54,
+                  "seleccionados_validados": 308,
                   "seleccionados_preliminares": 51
                 },
                 "errores_csv": 0,
                 "metadatos": {
                   "archivo": "PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
                   "componente": "mp25",
-                  "metadatos_confirmados": false,
-                  "unidad": null,
-                  "agregacion": null,
+                  "metadatos_confirmados": true,
+                  "unidad": "ug/m3",
+                  "agregacion": "diaria",
                   "huso_horario": null,
-                  "evidencia": null,
-                  "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+                  "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+                  "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                  "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+                  "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
                 }
               },
               "o3": {
+                "tipo_resumen": "media_anual_de_puntajes_diarios",
                 "puntaje_100": null,
-                "valor_medio": null,
-                "estado": "Metadatos de exportación pendientes",
-                "meses_usados": [],
+                "valor_medio": 19.024193548387096,
+                "valor_medio_normalizado_ug_m3": 37.32459523785137,
+                "unidad_original": "ppb",
+                "periodo": {
+                  "inicio": "2025-10-14",
+                  "fin": "2026-10-13"
+                },
+                "dias_esperados": 365,
+                "dias_admisibles": 248,
+                "dias_ausentes_o_excluidos": 117,
+                "fraccion_dias": 0.6794520547945205,
+                "min_fraccion_dias": 0.7,
+                "estado": "Cobertura anual insuficiente",
+                "estados_aceptados": {
+                  "validados": 78,
+                  "preliminares": 170
+                },
+                "filas_invalidas": 0,
+                "dias_en_conflicto": 0,
+                "no_validados_excluidos": 97,
+                "fuera_periodo": 0,
+                "meses_usados": [
+                  "2025-10",
+                  "2025-11",
+                  "2025-12",
+                  "2026-01",
+                  "2026-02",
+                  "2026-03",
+                  "2026-04",
+                  "2026-05",
+                  "2026-06"
+                ],
                 "meses": [],
+                "conversion": {
+                  "origen": "ppb",
+                  "destino": "ug/m3",
+                  "factor": 1.9619541371316533,
+                  "temperatura_referencia_c": 25.0,
+                  "presion_referencia_pa": 101325.0,
+                  "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+                },
                 "archivo": "FUENTES/fuentes climaticas usadas/PARQUE OHHINGS - O3 - 1 YEAR.csv",
                 "conteos_validacion_en_periodo": {
-                  "no_validados": 97
+                  "validados": 78,
+                  "preliminares": 170,
+                  "no_validados": 97,
+                  "seleccionados_validados": 78,
+                  "seleccionados_preliminares": 170
                 },
                 "errores_csv": 0,
                 "metadatos": {
                   "archivo": "PARQUE OHHINGS - O3 - 1 YEAR.csv",
                   "componente": "o3",
-                  "metadatos_confirmados": false,
-                  "unidad": null,
-                  "agregacion": null,
+                  "metadatos_confirmados": true,
+                  "unidad": "ppb",
+                  "agregacion": "diaria",
                   "huso_horario": null,
-                  "evidencia": null,
-                  "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+                  "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+                  "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                  "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+                  "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
                 }
               }
             },
-            "nota": "Solo referencia geográfica: NO se usó para calcular."
-          }
+            "indice": {
+              "puntaje_100": 79.23398328690807,
+              "cobertura": 0.7,
+              "componentes": {
+                "mp25": 79.23398328690807,
+                "o3": null
+              }
+            },
+            "distancia_m": 7191.513895643189
+          },
+          "estado": "Parcial",
+          "observaciones": [
+            "mp25: Parcial temporal",
+            "o3: Cobertura anual insuficiente"
+          ]
         },
         "paraderos": {
           "puntaje_100": 93.99343316805016,
@@ -4353,85 +5555,203 @@
       "latitud": -33.4644994,
       "longitud": -70.6112756,
       "indice": {
-        "puntaje_100": 75.74430334679786,
-        "puntaje_10": 7.5744303346797865,
-        "cobertura": 0.75,
+        "puntaje_100": 76.4045130651971,
+        "puntaje_10": 7.64045130651971,
+        "cobertura": 0.925,
         "estado": "Parcial",
         "participacion_final": {
-          "aire": 0.0,
-          "paraderos": 0.3333333333333333,
-          "salud": 0.3333333333333333,
-          "bienestar": 0.3333333333333333
+          "aire": 0.18918918918918917,
+          "paraderos": 0.27027027027027023,
+          "salud": 0.27027027027027023,
+          "bienestar": 0.27027027027027023
         }
       },
       "parametros": {
         "aire": {
-          "puntaje_100": null,
-          "cobertura": 0,
+          "puntaje_100": 79.23398328690807,
+          "cobertura": 0.7,
           "componentes": {
-            "mp25": null,
+            "mp25": 79.23398328690807,
             "o3": null
           },
-          "estacion": null,
-          "estado": "Sin estación admisible",
-          "observaciones": [
-            "Ninguna estación admisible a 30 km o menos."
-          ],
-          "referencia_no_asignada": {
+          "estacion": {
             "codigo": "273",
             "nombre": "Parque O'Higgins",
-            "distancia_m": 4593.879571712652,
+            "latitud": -33.464142,
+            "longitud": -70.660797,
+            "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+            "consultado": "2026-10-21",
+            "series": [
+              {
+                "archivo": "PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
+                "componente": "mp25",
+                "metadatos_confirmados": true,
+                "unidad": "ug/m3",
+                "agregacion": "diaria",
+                "huso_horario": null,
+                "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+                "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+                "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
+              },
+              {
+                "archivo": "PARQUE OHHINGS - O3 - 1 YEAR.csv",
+                "componente": "o3",
+                "metadatos_confirmados": true,
+                "unidad": "ppb",
+                "agregacion": "diaria",
+                "huso_horario": null,
+                "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+                "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+                "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
+              }
+            ],
             "resumenes": {
               "mp25": {
-                "puntaje_100": null,
-                "valor_medio": null,
-                "estado": "Metadatos de exportación pendientes",
-                "meses_usados": [],
+                "tipo_resumen": "media_anual_de_puntajes_diarios",
+                "puntaje_100": 79.23398328690807,
+                "valor_medio": 20.766016713091922,
+                "valor_medio_normalizado_ug_m3": 20.766016713091922,
+                "unidad_original": "ug/m3",
+                "periodo": {
+                  "inicio": "2025-10-14",
+                  "fin": "2026-10-13"
+                },
+                "dias_esperados": 365,
+                "dias_admisibles": 359,
+                "dias_ausentes_o_excluidos": 6,
+                "fraccion_dias": 0.9835616438356164,
+                "min_fraccion_dias": 0.7,
+                "estado": "Parcial temporal",
+                "estados_aceptados": {
+                  "validados": 308,
+                  "preliminares": 51
+                },
+                "filas_invalidas": 0,
+                "dias_en_conflicto": 0,
+                "no_validados_excluidos": 0,
+                "fuera_periodo": 0,
+                "meses_usados": [
+                  "2025-10",
+                  "2025-11",
+                  "2025-12",
+                  "2026-01",
+                  "2026-02",
+                  "2026-03",
+                  "2026-04",
+                  "2026-05",
+                  "2026-06",
+                  "2026-07",
+                  "2026-08",
+                  "2026-09",
+                  "2026-10"
+                ],
                 "meses": [],
+                "conversion": null,
                 "archivo": "FUENTES/fuentes climaticas usadas/PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
                 "conteos_validacion_en_periodo": {
-                  "validados": 54,
+                  "validados": 308,
                   "preliminares": 51,
-                  "seleccionados_validados": 54,
+                  "seleccionados_validados": 308,
                   "seleccionados_preliminares": 51
                 },
                 "errores_csv": 0,
                 "metadatos": {
                   "archivo": "PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
                   "componente": "mp25",
-                  "metadatos_confirmados": false,
-                  "unidad": null,
-                  "agregacion": null,
+                  "metadatos_confirmados": true,
+                  "unidad": "ug/m3",
+                  "agregacion": "diaria",
                   "huso_horario": null,
-                  "evidencia": null,
-                  "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+                  "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+                  "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                  "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+                  "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
                 }
               },
               "o3": {
+                "tipo_resumen": "media_anual_de_puntajes_diarios",
                 "puntaje_100": null,
-                "valor_medio": null,
-                "estado": "Metadatos de exportación pendientes",
-                "meses_usados": [],
+                "valor_medio": 19.024193548387096,
+                "valor_medio_normalizado_ug_m3": 37.32459523785137,
+                "unidad_original": "ppb",
+                "periodo": {
+                  "inicio": "2025-10-14",
+                  "fin": "2026-10-13"
+                },
+                "dias_esperados": 365,
+                "dias_admisibles": 248,
+                "dias_ausentes_o_excluidos": 117,
+                "fraccion_dias": 0.6794520547945205,
+                "min_fraccion_dias": 0.7,
+                "estado": "Cobertura anual insuficiente",
+                "estados_aceptados": {
+                  "validados": 78,
+                  "preliminares": 170
+                },
+                "filas_invalidas": 0,
+                "dias_en_conflicto": 0,
+                "no_validados_excluidos": 97,
+                "fuera_periodo": 0,
+                "meses_usados": [
+                  "2025-10",
+                  "2025-11",
+                  "2025-12",
+                  "2026-01",
+                  "2026-02",
+                  "2026-03",
+                  "2026-04",
+                  "2026-05",
+                  "2026-06"
+                ],
                 "meses": [],
+                "conversion": {
+                  "origen": "ppb",
+                  "destino": "ug/m3",
+                  "factor": 1.9619541371316533,
+                  "temperatura_referencia_c": 25.0,
+                  "presion_referencia_pa": 101325.0,
+                  "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+                },
                 "archivo": "FUENTES/fuentes climaticas usadas/PARQUE OHHINGS - O3 - 1 YEAR.csv",
                 "conteos_validacion_en_periodo": {
-                  "no_validados": 97
+                  "validados": 78,
+                  "preliminares": 170,
+                  "no_validados": 97,
+                  "seleccionados_validados": 78,
+                  "seleccionados_preliminares": 170
                 },
                 "errores_csv": 0,
                 "metadatos": {
                   "archivo": "PARQUE OHHINGS - O3 - 1 YEAR.csv",
                   "componente": "o3",
-                  "metadatos_confirmados": false,
-                  "unidad": null,
-                  "agregacion": null,
+                  "metadatos_confirmados": true,
+                  "unidad": "ppb",
+                  "agregacion": "diaria",
                   "huso_horario": null,
-                  "evidencia": null,
-                  "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+                  "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+                  "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                  "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+                  "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
                 }
               }
             },
-            "nota": "Solo referencia geográfica: NO se usó para calcular."
-          }
+            "indice": {
+              "puntaje_100": 79.23398328690807,
+              "cobertura": 0.7,
+              "componentes": {
+                "mp25": 79.23398328690807,
+                "o3": null
+              }
+            },
+            "distancia_m": 4593.879571712652
+          },
+          "estado": "Parcial",
+          "observaciones": [
+            "mp25: Parcial temporal",
+            "o3: Cobertura anual insuficiente"
+          ]
         },
         "paraderos": {
           "puntaje_100": 81.5188365907667,
@@ -4621,65 +5941,204 @@
       "latitud": -33.3972119,
       "longitud": -70.7930097,
       "indice": {
-        "puntaje_100": 46.7179726252681,
-        "puntaje_10": 4.67179726252681,
-        "cobertura": 0.75,
-        "estado": "Parcial",
+        "puntaje_100": 54.64704102839806,
+        "puntaje_10": 5.464704102839805,
+        "cobertura": 1.0,
+        "estado": "Completo en componentes",
         "participacion_final": {
-          "aire": 0.0,
-          "paraderos": 0.3333333333333333,
-          "salud": 0.3333333333333333,
-          "bienestar": 0.3333333333333333
+          "aire": 0.25,
+          "paraderos": 0.25,
+          "salud": 0.25,
+          "bienestar": 0.25
         }
       },
       "parametros": {
         "aire": {
-          "puntaje_100": null,
-          "cobertura": 0,
+          "puntaje_100": 78.43424623778793,
+          "cobertura": 1.0,
           "componentes": {
-            "mp25": null,
-            "o3": null
+            "mp25": 77.79494382022472,
+            "o3": 79.9259518787688
           },
-          "estacion": null,
-          "estado": "Sin estación admisible",
-          "observaciones": [
-            "Ninguna estación admisible a 30 km o menos."
-          ],
-          "referencia_no_asignada": {
-            "codigo": "149",
-            "nombre": "Quilicura I",
-            "distancia_m": 5427.849478659603,
+          "estacion": {
+            "codigo": "190",
+            "nombre": "Pudahuel",
+            "latitud": -33.437811379126,
+            "longitud": -70.750171233135,
+            "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/190",
+            "consultado": "2026-10-21",
+            "series": [
+              {
+                "archivo": "Estacion Pudahuel 2.5 - 1 YEAR.csv",
+                "componente": "mp25",
+                "metadatos_confirmados": true,
+                "unidad": "ug/m3",
+                "agregacion": "diaria",
+                "huso_horario": null,
+                "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/190",
+                "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Pudahuel (Acreditada)&macropath=./RM/D15/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+                "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
+              },
+              {
+                "archivo": "Estacion Pudahuel o3 -1 year.csv",
+                "componente": "o3",
+                "metadatos_confirmados": true,
+                "unidad": "ppb",
+                "agregacion": "diaria",
+                "huso_horario": null,
+                "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/190",
+                "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Pudahuel (Acreditada)&macropath=./RM/D15/Cal/0008&macro=0008.diario.diario&from=970601&to=261020&",
+                "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
+              }
+            ],
             "resumenes": {
               "mp25": {
-                "puntaje_100": null,
-                "valor_medio": null,
-                "estado": "Metadatos de exportación pendientes",
-                "meses_usados": [],
+                "tipo_resumen": "media_anual_de_puntajes_diarios",
+                "puntaje_100": 77.79494382022472,
+                "valor_medio": 22.213483146067414,
+                "valor_medio_normalizado_ug_m3": 22.213483146067414,
+                "unidad_original": "ug/m3",
+                "periodo": {
+                  "inicio": "2025-10-14",
+                  "fin": "2026-10-13"
+                },
+                "dias_esperados": 365,
+                "dias_admisibles": 356,
+                "dias_ausentes_o_excluidos": 9,
+                "fraccion_dias": 0.9753424657534246,
+                "min_fraccion_dias": 0.7,
+                "estado": "Parcial temporal",
+                "estados_aceptados": {
+                  "validados": 305,
+                  "preliminares": 51
+                },
+                "filas_invalidas": 0,
+                "dias_en_conflicto": 0,
+                "no_validados_excluidos": 0,
+                "fuera_periodo": 0,
+                "meses_usados": [
+                  "2025-10",
+                  "2025-11",
+                  "2025-12",
+                  "2026-01",
+                  "2026-02",
+                  "2026-03",
+                  "2026-04",
+                  "2026-05",
+                  "2026-06",
+                  "2026-07",
+                  "2026-08",
+                  "2026-09",
+                  "2026-10"
+                ],
                 "meses": [],
-                "archivo": "FUENTES/fuentes climaticas usadas/ESTACION QUILICURA I - 2.5 - 1 YEAR.csv",
-                "conteos_validacion_en_periodo": {},
+                "conversion": null,
+                "archivo": "FUENTES/fuentes climaticas usadas/Estacion Pudahuel 2.5 - 1 YEAR.csv",
+                "conteos_validacion_en_periodo": {
+                  "validados": 305,
+                  "preliminares": 51,
+                  "seleccionados_validados": 305,
+                  "seleccionados_preliminares": 51
+                },
                 "errores_csv": 0,
                 "metadatos": {
-                  "archivo": "ESTACION QUILICURA I - 2.5 - 1 YEAR.csv",
+                  "archivo": "Estacion Pudahuel 2.5 - 1 YEAR.csv",
                   "componente": "mp25",
-                  "metadatos_confirmados": false,
-                  "unidad": null,
-                  "agregacion": null,
+                  "metadatos_confirmados": true,
+                  "unidad": "ug/m3",
+                  "agregacion": "diaria",
                   "huso_horario": null,
-                  "evidencia": null,
-                  "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+                  "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/190",
+                  "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                  "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Pudahuel (Acreditada)&macropath=./RM/D15/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+                  "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
                 }
               },
               "o3": {
-                "puntaje_100": null,
-                "valor_medio": null,
-                "estado": "Sin archivo",
-                "meses_usados": [],
-                "meses": []
+                "tipo_resumen": "media_anual_de_puntajes_diarios",
+                "puntaje_100": 79.9259518787688,
+                "valor_medio": 20.463320463320464,
+                "valor_medio_normalizado_ug_m3": 40.1480962424624,
+                "unidad_original": "ppb",
+                "periodo": {
+                  "inicio": "2025-10-14",
+                  "fin": "2026-10-13"
+                },
+                "dias_esperados": 365,
+                "dias_admisibles": 259,
+                "dias_ausentes_o_excluidos": 106,
+                "fraccion_dias": 0.7095890410958904,
+                "min_fraccion_dias": 0.7,
+                "estado": "Parcial temporal",
+                "estados_aceptados": {
+                  "validados": 78,
+                  "preliminares": 181
+                },
+                "filas_invalidas": 0,
+                "dias_en_conflicto": 0,
+                "no_validados_excluidos": 97,
+                "fuera_periodo": 0,
+                "meses_usados": [
+                  "2025-10",
+                  "2025-11",
+                  "2025-12",
+                  "2026-01",
+                  "2026-02",
+                  "2026-03",
+                  "2026-04",
+                  "2026-05",
+                  "2026-06"
+                ],
+                "meses": [],
+                "conversion": {
+                  "origen": "ppb",
+                  "destino": "ug/m3",
+                  "factor": 1.9619541371316533,
+                  "temperatura_referencia_c": 25.0,
+                  "presion_referencia_pa": 101325.0,
+                  "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+                },
+                "archivo": "FUENTES/fuentes climaticas usadas/Estacion Pudahuel o3 -1 year.csv",
+                "conteos_validacion_en_periodo": {
+                  "validados": 78,
+                  "preliminares": 181,
+                  "no_validados": 97,
+                  "seleccionados_validados": 78,
+                  "seleccionados_preliminares": 181
+                },
+                "errores_csv": 0,
+                "metadatos": {
+                  "archivo": "Estacion Pudahuel o3 -1 year.csv",
+                  "componente": "o3",
+                  "metadatos_confirmados": true,
+                  "unidad": "ppb",
+                  "agregacion": "diaria",
+                  "huso_horario": null,
+                  "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/190",
+                  "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                  "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Pudahuel (Acreditada)&macropath=./RM/D15/Cal/0008&macro=0008.diario.diario&from=970601&to=261020&",
+                  "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
+                }
               }
             },
-            "nota": "Solo referencia geográfica: NO se usó para calcular."
-          }
+            "indice": {
+              "puntaje_100": 78.43424623778793,
+              "cobertura": 1.0,
+              "componentes": {
+                "mp25": 77.79494382022472,
+                "o3": 79.9259518787688
+              }
+            },
+            "distancia_m": 6015.673520315133
+          },
+          "estado": "Disponible",
+          "observaciones": [
+            "mp25: Parcial temporal",
+            "o3: Parcial temporal",
+            "Los componentes usan meses distintos."
+          ]
         },
         "paraderos": {
           "puntaje_100": 60.31127780590684,
@@ -4869,85 +6328,203 @@
       "latitud": -33.4304869,
       "longitud": -70.6353589,
       "indice": {
-        "puntaje_100": 67.76301829750912,
-        "puntaje_10": 6.776301829750912,
-        "cobertura": 0.75,
+        "puntaje_100": 69.93320086307108,
+        "puntaje_10": 6.993320086307108,
+        "cobertura": 0.925,
         "estado": "Parcial",
         "participacion_final": {
-          "aire": 0.0,
-          "paraderos": 0.3333333333333333,
-          "salud": 0.3333333333333333,
-          "bienestar": 0.3333333333333333
+          "aire": 0.18918918918918917,
+          "paraderos": 0.27027027027027023,
+          "salud": 0.27027027027027023,
+          "bienestar": 0.27027027027027023
         }
       },
       "parametros": {
         "aire": {
-          "puntaje_100": null,
-          "cobertura": 0,
+          "puntaje_100": 79.23398328690807,
+          "cobertura": 0.7,
           "componentes": {
-            "mp25": null,
+            "mp25": 79.23398328690807,
             "o3": null
           },
-          "estacion": null,
-          "estado": "Sin estación admisible",
-          "observaciones": [
-            "Ninguna estación admisible a 30 km o menos."
-          ],
-          "referencia_no_asignada": {
+          "estacion": {
             "codigo": "273",
             "nombre": "Parque O'Higgins",
-            "distancia_m": 4424.359583191677,
+            "latitud": -33.464142,
+            "longitud": -70.660797,
+            "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+            "consultado": "2026-10-21",
+            "series": [
+              {
+                "archivo": "PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
+                "componente": "mp25",
+                "metadatos_confirmados": true,
+                "unidad": "ug/m3",
+                "agregacion": "diaria",
+                "huso_horario": null,
+                "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+                "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+                "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
+              },
+              {
+                "archivo": "PARQUE OHHINGS - O3 - 1 YEAR.csv",
+                "componente": "o3",
+                "metadatos_confirmados": true,
+                "unidad": "ppb",
+                "agregacion": "diaria",
+                "huso_horario": null,
+                "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+                "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+                "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
+              }
+            ],
             "resumenes": {
               "mp25": {
-                "puntaje_100": null,
-                "valor_medio": null,
-                "estado": "Metadatos de exportación pendientes",
-                "meses_usados": [],
+                "tipo_resumen": "media_anual_de_puntajes_diarios",
+                "puntaje_100": 79.23398328690807,
+                "valor_medio": 20.766016713091922,
+                "valor_medio_normalizado_ug_m3": 20.766016713091922,
+                "unidad_original": "ug/m3",
+                "periodo": {
+                  "inicio": "2025-10-14",
+                  "fin": "2026-10-13"
+                },
+                "dias_esperados": 365,
+                "dias_admisibles": 359,
+                "dias_ausentes_o_excluidos": 6,
+                "fraccion_dias": 0.9835616438356164,
+                "min_fraccion_dias": 0.7,
+                "estado": "Parcial temporal",
+                "estados_aceptados": {
+                  "validados": 308,
+                  "preliminares": 51
+                },
+                "filas_invalidas": 0,
+                "dias_en_conflicto": 0,
+                "no_validados_excluidos": 0,
+                "fuera_periodo": 0,
+                "meses_usados": [
+                  "2025-10",
+                  "2025-11",
+                  "2025-12",
+                  "2026-01",
+                  "2026-02",
+                  "2026-03",
+                  "2026-04",
+                  "2026-05",
+                  "2026-06",
+                  "2026-07",
+                  "2026-08",
+                  "2026-09",
+                  "2026-10"
+                ],
                 "meses": [],
+                "conversion": null,
                 "archivo": "FUENTES/fuentes climaticas usadas/PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
                 "conteos_validacion_en_periodo": {
-                  "validados": 54,
+                  "validados": 308,
                   "preliminares": 51,
-                  "seleccionados_validados": 54,
+                  "seleccionados_validados": 308,
                   "seleccionados_preliminares": 51
                 },
                 "errores_csv": 0,
                 "metadatos": {
                   "archivo": "PARQUE OHHINGS - MP2.5 - 1 YEAR.csv",
                   "componente": "mp25",
-                  "metadatos_confirmados": false,
-                  "unidad": null,
-                  "agregacion": null,
+                  "metadatos_confirmados": true,
+                  "unidad": "ug/m3",
+                  "agregacion": "diaria",
                   "huso_horario": null,
-                  "evidencia": null,
-                  "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+                  "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+                  "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                  "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+                  "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
                 }
               },
               "o3": {
+                "tipo_resumen": "media_anual_de_puntajes_diarios",
                 "puntaje_100": null,
-                "valor_medio": null,
-                "estado": "Metadatos de exportación pendientes",
-                "meses_usados": [],
+                "valor_medio": 19.024193548387096,
+                "valor_medio_normalizado_ug_m3": 37.32459523785137,
+                "unidad_original": "ppb",
+                "periodo": {
+                  "inicio": "2025-10-14",
+                  "fin": "2026-10-13"
+                },
+                "dias_esperados": 365,
+                "dias_admisibles": 248,
+                "dias_ausentes_o_excluidos": 117,
+                "fraccion_dias": 0.6794520547945205,
+                "min_fraccion_dias": 0.7,
+                "estado": "Cobertura anual insuficiente",
+                "estados_aceptados": {
+                  "validados": 78,
+                  "preliminares": 170
+                },
+                "filas_invalidas": 0,
+                "dias_en_conflicto": 0,
+                "no_validados_excluidos": 97,
+                "fuera_periodo": 0,
+                "meses_usados": [
+                  "2025-10",
+                  "2025-11",
+                  "2025-12",
+                  "2026-01",
+                  "2026-02",
+                  "2026-03",
+                  "2026-04",
+                  "2026-05",
+                  "2026-06"
+                ],
                 "meses": [],
+                "conversion": {
+                  "origen": "ppb",
+                  "destino": "ug/m3",
+                  "factor": 1.9619541371316533,
+                  "temperatura_referencia_c": 25.0,
+                  "presion_referencia_pa": 101325.0,
+                  "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+                },
                 "archivo": "FUENTES/fuentes climaticas usadas/PARQUE OHHINGS - O3 - 1 YEAR.csv",
                 "conteos_validacion_en_periodo": {
-                  "no_validados": 97
+                  "validados": 78,
+                  "preliminares": 170,
+                  "no_validados": 97,
+                  "seleccionados_validados": 78,
+                  "seleccionados_preliminares": 170
                 },
                 "errores_csv": 0,
                 "metadatos": {
                   "archivo": "PARQUE OHHINGS - O3 - 1 YEAR.csv",
                   "componente": "o3",
-                  "metadatos_confirmados": false,
-                  "unidad": null,
-                  "agregacion": null,
+                  "metadatos_confirmados": true,
+                  "unidad": "ppb",
+                  "agregacion": "diaria",
                   "huso_horario": null,
-                  "evidencia": null,
-                  "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+                  "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/273",
+                  "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                  "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Parque O'Higgins&macropath=./RM/D14/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+                  "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
                 }
               }
             },
-            "nota": "Solo referencia geográfica: NO se usó para calcular."
-          }
+            "indice": {
+              "puntaje_100": 79.23398328690807,
+              "cobertura": 0.7,
+              "componentes": {
+                "mp25": 79.23398328690807,
+                "o3": null
+              }
+            },
+            "distancia_m": 4424.359583191677
+          },
+          "estado": "Parcial",
+          "observaciones": [
+            "mp25: Parcial temporal",
+            "o3: Cobertura anual insuficiente"
+          ]
         },
         "paraderos": {
           "puntaje_100": 64.92665039310093,
@@ -5137,85 +6714,204 @@
       "latitud": -33.5770095,
       "longitud": -70.5812289,
       "indice": {
-        "puntaje_100": 80.63937614995675,
-        "puntaje_10": 8.063937614995675,
-        "cobertura": 0.75,
-        "estado": "Parcial",
+        "puntaje_100": 80.47705114899219,
+        "puntaje_10": 8.04770511489922,
+        "cobertura": 1.0,
+        "estado": "Completo en componentes",
         "participacion_final": {
-          "aire": 0.0,
-          "paraderos": 0.3333333333333333,
-          "salud": 0.3333333333333333,
-          "bienestar": 0.3333333333333333
+          "aire": 0.25,
+          "paraderos": 0.25,
+          "salud": 0.25,
+          "bienestar": 0.25
         }
       },
       "parametros": {
         "aire": {
-          "puntaje_100": null,
-          "cobertura": 0,
+          "puntaje_100": 79.99007614609853,
+          "cobertura": 1.0,
           "componentes": {
-            "mp25": null,
-            "o3": null
+            "mp25": 80.84122562674095,
+            "o3": 78.00406069126625
           },
-          "estacion": null,
-          "estado": "Sin estación admisible",
-          "observaciones": [
-            "Ninguna estación admisible a 30 km o menos."
-          ],
-          "referencia_no_asignada": {
+          "estacion": {
             "codigo": "233",
             "nombre": "Puente Alto",
-            "distancia_m": 2033.4090687605244,
+            "latitud": -33.591390623022,
+            "longitud": -70.594788,
+            "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/233",
+            "consultado": "2026-10-21",
+            "series": [
+              {
+                "archivo": "PUENTE ALTO MP2.5 - 1 YEAR.csv",
+                "componente": "mp25",
+                "metadatos_confirmados": true,
+                "unidad": "ug/m3",
+                "agregacion": "diaria",
+                "huso_horario": null,
+                "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/233",
+                "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Puente Alto&macropath=./RM/D27/Cal/PM25&macro=PM25.diario.diario&from=080521&to=261020&",
+                "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
+              },
+              {
+                "archivo": "PUENTE ALTO O3 - 1 YEAR.csv",
+                "componente": "o3",
+                "metadatos_confirmados": true,
+                "unidad": "ppb",
+                "agregacion": "diaria",
+                "huso_horario": null,
+                "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/233",
+                "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Puente Alto&macropath=./RM/D27/Cal/0008&macro=0008.diario.diario&from=090123&to=261020&",
+                "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
+              }
+            ],
             "resumenes": {
               "mp25": {
-                "puntaje_100": null,
-                "valor_medio": null,
-                "estado": "Metadatos de exportación pendientes",
-                "meses_usados": [],
+                "tipo_resumen": "media_anual_de_puntajes_diarios",
+                "puntaje_100": 80.84122562674095,
+                "valor_medio": 19.158774373259053,
+                "valor_medio_normalizado_ug_m3": 19.158774373259053,
+                "unidad_original": "ug/m3",
+                "periodo": {
+                  "inicio": "2025-10-14",
+                  "fin": "2026-10-13"
+                },
+                "dias_esperados": 365,
+                "dias_admisibles": 359,
+                "dias_ausentes_o_excluidos": 6,
+                "fraccion_dias": 0.9835616438356164,
+                "min_fraccion_dias": 0.7,
+                "estado": "Parcial temporal",
+                "estados_aceptados": {
+                  "validados": 308,
+                  "preliminares": 51
+                },
+                "filas_invalidas": 0,
+                "dias_en_conflicto": 0,
+                "no_validados_excluidos": 0,
+                "fuera_periodo": 0,
+                "meses_usados": [
+                  "2025-10",
+                  "2025-11",
+                  "2025-12",
+                  "2026-01",
+                  "2026-02",
+                  "2026-03",
+                  "2026-04",
+                  "2026-05",
+                  "2026-06",
+                  "2026-07",
+                  "2026-08",
+                  "2026-09",
+                  "2026-10"
+                ],
                 "meses": [],
+                "conversion": null,
                 "archivo": "FUENTES/fuentes climaticas usadas/PUENTE ALTO MP2.5 - 1 YEAR.csv",
                 "conteos_validacion_en_periodo": {
-                  "validados": 54,
+                  "validados": 308,
                   "preliminares": 51,
-                  "seleccionados_validados": 54,
+                  "seleccionados_validados": 308,
                   "seleccionados_preliminares": 51
                 },
                 "errores_csv": 0,
                 "metadatos": {
                   "archivo": "PUENTE ALTO MP2.5 - 1 YEAR.csv",
                   "componente": "mp25",
-                  "metadatos_confirmados": false,
-                  "unidad": null,
-                  "agregacion": null,
+                  "metadatos_confirmados": true,
+                  "unidad": "ug/m3",
+                  "agregacion": "diaria",
                   "huso_horario": null,
-                  "evidencia": null,
-                  "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+                  "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/233",
+                  "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                  "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Puente Alto&macropath=./RM/D27/Cal/PM25&macro=PM25.diario.diario&from=080521&to=261020&",
+                  "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
                 }
               },
               "o3": {
-                "puntaje_100": null,
-                "valor_medio": null,
-                "estado": "Metadatos de exportación pendientes",
-                "meses_usados": [],
+                "tipo_resumen": "media_anual_de_puntajes_diarios",
+                "puntaje_100": 78.00406069126625,
+                "valor_medio": 22.42248062015504,
+                "valor_medio_normalizado_ug_m3": 43.9918786174675,
+                "unidad_original": "ppb",
+                "periodo": {
+                  "inicio": "2025-10-14",
+                  "fin": "2026-10-13"
+                },
+                "dias_esperados": 365,
+                "dias_admisibles": 258,
+                "dias_ausentes_o_excluidos": 107,
+                "fraccion_dias": 0.7068493150684931,
+                "min_fraccion_dias": 0.7,
+                "estado": "Parcial temporal",
+                "estados_aceptados": {
+                  "validados": 78,
+                  "preliminares": 180
+                },
+                "filas_invalidas": 0,
+                "dias_en_conflicto": 0,
+                "no_validados_excluidos": 100,
+                "fuera_periodo": 0,
+                "meses_usados": [
+                  "2025-10",
+                  "2025-11",
+                  "2025-12",
+                  "2026-01",
+                  "2026-02",
+                  "2026-03",
+                  "2026-04",
+                  "2026-05",
+                  "2026-06"
+                ],
                 "meses": [],
+                "conversion": {
+                  "origen": "ppb",
+                  "destino": "ug/m3",
+                  "factor": 1.9619541371316533,
+                  "temperatura_referencia_c": 25.0,
+                  "presion_referencia_pa": 101325.0,
+                  "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+                },
                 "archivo": "FUENTES/fuentes climaticas usadas/PUENTE ALTO O3 - 1 YEAR.csv",
                 "conteos_validacion_en_periodo": {
-                  "no_validados": 100
+                  "validados": 78,
+                  "preliminares": 180,
+                  "no_validados": 100,
+                  "seleccionados_validados": 78,
+                  "seleccionados_preliminares": 180
                 },
                 "errores_csv": 0,
                 "metadatos": {
                   "archivo": "PUENTE ALTO O3 - 1 YEAR.csv",
                   "componente": "o3",
-                  "metadatos_confirmados": false,
-                  "unidad": null,
-                  "agregacion": null,
+                  "metadatos_confirmados": true,
+                  "unidad": "ppb",
+                  "agregacion": "diaria",
                   "huso_horario": null,
-                  "evidencia": null,
-                  "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+                  "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/233",
+                  "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                  "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Puente Alto&macropath=./RM/D27/Cal/0008&macro=0008.diario.diario&from=090123&to=261020&",
+                  "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
                 }
               }
             },
-            "nota": "Solo referencia geográfica: NO se usó para calcular."
-          }
+            "indice": {
+              "puntaje_100": 79.99007614609853,
+              "cobertura": 1.0,
+              "componentes": {
+                "mp25": 80.84122562674095,
+                "o3": 78.00406069126625
+              }
+            },
+            "distancia_m": 2033.4090687605244
+          },
+          "estado": "Disponible",
+          "observaciones": [
+            "mp25: Parcial temporal",
+            "o3: Parcial temporal",
+            "Los componentes usan meses distintos."
+          ]
         },
         "paraderos": {
           "puntaje_100": 95.63606086540238,
@@ -5405,85 +7101,157 @@
       "latitud": -33.5382168,
       "longitud": -70.6641985,
       "indice": {
-        "puntaje_100": 80.71793867572354,
-        "puntaje_10": 8.071793867572355,
-        "cobertura": 0.75,
+        "puntaje_100": 80.2874036464755,
+        "puntaje_10": 8.02874036464755,
+        "cobertura": 0.925,
         "estado": "Parcial",
         "participacion_final": {
-          "aire": 0.0,
-          "paraderos": 0.3333333333333333,
-          "salud": 0.3333333333333333,
-          "bienestar": 0.3333333333333333
+          "aire": 0.18918918918918917,
+          "paraderos": 0.27027027027027023,
+          "salud": 0.27027027027027023,
+          "bienestar": 0.27027027027027023
         }
       },
       "parametros": {
         "aire": {
-          "puntaje_100": null,
-          "cobertura": 0,
+          "puntaje_100": 78.44225352112676,
+          "cobertura": 0.7,
           "componentes": {
-            "mp25": null,
+            "mp25": 78.44225352112676,
             "o3": null
           },
-          "estacion": null,
-          "estado": "Sin estación admisible",
-          "observaciones": [
-            "Ninguna estación admisible a 30 km o menos."
-          ],
-          "referencia_no_asignada": {
-            "codigo": "260",
-            "nombre": "El Bosque",
-            "distancia_m": 1733.5632123370506,
+          "estacion": {
+            "codigo": "290",
+            "nombre": "Cerrillos II",
+            "latitud": -33.494627474144,
+            "longitud": -70.693298547943,
+            "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/290",
+            "consultado": "2026-10-21",
+            "series": [
+              {
+                "archivo": "Estacion Cerrillos II - mp2.5 - 1 year.csv",
+                "componente": "mp25",
+                "metadatos_confirmados": true,
+                "unidad": "ug/m3",
+                "agregacion": "diaria",
+                "huso_horario": null,
+                "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/290",
+                "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Cerrillos II&macropath=./RM/D35/Cal/PM25&macro=PM25.diario.diario&from=220401&to=261020&",
+                "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
+              }
+            ],
             "resumenes": {
               "mp25": {
-                "puntaje_100": null,
-                "valor_medio": null,
-                "estado": "Metadatos de exportación pendientes",
-                "meses_usados": [],
+                "tipo_resumen": "media_anual_de_puntajes_diarios",
+                "puntaje_100": 78.44225352112676,
+                "valor_medio": 21.557746478873238,
+                "valor_medio_normalizado_ug_m3": 21.557746478873238,
+                "unidad_original": "ug/m3",
+                "periodo": {
+                  "inicio": "2025-10-14",
+                  "fin": "2026-10-13"
+                },
+                "dias_esperados": 365,
+                "dias_admisibles": 355,
+                "dias_ausentes_o_excluidos": 10,
+                "fraccion_dias": 0.9726027397260274,
+                "min_fraccion_dias": 0.7,
+                "estado": "Parcial temporal",
+                "estados_aceptados": {
+                  "validados": 308,
+                  "preliminares": 47
+                },
+                "filas_invalidas": 0,
+                "dias_en_conflicto": 0,
+                "no_validados_excluidos": 0,
+                "fuera_periodo": 0,
+                "meses_usados": [
+                  "2025-10",
+                  "2025-11",
+                  "2025-12",
+                  "2026-01",
+                  "2026-02",
+                  "2026-03",
+                  "2026-04",
+                  "2026-05",
+                  "2026-06",
+                  "2026-07",
+                  "2026-08",
+                  "2026-09",
+                  "2026-10"
+                ],
                 "meses": [],
-                "archivo": "FUENTES/fuentes climaticas usadas/ElBosque 2.5 1 year.csv",
+                "conversion": null,
+                "archivo": "FUENTES/fuentes climaticas usadas/Estacion Cerrillos II - mp2.5 - 1 year.csv",
                 "conteos_validacion_en_periodo": {
-                  "validados": 54,
-                  "preliminares": 50,
-                  "seleccionados_validados": 54,
-                  "seleccionados_preliminares": 50
+                  "validados": 308,
+                  "preliminares": 47,
+                  "seleccionados_validados": 308,
+                  "seleccionados_preliminares": 47
                 },
                 "errores_csv": 0,
                 "metadatos": {
-                  "archivo": "ElBosque 2.5 1 year.csv",
+                  "archivo": "Estacion Cerrillos II - mp2.5 - 1 year.csv",
                   "componente": "mp25",
-                  "metadatos_confirmados": false,
-                  "unidad": null,
-                  "agregacion": null,
+                  "metadatos_confirmados": true,
+                  "unidad": "ug/m3",
+                  "agregacion": "diaria",
                   "huso_horario": null,
-                  "evidencia": null,
-                  "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+                  "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/290",
+                  "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                  "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Cerrillos II&macropath=./RM/D35/Cal/PM25&macro=PM25.diario.diario&from=220401&to=261020&",
+                  "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
                 }
               },
               "o3": {
+                "tipo_resumen": "media_anual_de_puntajes_diarios",
                 "puntaje_100": null,
                 "valor_medio": null,
-                "estado": "Metadatos de exportación pendientes",
+                "valor_medio_normalizado_ug_m3": null,
+                "unidad_original": "ppb",
+                "periodo": {
+                  "inicio": "2025-10-14",
+                  "fin": "2026-10-13"
+                },
+                "dias_esperados": 365,
+                "dias_admisibles": 0,
+                "dias_ausentes_o_excluidos": 365,
+                "fraccion_dias": 0.0,
+                "min_fraccion_dias": 0.7,
+                "estado": "Sin archivo",
+                "estados_aceptados": {},
+                "filas_invalidas": 0,
+                "dias_en_conflicto": 0,
+                "no_validados_excluidos": 0,
+                "fuera_periodo": 0,
                 "meses_usados": [],
                 "meses": [],
-                "archivo": "FUENTES/fuentes climaticas usadas/El bosque o3 - 1 year.csv",
-                "conteos_validacion_en_periodo": {
-                  "no_validados": 98
-                },
-                "errores_csv": 0,
-                "metadatos": {
-                  "archivo": "El bosque o3 - 1 year.csv",
-                  "componente": "o3",
-                  "metadatos_confirmados": false,
-                  "unidad": null,
-                  "agregacion": null,
-                  "huso_horario": null,
-                  "evidencia": null,
-                  "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+                "conversion": {
+                  "origen": "ppb",
+                  "destino": "ug/m3",
+                  "factor": 1.9619541371316533,
+                  "temperatura_referencia_c": 25.0,
+                  "presion_referencia_pa": 101325.0,
+                  "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
                 }
               }
             },
-            "nota": "Solo referencia geográfica: NO se usó para calcular."
-          }
+            "indice": {
+              "puntaje_100": 78.44225352112676,
+              "cobertura": 0.7,
+              "componentes": {
+                "mp25": 78.44225352112676,
+                "o3": null
+              }
+            },
+            "distancia_m": 5547.11164783276
+          },
+          "estado": "Parcial",
+          "observaciones": [
+            "mp25: Parcial temporal",
+            "o3: Sin archivo"
+          ]
         },
         "paraderos": {
           "puntaje_100": 97.63805457876249,
@@ -5673,85 +7441,198 @@
       "latitud": -33.3964895,
       "longitud": -70.5370203,
       "indice": {
-        "puntaje_100": 55.20601002674031,
-        "puntaje_10": 5.520601002674031,
-        "cobertura": 0.75,
+        "puntaje_100": 60.529616047566364,
+        "puntaje_10": 6.052961604756637,
+        "cobertura": 0.925,
         "estado": "Parcial",
         "participacion_final": {
-          "aire": 0.0,
-          "paraderos": 0.3333333333333333,
-          "salud": 0.3333333333333333,
-          "bienestar": 0.3333333333333333
+          "aire": 0.18918918918918917,
+          "paraderos": 0.27027027027027023,
+          "salud": 0.27027027027027023,
+          "bienestar": 0.27027027027027023
         }
       },
       "parametros": {
         "aire": {
-          "puntaje_100": null,
-          "cobertura": 0,
+          "puntaje_100": 83.34507042253522,
+          "cobertura": 0.7,
           "componentes": {
-            "mp25": null,
+            "mp25": 83.34507042253522,
             "o3": null
           },
-          "estacion": null,
-          "estado": "Sin estación admisible",
-          "observaciones": [
-            "Ninguna estación admisible a 30 km o menos."
-          ],
-          "referencia_no_asignada": {
+          "estacion": {
             "codigo": "239",
             "nombre": "Las Condes",
-            "distancia_m": 2534.2949500475574,
+            "latitud": -33.37677352033,
+            "longitud": -70.523326784061,
+            "fuente": "https://sinca.mma.gob.cl/index.php/estacion/index/id/239",
+            "consultado": "2026-10-21",
+            "series": [
+              {
+                "archivo": "Las Condes - 2.5 - 1 year.csv",
+                "componente": "mp25",
+                "metadatos_confirmados": true,
+                "unidad": "ug/m3",
+                "agregacion": "diaria",
+                "huso_horario": null,
+                "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/239",
+                "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Las Condes (Acreditada)&macropath=./RM/D13/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+                "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
+              },
+              {
+                "archivo": "Las Condes - o3 - 1 year.csv",
+                "componente": "o3",
+                "metadatos_confirmados": true,
+                "unidad": "ppb",
+                "agregacion": "diaria",
+                "huso_horario": null,
+                "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/239",
+                "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Las Condes (Acreditada)&macropath=./RM/D13/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+                "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
+              }
+            ],
             "resumenes": {
               "mp25": {
-                "puntaje_100": null,
-                "valor_medio": null,
-                "estado": "Metadatos de exportación pendientes",
-                "meses_usados": [],
+                "tipo_resumen": "media_anual_de_puntajes_diarios",
+                "puntaje_100": 83.34507042253522,
+                "valor_medio": 16.654929577464788,
+                "valor_medio_normalizado_ug_m3": 16.654929577464788,
+                "unidad_original": "ug/m3",
+                "periodo": {
+                  "inicio": "2025-10-14",
+                  "fin": "2026-10-13"
+                },
+                "dias_esperados": 365,
+                "dias_admisibles": 284,
+                "dias_ausentes_o_excluidos": 81,
+                "fraccion_dias": 0.7780821917808219,
+                "min_fraccion_dias": 0.7,
+                "estado": "Parcial temporal",
+                "estados_aceptados": {
+                  "validados": 233,
+                  "preliminares": 51
+                },
+                "filas_invalidas": 0,
+                "dias_en_conflicto": 0,
+                "no_validados_excluidos": 0,
+                "fuera_periodo": 0,
+                "meses_usados": [
+                  "2025-10",
+                  "2025-11",
+                  "2025-12",
+                  "2026-01",
+                  "2026-04",
+                  "2026-05",
+                  "2026-06",
+                  "2026-07",
+                  "2026-08",
+                  "2026-09",
+                  "2026-10"
+                ],
                 "meses": [],
+                "conversion": null,
                 "archivo": "FUENTES/fuentes climaticas usadas/Las Condes - 2.5 - 1 year.csv",
                 "conteos_validacion_en_periodo": {
-                  "validados": 54,
+                  "validados": 233,
                   "preliminares": 51,
-                  "seleccionados_validados": 54,
+                  "seleccionados_validados": 233,
                   "seleccionados_preliminares": 51
                 },
                 "errores_csv": 0,
                 "metadatos": {
                   "archivo": "Las Condes - 2.5 - 1 year.csv",
                   "componente": "mp25",
-                  "metadatos_confirmados": false,
-                  "unidad": null,
-                  "agregacion": null,
+                  "metadatos_confirmados": true,
+                  "unidad": "ug/m3",
+                  "agregacion": "diaria",
                   "huso_horario": null,
-                  "evidencia": null,
-                  "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+                  "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/239",
+                  "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                  "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Las Condes (Acreditada)&macropath=./RM/D13/Cal/PM25&macro=PM25.diario.diario&from=000101&to=261020&",
+                  "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
                 }
               },
               "o3": {
+                "tipo_resumen": "media_anual_de_puntajes_diarios",
                 "puntaje_100": null,
-                "valor_medio": null,
-                "estado": "Metadatos de exportación pendientes",
-                "meses_usados": [],
+                "valor_medio": 26.204918032786885,
+                "valor_medio_normalizado_ug_m3": 51.4128473476221,
+                "unidad_original": "ppb",
+                "periodo": {
+                  "inicio": "2025-10-14",
+                  "fin": "2026-10-13"
+                },
+                "dias_esperados": 365,
+                "dias_admisibles": 122,
+                "dias_ausentes_o_excluidos": 243,
+                "fraccion_dias": 0.33424657534246577,
+                "min_fraccion_dias": 0.7,
+                "estado": "Cobertura anual insuficiente",
+                "estados_aceptados": {
+                  "validados": 76,
+                  "preliminares": 46
+                },
+                "filas_invalidas": 0,
+                "dias_en_conflicto": 0,
+                "no_validados_excluidos": 105,
+                "fuera_periodo": 0,
+                "meses_usados": [
+                  "2025-10",
+                  "2025-11",
+                  "2025-12",
+                  "2026-01",
+                  "2026-05",
+                  "2026-06"
+                ],
                 "meses": [],
+                "conversion": {
+                  "origen": "ppb",
+                  "destino": "ug/m3",
+                  "factor": 1.9619541371316533,
+                  "temperatura_referencia_c": 25.0,
+                  "presion_referencia_pa": 101325.0,
+                  "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas."
+                },
                 "archivo": "FUENTES/fuentes climaticas usadas/Las Condes - o3 - 1 year.csv",
                 "conteos_validacion_en_periodo": {
-                  "no_validados": 105
+                  "validados": 76,
+                  "preliminares": 46,
+                  "no_validados": 105,
+                  "seleccionados_validados": 76,
+                  "seleccionados_preliminares": 46
                 },
                 "errores_csv": 0,
                 "metadatos": {
                   "archivo": "Las Condes - o3 - 1 year.csv",
                   "componente": "o3",
-                  "metadatos_confirmados": false,
-                  "unidad": null,
-                  "agregacion": null,
+                  "metadatos_confirmados": true,
+                  "unidad": "ppb",
+                  "agregacion": "diaria",
                   "huso_horario": null,
-                  "evidencia": null,
-                  "nota": "El CSV no acredita unidad ni estadístico; completar con evidencia de su exportación original."
+                  "evidencia": "https://sinca.mma.gob.cl/index.php/estacion/index/id/239",
+                  "nota": "Unidad verificada en ficha oficial y serie diaria disponible; el CSV contiene una fecha por registro. El usuario solicitó resumen anual. Se conservan validación y ausencias.",
+                  "evidencia_serie_diaria": "https://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.htmlindico2.cgi?page=pageFrame&header=Las Condes (Acreditada)&macropath=./RM/D13/Cal/0008&macro=0008.diario.diario&from=970402&to=261020&",
+                  "referencia_temporal": "Fechas de registros diarios SINCA, sin conversión a UTC; no se reconstruyen horas."
                 }
               }
             },
-            "nota": "Solo referencia geográfica: NO se usó para calcular."
-          }
+            "indice": {
+              "puntaje_100": 83.34507042253522,
+              "cobertura": 0.7,
+              "componentes": {
+                "mp25": 83.34507042253522,
+                "o3": null
+              }
+            },
+            "distancia_m": 2534.2949500475574
+          },
+          "estado": "Parcial",
+          "observaciones": [
+            "mp25: Parcial temporal",
+            "o3: Cobertura anual insuficiente"
+          ]
         },
         "paraderos": {
           "puntaje_100": 28.40379425201379,

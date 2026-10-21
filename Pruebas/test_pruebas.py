@@ -170,9 +170,10 @@ class Integracion(unittest.TestCase):
         self.assertEqual(d["catalogos"]["aire"]["csv"],19)
         self.assertEqual(len(d["resultados"]),8)
         for r in d["resultados"]:
-            self.assertIsNone(r["parametros"]["aire"]["puntaje_100"])
-            self.assertAlmostEqual(r["indice"]["cobertura"],.75)
-            self.assertEqual(r["indice"]["estado"],"Parcial")
+            self.assertIsNotNone(r["parametros"]["aire"]["puntaje_100"])
+            esperado=sum(.25*p["cobertura"] for p in r["parametros"].values())
+            self.assertAlmostEqual(r["indice"]["cobertura"],esperado)
+            self.assertGreaterEqual(r["indice"]["cobertura"],.925)
 
     def test_vecinos_y_algebra_independiente(self):
         d=self.datos
@@ -184,9 +185,11 @@ class Integracion(unittest.TestCase):
             for nombre,radio in (("paraderos",500),("salud",2000)):
                 a=p[nombre]
                 self.assertEqual(a["cantidad"]>0,a["distancia_m"]<=radio)
-            esperado=sum(p[k]["puntaje_100"] for k in ("paraderos","salud","bienestar"))/3
+            c=sum(.25*x["cobertura"] for x in p.values())
+            esperado=sum(.25*x["cobertura"]*x["puntaje_100"] for x in p.values() if x["puntaje_100"] is not None)/c
             self.assertAlmostEqual(r["indice"]["puntaje_100"],esperado)
             self.assertEqual(p["bienestar"]["cobertura"],1)
+            self.assertEqual(p["aire"]["puntaje_100"],p["aire"]["estacion"]["indice"]["puntaje_100"])
         # Estos puntos tienen estaciones diferentes: no heredan un único promedio de RM.
         estaciones={r["parametros"]["bienestar"]["estacion"]["codigo"] for r in d["resultados"]}
         self.assertGreaterEqual(len(estaciones),3)

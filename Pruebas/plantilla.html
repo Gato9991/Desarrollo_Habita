@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HABITA · Prueba de ocho ubicaciones</title>
+<title>HABITA · Prueba por ubicación</title>
 <style>
 :root{--ink:#15354d;--muted:#536b7c;--blue:#1179aa;--line:#d6e3eb;--light:#edf6fb;--warn:#835b08}
 *{box-sizing:border-box}body{margin:0;background:#f3f7fa;color:var(--ink);font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
@@ -16,17 +16,18 @@ section{background:#fff;border:1px solid var(--line);border-radius:17px;padding:
 @media print{body{background:white}main{max-width:none;padding:0}section{break-inside:avoid}.manifest{display:none}details{break-inside:avoid}summary{font-weight:bold}}
 </style></head><body><main>
 <header><div class="over">HABITA / Laboratorio de cálculo</div>
-<h1>Ocho ubicaciones.<br>Un cálculo que se puede revisar.</h1>
+<h1>{{TITULO}}<br>Un cálculo que se puede revisar.</h1>
 <p class="subtitle">Calidad del aire, accesibilidad a paraderos, accesibilidad a la salud y bienestar térmico. Resultados calculados desde los archivos del repositorio.</p>
 <span class="pill">PRUEBA · PENDIENTE DE APROBACIÓN</span></header>
-<div class="cards"><div class="card"><strong>8 ubicaciones</strong><span>Coordenadas entregadas por Daniel</span></div><div class="card"><strong>4 parámetros · 25 %</strong><span>Peso base por dimensión antes de faltantes</span></div><div class="card"><strong>{{COBERTURA}}</strong><span>Cobertura ponderada de componentes por ubicación</span></div></div>
+<div class="cards"><div class="card"><strong>Ubicaciones: {{N_UBICACIONES}}</strong><span>Coordenadas entregadas por Daniel</span></div><div class="card"><strong>4 parámetros · 25 %</strong><span>Peso base por dimensión antes de faltantes</span></div><div class="card"><strong>{{COBERTURA}}</strong><span>Cobertura ponderada de componentes por ubicación</span></div></div>
 <section><h2>Resultados de la prueba</h2><p>Escala 0–10. Un puntaje mayor representa condiciones más favorables según la fórmula provisional.</p>
 <div class="main-table">{{TABLA}}</div>
 <div class="caution">{{NOTAS}}</div>
-<p class="note">Período de las series: 1 de julio a 13 de octubre de 2026. Octubre incluye 13 días. El global exige al menos 75 % de cobertura de componentes; cuando falta un componente se redistribuye explícitamente el peso disponible.</p>
+<p class="note">Aire: resumen de registros diarios del 14 de octubre de 2025 al 13 de octubre de 2026 (365 fechas esperadas). Bienestar térmico: 1 de julio a 13 de octubre de 2026; octubre incluye 13 días. El global exige al menos 75 % de cobertura de componentes; cuando falta un componente se redistribuye explícitamente el peso disponible.</p>
 <p class="note">La cobertura no mide certeza ni completitud temporal. Los meses admisibles de cada serie se detallan abajo. Las distancias son en línea recta, no rutas a pie ni tiempos de viaje. La presencia de un centro de salud no garantiza cupos o capacidad de pago.</p></section>
+<section><h2>Índice anual de aire por estación</h2><p>Primero se calcula cada estación; cada ubicación hereda exactamente el puntaje de la estación admisible más cercana.</p>{{AIRE_ESTACIONES}}<p class="note">Las medias describen los registros diarios disponibles en la ventana. El puntaje anual exige 70 % de los 365 días; los faltantes y no validados no se rellenan. Los componentes conservan pesos 70 % MP2,5 y 30 % O₃. Para aplicar la escala anterior al ozono se usa 1 ppb ≈ 1,962 µg/m³ a 25 °C y 1 atm, referencia declarada del prototipo. No se considera una media anual oficial de SINCA.</p></section>
 <section><h2>Abrir el cálculo de cada ubicación</h2><p class="note">Cada bloque muestra distancias, conteos, estación seleccionada, puntajes mensuales y rutas de los archivos leídos.</p>{{DETALLES}}</section>
 <section><h2>Control de lectura</h2>{{AVISOS}}<p class="note">Los archivos originales permanecen intactos. Este informe se genera localmente y no necesita conexión a internet.</p></section>
 <section class="manifest"><h2>Trazabilidad de los archivos</h2><p class="note">SHA256 de los bytes leídos. El JSON conserva también la auditoría completa de todas las estaciones, incluso las que no se asignaron a estas ubicaciones.</p>{{RUTAS}}</section>
-<p class="foot">Modelo 0.2.0-prueba.1 · Generado en UTC: {{FECHA}} · Fuentes: DMC, SINCA, MINSAL y GTFS Red. Los límites numéricos corresponden a la propuesta HABITA, sin validación oficial.</p>
+<p class="foot">Modelo {{VERSION}} · Generado en UTC: {{FECHA}} · Fuentes: DMC, SINCA, MINSAL y GTFS Red. Los límites numéricos corresponden a la propuesta HABITA, sin validación oficial.</p>
 </main></body></html>

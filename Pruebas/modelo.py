@@ -6,7 +6,7 @@ from datetime import date, datetime, timedelta
 from math import asin, cos, isfinite, radians, sin, sqrt
 from statistics import fmean
 
-VERSION = "0.2.0-prueba.1"
+VERSION = "0.3.0-prueba.1"
 INICIO = date(2026, 7, 1)
 FIN = date(2026, 10, 13)
 PESOS = {
@@ -91,7 +91,7 @@ def global_habita(parametros):
         "puntaje_100": bruto if publicable else None,
         "puntaje_10": bruto / 10 if publicable else None,
         "cobertura": cobertura,
-        "estado": ("Completo" if cobertura >= 1 - 1e-12 else "Parcial") if publicable
+        "estado": ("Completo en componentes" if cobertura >= 1 - 1e-12 else "Parcial") if publicable
                   else ("Sin datos" if not cobertura else "Cobertura insuficiente"),
         "participacion_final": {
             k: .25 * p["cobertura"] / cobertura if cobertura else 0
@@ -207,3 +207,108 @@ def accesibilidad(nombre, lat, lon, catalogo, radio):
                                "cantidad": puntuar(cantidad, n)}),
             "estado": "Disponible", "distancia_m": d, "cantidad": n,
             "radio_m": radio, "cercano": cercano}
+
+
+# Aire: resumen del último año común disponible. Son 365 fechas esperadas.
+INICIO_AIRE = date(2025, 10, 14)
+FIN_AIRE = date(2026, 10, 13)
+MIN_FRACCION_DIAS_ANUAL = .70
+# Referencia de conversión del prototipo; no es temperatura/presión observada.
+O3_REFERENCIA_TEMP_C = 25.0
+O3_REFERENCIA_PRESION_PA = 101_325.0
+O3_MASA_MOLAR_G_MOL = 48.0
+CONSTANTE_GASES = 8.31446261815324
+O3_PPB_A_UG_M3 = (
+    O3_REFERENCIA_PRESION_PA * O3_MASA_MOLAR_G_MOL
+    / (CONSTANTE_GASES * (273.15 + O3_REFERENCIA_TEMP_C)) * 1e-3
+)
+
+
+def concentracion_normalizada(componente, valor, unidad):
+    """Misma escala µg/m³ del prototipo; O3 ppb usa referencia declarada."""
+    x = numero(valor)
+    if x is None or x < 0:
+        return None
+    if componente == "mp25" and unidad == "ug/m3":
+        return x
+    if componente == "o3" and unidad == "ppb":
+        return x * O3_PPB_A_UG_M3
+    if componente == "o3" and unidad == "ug/m3":
+        return x
+    return None
+
+
+def resumir_aire_anual(observaciones, componente, unidad,
+                       inicio=INICIO_AIRE, fin=FIN_AIRE):
+    """Media de puntajes de registros diarios; no un promedio anual oficial SINCA.
+
+    Espera (fecha-hora, valor, estado) o (fecha-hora, valor). Cada fecha pesa
+    una vez. No usa promedios mensuales ni mezcla años históricos ajenos a la
+    ventana. Excluye por sí mismo los estados no validados.
+    """
+    if fin < inicio:
+        raise ValueError("Ventana anual invertida")
+    dias = defaultdict(list)
+    rechazados = 0
+    fuera_periodo = 0
+    no_validados = 0
+    for observacion in observaciones:
+        marca, valor = observacion[:2]
+        estado = observacion[2] if len(observacion) > 2 else "sin_estado"
+        if not inicio <= marca.date() <= fin:
+            fuera_periodo += 1
+            continue
+        if estado == "no_validados":
+            no_validados += 1
+            continue
+        if estado not in ("validados", "preliminares", "sin_estado"):
+            rechazados += 1
+            continue
+        x = numero(valor)
+        normalizado = concentracion_normalizada(componente, x, unidad)
+        if normalizado is None:
+            rechazados += 1
+            continue
+        dias[marca.date()].append((x, normalizado, estado))
+    aceptados = []
+    conflictos = 0
+    estados = defaultdict(int)
+    for dia, valores in sorted(dias.items()):
+        # Validado tiene prioridad sobre preliminar si aparecen ambos.
+        orden = {"validados": 0, "preliminares": 1, "sin_estado": 2}
+        prioridad = min(orden.get(x[2], 9) for x in valores)
+        mejores = [x for x in valores if orden.get(x[2], 9) == prioridad]
+        if len({x[0] for x in mejores}) != 1:
+            conflictos += 1
+            continue
+        x, normalizado, estado = mejores[0]
+        aceptados.append((dia, x, normalizado, puntuar(componente, normalizado)))
+        estados[estado] += 1
+    esperados = (fin-inicio).days + 1
+    n = len(aceptados)
+    suficiente = n/esperados >= MIN_FRACCION_DIAS_ANUAL - 1e-12
+    return {
+        "tipo_resumen": "media_anual_de_puntajes_diarios",
+        "puntaje_100": fmean(x[3] for x in aceptados) if suficiente else None,
+        "valor_medio": fmean(x[1] for x in aceptados) if aceptados else None,
+        "valor_medio_normalizado_ug_m3": fmean(x[2] for x in aceptados) if aceptados else None,
+        "unidad_original": unidad,
+        "periodo": {"inicio": inicio.isoformat(), "fin": fin.isoformat()},
+        "dias_esperados": esperados, "dias_admisibles": n,
+        "dias_ausentes_o_excluidos": esperados-n,
+        "fraccion_dias": n/esperados, "min_fraccion_dias": MIN_FRACCION_DIAS_ANUAL,
+        "estado": ("Completo" if n == esperados else "Parcial temporal")
+                  if suficiente else "Cobertura anual insuficiente",
+        "estados_aceptados": dict(estados),
+        "filas_invalidas": rechazados, "dias_en_conflicto": conflictos,
+        "no_validados_excluidos": no_validados,
+        "fuera_periodo": fuera_periodo,
+        "meses_usados": sorted({x[0].strftime("%Y-%m") for x in aceptados}),
+        "meses": [],
+        "conversion": ({
+            "origen": "ppb", "destino": "ug/m3",
+            "factor": O3_PPB_A_UG_M3, "temperatura_referencia_c": O3_REFERENCIA_TEMP_C,
+            "presion_referencia_pa": O3_REFERENCIA_PRESION_PA,
+            "nota": "Referencia del cálculo provisional, no condiciones atmosféricas medidas.",
+        } if componente == "o3" and unidad == "ppb" else None),
+    }
