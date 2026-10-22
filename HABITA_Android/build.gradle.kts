@@ -9,6 +9,16 @@ plugins {
 
 // Empaqueta el MISMO feed del equipo sin duplicar 12 MB de datos en Git.
 val bundledFeed = layout.buildDirectory.file("generated/habitaAssets/gtfs/feed.zip")
+
+tasks.register("verifyReferenceCatalog") {
+    val catalog = file("app/src/main/assets/reference/catalog.json")
+    val checksum = file("app/src/main/assets/reference/catalog.sha256")
+    inputs.files(catalog, checksum)
+    doLast {
+        val digest = MessageDigest.getInstance("SHA-256").digest(catalog.readBytes()).joinToString("") { "%02x".format(it) }
+        require(digest == checksum.readText().trim()) { "El catálogo del entorno no coincide con su SHA-256. Regenera con tools/prepare_reference.py." }
+    }
+}
 tasks.register("prepareBundledGtfs") {
     val source = file("../HABITA_GTFS_Movilidad_v1.2.1_GUI/data")
     val parts = (1..9).map { source.resolve("GTFS_20260829.zip.part%02d".format(it)) }

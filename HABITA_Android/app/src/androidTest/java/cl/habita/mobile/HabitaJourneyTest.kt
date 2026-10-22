@@ -31,6 +31,7 @@ class HabitaJourneyTest {
         ready()
         capture("01-inicio")
         compose.onNodeWithText("Evaluar una propiedad").performScrollTo().performClick()
+        compose.onNodeWithText("Demostración").performClick()
         capture("02-evaluar")
         compose.onNodeWithTag("point-PA-01").performScrollTo().performClick()
         compose.onNodeWithText("Ver resultado del punto").performScrollTo().performClick()
@@ -56,6 +57,7 @@ class HabitaJourneyTest {
         ready()
         compose.onNodeWithTag("nav-evaluate").performClick()
         compose.onNodeWithText("Dirección / GTFS").performClick()
+        compose.runOnIdle { ViewModelProvider(compose.activity)[HabitaViewModel::class.java].preset(false) }
         compose.onNodeWithTag("service-date").performScrollTo().performTextReplacement("2026-09-23")
         compose.onNodeWithText("Analizar ubicación").performScrollTo().performClick()
         compose.waitUntil(120_000) { compose.onAllNodesWithText("Tus conexiones más cercanas").fetchSemanticsNodes().isNotEmpty() }

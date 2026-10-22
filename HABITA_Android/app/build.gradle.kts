@@ -10,8 +10,8 @@ android {
         applicationId = "cl.habita.mobile"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.2.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
@@ -23,7 +23,7 @@ android {
     packaging { resources.excludes += "/META-INF/{AL2.0,LGPL2.1}" }
 }
 kotlin { compilerOptions { jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17) } }
-tasks.named("preBuild") { dependsOn(rootProject.tasks.named("prepareBundledGtfs")) }
+tasks.named("preBuild") { dependsOn(rootProject.tasks.named("prepareBundledGtfs"), rootProject.tasks.named("verifyReferenceCatalog")) }
 dependencies {
     implementation(project(":core"))
     implementation(platform("androidx.compose:compose-bom:2024.10.00"))

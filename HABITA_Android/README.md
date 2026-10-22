@@ -1,114 +1,102 @@
-# HABITA · Versión móvil Android
+# HABITA Android
 
-Aplicación nativa en **Kotlin + Jetpack Compose**, dentro de una carpeta independiente del resto del repositorio. Conserva el recorrido del [Figma de Cristian Morales](https://www.figma.com/design/nHfZIyxzjzNRKXqNqoWuqX/HABITA?node-id=0-1): **Inicio → Evaluar propiedad → Índice → Detalle → Reporte**, e incorpora movilidad. Usa la paleta de las interfaces web del equipo: azul marino `#062441`, azul `#096899`, turquesa `#00B9C3` y fondo `#F3F7F9`.
+Aplicación nativa en Kotlin y Jetpack Compose. La versión **0.2.0** incorpora aire, confort exterior y salud junto al transporte. Se preparó desde `main` del repositorio del equipo, commit `e075fd4fd0a4c893f419ea3b7baec09aa878f38f`, el **21 de octubre de 2026**. Los avances de Android se comparten en la rama [`kr0us`](https://github.com/Gato9991/Desarrollo_Habita/tree/kr0us) y se integran en `main` mediante la revisión del equipo.
 
-## Abrir en Android Studio
+## Abrir y ejecutar
 
-1. Descarga o clona **la rama `main` del [repositorio del equipo](https://github.com/Gato9991/Desarrollo_Habita)**. Conserva la carpeta hermana `HABITA_GTFS_Movilidad_v1.2.1_GUI/data` con las nueve partes del feed y su `manifest.json`.
-2. En Android Studio selecciona **File → Open → HABITA_Android**. Abre esta carpeta, no la raíz del repositorio.
-3. Usa el **JDK integrado de Android Studio (21)** y permite la sincronización de Gradle. El proyecto compila contra Android SDK 35; Android Studio puede instalar ese SDK si falta. La primera sincronización requiere internet.
-4. Selecciona el módulo **app** y un emulador o teléfono con **Android 8.0 / API 26 o superior**.
-5. Pulsa **Run ▶**. No necesitas Python, un servidor en el computador, una cuenta de Hábita ni claves API para la demo y el análisis GTFS.
+1. Abre **HABITA_Android** en Android Studio, conservando el resto del repositorio a su lado.
+2. Usa el JDK integrado **21**, instala **Android SDK 35** si se solicita y sincroniza Gradle. La primera sincronización requiere internet.
+3. Selecciona el módulo **app** y un emulador o teléfono **Android 8 / API 26 o superior**. Pulsa **Run**.
+4. En Inicio, pulsa **Evaluar una propiedad**. El modo **Índice del entorno** admite dirección confirmada mediante el geocodificador Android o coordenadas. Los ejemplos funcionan sin geocodificación.
+5. Pulsa **Analizar ubicación** para calcular los cuatro indicadores con las fuentes incluidas. En Índice, desplázate hasta **Fuentes de este punto** para ver estaciones, períodos y centros de salud cercanos.
+6. Pulsa **Actualizar fuentes en línea** para consultar clima exterior, aire modelado, establecimientos de salud y la capa de peligros volcánicos. Se muestran fecha, proveedor, errores y enlace de cada consulta. Estas consultas no modifican el índice histórico.
 
-`local.properties` es local y está ignorado por Git: Android Studio lo crea con tu ruta de SDK. No lo subas. El Gradle Wrapper está incluido.
+No hacen falta Python, un servidor local ni claves API para ejecutar esta versión. `local.properties` y las cachés son locales; el Gradle Wrapper está incluido. Para compilar, se conservan las nueve partes y el `manifest.json` de `HABITA_GTFS_Movilidad_v1.2.1_GUI/data`: la tarea de Gradle reconstruye el feed y verifica su SHA-256.
 
-Para clonar desde una terminal:
+Dos carpetas de fuentes DMC eliminan el punto final de su nombre para permitir el checkout en Windows. Los 16 Excel mantienen sus bytes originales.
 
-```text
-git clone --branch main https://github.com/Gato9991/Desarrollo_Habita.git
-```
+## Tres modos identificados
 
-Después abre `Desarrollo_Habita/HABITA_Android` en Android Studio. Si ya tienes el repositorio clonado, actualiza tu rama `main` desde el repositorio del equipo antes de abrirlo. Las nueve partes GTFS ya están versionadas: no hay que descargar fuentes adicionales para ejecutar la demo.
+| Modo | Datos y escala |
+| --- | --- |
+| **Índice del entorno** | Modelo `Pruebas/modelo.py`, `0.3.0-prueba.1`: aire, confort exterior, paraderos y salud, 25% de base cada uno; resultados 0–10. Es una propuesta de prueba pendiente de aprobación del equipo. |
+| **Dirección / GTFS** | Análisis de recorridos y horarios programados por fecha de servicio. Conserva el modelo anterior de transporte parcial, 20% de disponibilidad y escala 0–100, para mantener el recorrido y las comparaciones existentes. |
+| **Demostración** | Seis puntos simulados del prototipo anterior, con cinco variables y escala 0–100. No se asignan estos datos a direcciones reales. |
 
-## Qué funciona
+Las escalas y metodologías se muestran en la interfaz y en los reportes. Los resultados de modos diferentes no deben compararse como un único modelo.
 
-| Función | Comportamiento |
-|---|---|
-| Inicio y navegación | Pantallas nativas, navegación inferior, botón volver, desplazamiento y estado durante cambios de configuración. |
-| Seis puntos de prueba | Los mismos SB-01, SB-02, PA-01, PA-02, PE-01 y PE-02 de la demo web, con los mismos valores y ausencias. Se recuerda el punto elegido. |
-| Índice HABITA | Cinco variables, pesos internos, componentes desplegables, disponibilidad ponderada y reajuste por datos faltantes. Cero no se confunde con ausencia. |
-| Ubicaciones reales | Consulta por nombre y coordenadas; ejemplos de Plaza de Armas de San Bernardo y Estadio Nacional. La fecha se valida contra la vigencia del feed. |
-| Búsqueda de direcciones | Usa `android.location.Geocoder`, muestra coincidencias y permite confirmar una. Si el dispositivo no ofrece ese servicio o no tiene conexión, se pueden ingresar coordenadas. |
-| Motor GTFS local | Paradero físico y activo más cercanos hasta 1.000 m, Haversine, caminata teórica, recorridos, sentidos, destinos, servicios, primera y última salida. |
-| Horarios | Horas superiores a 24:00, calendario y excepciones, bloques de frecuencias con fin exclusivo y desplazamiento hasta la parada. Se excluye `pickup_type=1`. |
-| Punta mañana y tarde | 07:00–09:00 y 17:00–19:00; salidas, intervalos ponderados y efectivos, y aviso de patrones simultáneos. |
-| Cobertura | Radios de 500 y 800 m, puntos de parada, recorridos, eventos por parada e instancias únicas de viaje, con desglose por recorrido. |
-| Esquema de proximidad | Dibujo nativo de los puntos de parada reales del feed, con radios de referencia. Se distingue de un mapa de calles. Puede abrir la ubicación en otra app de mapas. |
-| Fuente GTFS | ZIP o carpeta elegidos con el selector de documentos Android, hasta 300 MB; validación antes del reemplazo y opción de restaurar el feed incluido. |
-| Reportes | PDF nativo paginado, JSON completo y resumen para compartir. Se conserva el último análisis de movilidad en almacenamiento privado. |
-| Carga y errores | Operaciones en segundo plano, progreso, cancelación y errores legibles para coordenadas, fechas, archivos y geocodificación. |
+## Fuentes históricas que calculan el índice
 
-## Lectura correcta de los resultados
+| Indicador | Fuente incluida y reglas |
+| --- | --- |
+| Aire | 19 CSV SINCA, 12 estaciones recopiladas y 9 con al menos un componente admisible. Ventana **14/10/2025–13/10/2026**. Media anual de puntajes diarios, mínimo **256 de 365 días** por contaminante. Prioridad a validados, preliminares identificados y no validados excluidos. |
+| Confort exterior | **127 Excel de 16 estaciones**, DMC y redes asociadas. Ventana **01/07/2026–13/10/2026**. Puntajes por observación, agregados por hora, día y mes; 18 horas/día, 70% de días/mes y al menos dos meses. Meses admisibles con igual peso. La humedad de Talagante permanece en revisión; septiembre de Río Clarillo sigue ausente. |
+| Salud | Catálogo MINSAL de junio de 2026, **3.690 establecimientos nacionales admisibles**. Once tipos clínicos, operación habitual, prestador público/privado, coordenadas válidas y código único. Distancia al vecino más cercano y cantidad en 2 km. |
+| Paraderos | **12.141 paraderos físicos de buses** del feed del equipo: `location_type` vacío/0, `route_type=3` y abordaje permitido en `stop_times`. Distancia al vecino más cercano y cantidad en 500 m. No filtra por calendario de servicio. |
 
-**El índice y sus ponderaciones siguen siendo provisionales. Los seis puntos de demostración usan datos simulados. No representan direcciones reales, mediciones verificadas ni una certificación de seguridad o habitabilidad.**
+Aire y confort seleccionan su estación admisible más cercana de forma independiente, hasta **30 km**. No se interpolan estaciones ni se completa el ozono de una estación con otra. Salud y paraderos buscan al vecino más cercano en todo su catálogo admisible; los radios se aplican al conteo. Las distancias son Haversine, en línea recta.
 
-La app adapta los indicadores del Figma a las **cinco variables actuales del repositorio**: calidad del aire, confort térmico, accesibilidad a paraderos, accesibilidad a salud y amenazas naturales. No genera puntajes de ruido o seguridad a partir de otras variables.
+El O₃ de SINCA está en **ppb**. Los lectores originales lo convierten a µg/m³ con referencia explícita de **25 °C y 1 atm** antes de puntuarlo. Las medias de concentraciones son descriptivas: se conserva el orden **puntuar registros y después agregarlos**, sin reemplazarlo por puntuar una media. Las ausencias reducen la cobertura; nunca se rellenan con cero.
 
-En una consulta real, GTFS permite calcular **solo el componente de accesibilidad a paraderos**. Ese índice parcial muestra **20% de cobertura**; aire, confort, salud y amenazas permanecen sin datos. Para este componente se cuentan paradas físicas abordables presentes en `stop_times.txt` dentro de 500 m; el conteo general `stop_points` de los informes GTFS es otro indicador y no se usa indistintamente. Un índice parcial no es directamente comparable con uno completo.
+El índice global se muestra solo con **75% o más de disponibilidad ponderada de componentes**. La cobertura no significa exactitud, porcentaje de días ni validación científica. Se conservan el detalle, la procedencia y los SHA-256 de los archivos leídos en el reporte JSON.
 
-El feed incluido declara **V167.20260829**, con vigencia **29/08/2026–31/12/2026**. Los horarios son **programados**, sin llegadas en tiempo real. Las distancias son en línea recta; la caminata supone 1,4 m/s y no sigue calles. Eventos por parada y viajes únicos son conteos distintos, y ninguno garantiza una cantidad de vehículos físicos.
+## APIs complementarias
 
-La integración de fuentes reales de aire, confort, salud y amenazas y la conexión a sensores IoT de 48–72 horas siguen pendientes en el proyecto del equipo. La app conserva el contexto del Figma y marca esa medición como una etapa futura.
+| Servicio | Información y límites |
+| --- | --- |
+| [Open-Meteo Weather](https://open-meteo.com/en/docs) | Temperatura y humedad exterior actuales, modeladas. No equivalen al interior de una vivienda ni al resumen histórico DMC. |
+| [Open-Meteo Air Quality / Copernicus CAMS](https://open-meteo.com/en/docs/air-quality-api) | MP2,5 y O₃ modelados; dominio global de aproximadamente **45 km**, con fecha del proveedor. Ambos vienen en µg/m³. No son mediciones de una estación SINCA ni un índice anual. |
+| [IDE Chile / MINSAL WFS](https://geoportal.cl/geoserver/EstablecimientosdesaluddeChile2026/wfs?request=GetCapabilities) | La capa publicada actualmente corresponde a junio de 2026. Se consultan hasta 5 km y se cuentan los centros admisibles en 2 km. Mismos once tipos clínicos; se rechazan respuestas truncadas. No confirma cupos, atención ni horarios. |
+| [SENAPRED](https://visor-grd.senapred.gob.cl/arcgis/rest/services/SIIE_AMENAZAS/amenazas/MapServer/2) | Intersección del punto con la capa de peligros volcánicos. No se transforma en un porcentaje de exposición ni se suma al índice. Sin coincidencias no significa ausencia de riesgo. |
 
-## APIs y dependencias
+Las consultas se ejecutan al pulsar el botón, con HTTPS, límites de tamaño y tiempos de espera. Un proveedor caído no elimina el índice ni los resultados de los otros proveedores. Se conserva la última consulta del entorno en almacenamiento privado y cada resultado muestra cuándo se consultó. Al cambiar coordenadas se exige volver a analizar para no mezclar lugares.
 
-- **Geocoder de Android** para resolver direcciones. Su implementación depende del dispositivo y puede usar un servicio de red. Se consulta solo al pulsar «Buscar dirección». No requiere una clave configurada en este proyecto. [Referencia oficial](https://developer.android.com/reference/android/location/Geocoder).
-- **Storage Access Framework** para importar ZIP/carpetas y guardar PDF/JSON, sin solicitar acceso general a los archivos del teléfono.
-- **PdfDocument** para generar PDF nativo, e intents Android para compartir texto o abrir mapas.
-- **GTFS estático** procesado con Kotlin/JVM, `ZipFile` y un lector CSV en flujo. El motor no usa Python ni consulta un servicio externo.
-- **Jetpack Compose / Material 3** para las pantallas, y Gson para JSON. Las versiones quedan fijadas en Gradle.
+Open-Meteo ofrece acceso gratuito sin clave para uso no comercial; la aplicación atribuye a Open-Meteo y Copernicus CAMS. Antes de un uso comercial hay que revisar sus condiciones. No se guardan credenciales en el código.
 
-La web original todavía no integra una API de Google Maps Platform ni un backend público de Hábita. No se incluyen llamadas a servicios inexistentes ni claves privadas. El enlace a mapas abre una aplicación externa; no es una integración con Geocoding API de Google Maps Platform.
+La API oficial DMC requiere usuario y token. Esta actualización utiliza sus Excel auditados y ofrece Open-Meteo como consulta actual alternativa. El JSON público de SINCA mezcla índices ICAP con información presentada en HTML, por lo que no se interpreta su valor gráfico como una concentración. Ver [decisiones y límites de integración](docs/INTEGRACION_FUENTES.md).
 
-## Estructura
+## Movilidad y reportes
 
-```text
-HABITA_Android/
-├── app/                         Aplicación Android
-│   └── src/
-│       ├── main/java/cl/habita/mobile/
-│       │   ├── MainActivity.kt
-│       │   ├── HabitaViewModel.kt
-│       │   ├── ReportPdf.kt
-│       │   ├── data/            Fuente GTFS, documentos y persistencia
-│       │   └── ui/              Pantallas, componentes y colores
-│       └── androidTest/         Pruebas de navegación y ejecución nativa
-├── core/                        Cálculos Kotlin sin dependencia Android
-│   └── src/
-│       ├── main/kotlin/cl/habita/core/
-│       │   ├── HabitaIndex.kt
-│       │   ├── GtfsAnalyzer.kt
-│       │   └── Csv.kt
-│       └── test/                Reglas y comparación con informes Python
-└── gradle/wrapper/               Gradle Wrapper
-```
+Se conserva el motor GTFS local: calendario y excepciones, horas superiores a 24:00, frecuencias con fin exclusivo, recorridos y destinos, punta mañana/tarde, radios de 500/800 m, eventos por parada y viajes únicos. El feed incluido **V167.20260829** tiene vigencia **29/08/2026–31/12/2026**. No proporciona llegadas en tiempo real. La caminata es teórica a 1,4 m/s.
 
-La tarea `prepareBundledGtfs` reconstruye el ZIP del equipo desde sus nueve partes, verifica tamaño y SHA-256 y lo incluye dentro del APK. Así el teléfono funciona sin el computador y Git no duplica esos 12 MB. **Si se mueve únicamente esta carpeta, también debe conservarse la carpeta de datos hermana en la misma ubicación relativa.**
+Se pueden importar ZIP o carpetas GTFS mediante el selector de Android y restaurar el feed incluido. Una importación afecta **Movilidad**; el índice histórico del entorno conserva el catálogo de buses versionado del equipo para seguir siendo reproducible.
 
-## Compilar y verificar
+Los informes JSON, PDF y el resumen compartido indican el modo, la escala, la cobertura y las fuentes. El JSON conserva el detalle completo y las consultas de APIs. El PDF incluye un resumen legible y las limitaciones. Storage Access Framework permite guardarlos sin acceso general al almacenamiento.
 
-Desde una terminal situada en `HABITA_Android`, con `JAVA_HOME` apuntando al JDK integrado:
+## Verificación y actualización de fuentes
+
+Desde `HABITA_Android`, con `JAVA_HOME` apuntando al JDK integrado:
 
 ```powershell
-.\gradlew.bat :core:test :app:assembleDebug :app:lintDebug
+.\gradlew.bat :core:test :app:assembleDebug :app:lintDebug :app:assembleDebugAndroidTest
 ```
 
-El APK se genera en `app/build/outputs/apk/debug/app-debug.apk`. Es una compilación de desarrollo firmada con la clave de depuración del equipo; no es una publicación en Play Store.
+El APK local queda en `app/build/outputs/apk/debug/app-debug.apk`. Es de desarrollo, para pruebas; no está publicado en Play Store.
 
-Ver el [resultado de la validación](docs/VALIDACION.md) y las [capturas obtenidas en Android](docs/capturas/).
-
-Con un emulador o teléfono de pruebas conectado:
+Con un dispositivo de pruebas conectado, las regresiones que no necesitan internet:
 
 ```powershell
-.\gradlew.bat :app:connectedDebugAndroidTest
+.\gradlew.bat :app:connectedDebugAndroidTest "-Pandroid.testInstrumentationRunnerArguments.notClass=cl.habita.mobile.OnlineSourcesDeviceTest"
 ```
 
-Las pruebas del núcleo comparan los seis resultados del índice con el motor Python, comprueban datos faltantes y entradas inválidas, y contrastan **parada física, parada activa y cobertura completas** con los informes originales de San Bernardo y Estadio Nacional del 23/09/2026. También prueban frecuencias, offsets, fin exclusivo, calendario por excepciones, restricciones de abordaje y viajes únicos. Los JSON de referencia se conservan sin alterar en `core/src/test/resources`.
+La comprobación manual de los cuatro servicios en Android necesita internet:
 
-Las pruebas Android recorren el diseño móvil, verifican estado tras recrear la actividad, ejecutan GTFS en el dispositivo, abren las vistas de recorridos/cobertura/ficha técnica y comprueban la generación de PDF. Sus capturas se escriben en el directorio externo privado de la app, subcarpeta `qa/`.
+```powershell
+.\gradlew.bat :app:connectedDebugAndroidTest "-Pandroid.testInstrumentationRunnerArguments.class=cl.habita.mobile.OnlineSourcesDeviceTest"
+```
 
-## Colaborar
+Para incorporar nuevas fuentes históricas, desde la raíz del repositorio, con Python y la dependencia de `Pruebas/requirements.txt`:
 
-La versión compartida se encuentra en `main` del [repositorio del equipo](https://github.com/Gato9991/Desarrollo_Habita). Para nuevos cambios, crea una rama desde `main` actualizado y sigue las reglas de revisión del equipo. Sube código, pruebas y documentación; las carpetas `build`, `.gradle`, `.idea`, `.kotlin` y `local.properties` quedan excluidas porque se generan en cada computador. No hacen falta APK, cachés, rutas locales del SDK ni claves de firma para abrir y compilar el proyecto.
+```powershell
+python HABITA_Android/tools/prepare_reference.py
+```
+
+El preparador reutiliza los lectores y reglas de `Pruebas`; genera el catálogo compacto, su checksum y las ocho referencias para pruebas Kotlin. No modifica los archivos originales. Android Studio utiliza ese catálogo ya preparado y verifica el checksum, sin ejecutar Python.
+
+Ver [validación](docs/VALIDACION.md). Las pruebas del núcleo conservan las comparaciones GTFS e índice de la versión anterior y añaden equivalencia de los ocho resultados geográficos Python, selección de estaciones, límites de cobertura, unidades, duplicados y APIs incompletas.
+
+## Alcance pendiente
+
+Las amenazas de inundación, fallas y remoción en masa requieren capas con cobertura, fechas y reglas de interpretación validadas. Esta versión no inventa sus puntajes ni afirma que la consulta volcánica cubra todas las amenazas. El modelo nuevo de cuatro indicadores aún es una prueba del equipo. También queda pendiente la integración IoT de 48–72 horas dentro de la vivienda.
 
 HABITA, proyecto fundado por Mauricio Medina, con participación de Daniel Morales, Cristian Morales y Jordan Navia en su etapa de desarrollo.

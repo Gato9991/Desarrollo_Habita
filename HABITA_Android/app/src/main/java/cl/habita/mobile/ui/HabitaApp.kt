@@ -109,7 +109,7 @@ import cl.habita.mobile.data.*
     Text("Decide dónde vivir\ncon más información", style = MaterialTheme.typography.headlineLarge)
     Text("Evalúa una propiedad y su entorno antes de comprar o arrendar.", color = Muted, style = MaterialTheme.typography.bodyLarge)
     PropertyIllustration()
-    PrimaryAction("Evaluar una propiedad", { vm.navigate(Page.EVALUATE) })
+    PrimaryAction("Evaluar una propiedad", { vm.mode(Evaluation.TERRITORY); vm.navigate(Page.EVALUATE) })
     Surface(color = Color.White, border = androidx.compose.foundation.BorderStroke(1.dp, Line), shape = RoundedCornerShape(14.dp)) {
         Row(Modifier.fillMaxWidth().padding(15.dp), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             Icon(Icons.Rounded.CheckCircleOutline, null, tint = Blue, modifier = Modifier.size(20.dp))
@@ -117,13 +117,13 @@ import cl.habita.mobile.data.*
         }
     }
     CardBlock {
-        Eyebrow("CINCO PERSPECTIVAS")
+        Eyebrow("FUENTES DEL EQUIPO")
         Text("Un lugar. Datos a la vista.", style = MaterialTheme.typography.titleLarge)
-        Text("Aire, confort térmico, transporte, salud y amenazas naturales. Cada resultado muestra sus componentes y la información disponible.", color = Muted)
+        Text("Aire, confort exterior, transporte y salud con fuentes históricas. Consultas en línea con su fecha y procedencia. Amenazas volcánicas como información adicional.", color = Muted)
         TextButton(onClick = { vm.mode(Evaluation.DEMO); vm.navigate(Page.INDEX) }) { Text("Explorar los seis puntos de prueba →") }
     }
     OutlinedButton(onClick = { vm.navigate(Page.MOBILITY) }, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp), shape = RoundedCornerShape(16.dp)) {
         Icon(Icons.Rounded.DirectionsBus, null); Spacer(Modifier.width(10.dp)); Text("Explorar mi conectividad")
     }
-    Notice("El índice sigue siendo provisional. Los seis puntos de demostración usan datos simulados; las consultas de transporte usan el feed GTFS incluido.")
+    Notice("El índice del entorno usa el modelo de prueba de main (0–10). La demostración anterior usa seis puntos simulados (0–100). Los resultados no son una evaluación validada de habitabilidad.")
 }

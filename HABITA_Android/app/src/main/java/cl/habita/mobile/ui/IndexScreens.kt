@@ -22,22 +22,24 @@ import cl.habita.mobile.data.*
     Eyebrow("02 / COMPRENDE EL ÍNDICE")
     Text(state.title, style = MaterialTheme.typography.headlineMedium)
     Text(state.subtitle, color = Muted)
-    if (state.evaluation == Evaluation.GTFS && state.stale) Notice("Estos resultados corresponden a la consulta anterior. Vuelve a analizar los cambios de ubicación o fecha.", warning = true)
+    if (state.evaluation != Evaluation.DEMO && state.stale) Notice("Estos resultados corresponden a la consulta anterior. Vuelve a analizar los cambios de ubicación o fecha.", warning = true)
     SourceNotice(state)
     IndexCard(state)
-    if (state.evaluation == Evaluation.GTFS && state.report == null) {
-        Text("Primero consulta una ubicación para calcular el componente de transporte.", color = Muted)
+    if (!state.hasResult) {
+        Text("Primero consulta una ubicación para calcular sus indicadores.", color = Muted)
         PrimaryAction("Definir ubicación", { vm.navigate(Page.EVALUATE) })
     } else {
         Text("Variables del entorno", style = MaterialTheme.typography.titleLarge)
-        Text("Cinco variables · 20% de peso base cada una. Abre una ficha para revisar sus datos.", color = Muted, style = MaterialTheme.typography.bodySmall)
+        Text(if (state.evaluation == Evaluation.TERRITORY) "Cuatro variables · 25% de peso base cada una · escala 0 a 10. Modelo de prueba pendiente de aprobación."
+            else "Modelo anterior: cinco variables · 20% de peso base cada una · escala 0 a 100.", color = Muted, style = MaterialTheme.typography.bodySmall)
         state.index.variables.chunked(2).forEach { row ->
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                row.forEach { variable -> VariableCard(variable, Modifier.weight(1f)) }
+                row.forEach { variable -> VariableCard(variable, Modifier.weight(1f), result = state.index) }
             }
         }
         PrimaryAction("Ver detalle del entorno", { vm.navigate(Page.DETAIL) })
         Methodology(state)
+        if (state.evaluation == Evaluation.TERRITORY) EnvironmentSources(state, vm)
     }
 }
 
@@ -53,26 +55,29 @@ import cl.habita.mobile.data.*
     SourceNotice(state)
     CardBlock {
         Text("Lo que dicen los datos", style = MaterialTheme.typography.titleMedium)
-        Text(if (state.evaluation == Evaluation.DEMO) demoSummary(state.point) else realSummary(state), color = Muted)
+        Text(if (state.evaluation == Evaluation.DEMO) demoSummary(state.point) else if (state.evaluation == Evaluation.TERRITORY)
+            "El índice del entorno combina aire, confort exterior, paraderos de bus y salud. Sus períodos históricos y las consultas en línea se pueden revisar en la pantalla Índice."
+            else realSummary(state), color = Muted)
     }
     val ranked = state.index.variables.filter { it.score != null }.sortedByDescending { it.score }
     if (ranked.isNotEmpty()) {
         Text("Comparación dentro del modelo", style = MaterialTheme.typography.titleLarge)
         CardBlock {
             Text("Componente mejor puntuado", color = Blue, style = MaterialTheme.typography.labelSmall)
-            Text("${ranked.first().name} · ${format(ranked.first().score)} / 100", fontWeight = FontWeight.SemiBold)
+            Text("${ranked.first().name} · ${format(state.index.display(ranked.first().score))} / ${state.index.displayMaximum}", fontWeight = FontWeight.SemiBold)
             if (ranked.size > 1) {
                 HorizontalDivider(color = Line)
                 Text("Componente con menor puntaje", color = Muted, style = MaterialTheme.typography.labelSmall)
-                Text("${ranked.last().name} · ${format(ranked.last().score)} / 100", fontWeight = FontWeight.SemiBold)
+                Text("${ranked.last().name} · ${format(state.index.display(ranked.last().score))} / ${state.index.displayMaximum}", fontWeight = FontWeight.SemiBold)
             }
             Text("Esta comparación depende de las reglas provisionales y de los datos disponibles.", color = Muted, style = MaterialTheme.typography.bodySmall)
         }
     }
     Text("Aspectos a revisar", style = MaterialTheme.typography.titleLarge)
     Notice(if (state.evaluation == Evaluation.DEMO) "Los valores de esta ubicación son simulados. Un puntaje alto no demuestra que un lugar sea seguro ni reemplaza una visita o revisión de sus fuentes."
-        else "El índice parcial usa únicamente accesibilidad a paraderos (20% de cobertura). No permite compararlo como si tuviera las cinco variables completas.", warning = true)
-    state.index.variables.forEach { VariableCard(it, Modifier.fillMaxWidth(), startExpanded = true) }
+        else if (state.evaluation == Evaluation.TERRITORY) "Las estaciones de referencia pueden estar lejos del punto. La cobertura indica componentes disponibles, no certeza. El global se muestra solo con al menos 75% de cobertura."
+        else "Este modo parcial usa únicamente accesibilidad a paraderos (20% de cobertura) del modelo anterior.", warning = true)
+    state.index.variables.forEach { VariableCard(it, Modifier.fillMaxWidth(), startExpanded = true, result = state.index) }
     CardBlock(dark = true) {
         Text("Medición dentro de la vivienda", style = MaterialTheme.typography.titleMedium)
         Text("PRÓXIMA ETAPA", color = Color(0xFF9AE2E5), style = MaterialTheme.typography.labelSmall)
@@ -84,11 +89,24 @@ import cl.habita.mobile.data.*
 
 @Composable fun SourceNotice(state: AppState) {
     if (state.evaluation == Evaluation.DEMO) Notice("Datos de prueba simulados. ${state.index.status}. No representan direcciones reales ni una evaluación validada.", warning = true)
+    else if (state.evaluation == Evaluation.TERRITORY) Notice(if (state.environment == null) "Evalúa una ubicación con las fuentes históricas incluidas del equipo."
+        else "SINCA, DMC, MINSAL y GTFS. Índice histórico de prueba; las consultas actuales de APIs se muestran por separado.")
     else Notice(if (state.report == null) "Consulta una ubicación real con el feed GTFS para obtener resultados."
         else "Fuente GTFS estática. Solo transporte tiene datos para este punto; aire, confort, salud y amenazas permanecen sin datos.")
 }
 
 @Composable fun Methodology(state: AppState) {
+    if (state.evaluation == Evaluation.TERRITORY) {
+        CardBlock {
+            Text("Cómo calculamos este índice", fontWeight = FontWeight.SemiBold)
+            Text("Modelo ${state.index.version} de Pruebas, pendiente de aprobación. Cuatro indicadores con 25% de base; escala 0–10; mínimo 75% de disponibilidad ponderada para mostrar el global.", color = Muted)
+            Text("Aire: media anual de puntajes diarios, mínimo 256 de 365 días por contaminante. MP2,5 70% y O₃ 30%. Temperatura 60% y humedad 40%; se puntúan observaciones y se agregan por hora, día y mes (18 horas/día, 70% de días/mes, al menos dos meses). Estación admisible más cercana hasta 30 km, elegida por separado para aire y confort.", color = Muted, style = MaterialTheme.typography.bodySmall)
+            Text("Paraderos: distancia 60% y cantidad en 500 m 40%. Salud: distancia 70% y cantidad en 2 km 30%. Vecino más cercano en todo el catálogo admisible; distancias en línea recta. Los pesos se reducen cuando faltan componentes. No se rellenan ausencias con cero ni se mezclan los contaminantes de estaciones distintas.", color = Muted, style = MaterialTheme.typography.bodySmall)
+            Text("Las medias de las series son descriptivas: el índice usa sus puntajes agregados. Las APIs actuales no reemplazan las series históricas ni añaden cobertura al índice. Amenazas sin normalización validada quedan fuera del puntaje.", color = Muted, style = MaterialTheme.typography.bodySmall)
+            Text(HabitaIndex.NOTICE, color = Muted, style = MaterialTheme.typography.bodySmall)
+        }
+        return
+    }
     var expanded by rememberSaveable { mutableStateOf(false) }
     OutlinedCard(onClick = { expanded = !expanded }, shape = RoundedCornerShape(16.dp), border = BorderStroke(1.dp, Line), modifier = Modifier.fillMaxWidth()) {
         Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {

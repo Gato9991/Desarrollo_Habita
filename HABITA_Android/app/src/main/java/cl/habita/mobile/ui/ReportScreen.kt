@@ -16,7 +16,7 @@ import cl.habita.mobile.HabitaViewModel.Companion.format
     Text("La información,\npara llevar.", style = MaterialTheme.typography.headlineLarge)
     Text("Guarda el resultado y sus fuentes para revisarlo con más contexto.", color = Muted)
     SourceNotice(state)
-    if (state.evaluation == Evaluation.GTFS && state.stale) Notice("El informe conserva la ubicación y la fecha del último análisis. Los cambios del formulario todavía no se han calculado.", warning = true)
+    if (state.evaluation != Evaluation.DEMO && state.stale) Notice("El informe conserva el último análisis. Los cambios del formulario todavía no se han calculado.", warning = true)
     CardBlock {
         Text(state.title, style = MaterialTheme.typography.titleLarge)
         Text(state.subtitle, color = Muted)
@@ -25,12 +25,12 @@ import cl.habita.mobile.HabitaViewModel.Companion.format
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                 Text(variable.name, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
                 Spacer(Modifier.width(12.dp))
-                Text(format(variable.score), color = Blue, fontWeight = FontWeight.SemiBold)
+                Text("${format(state.index.display(variable.score))} / ${state.index.displayMaximum}", color = Blue, fontWeight = FontWeight.SemiBold)
             }
         }
         Text("Disponibilidad de datos: ${format(state.index.coverage * 100)}%", color = Muted, style = MaterialTheme.typography.bodySmall)
     }
-    val canExport = state.busy == null && (state.evaluation == Evaluation.DEMO || state.report != null)
+    val canExport = state.busy == null && state.hasResult
     PrimaryAction("Guardar reporte en PDF", onPdf, enabled = canExport, icon = Icons.Rounded.PictureAsPdf)
     OutlinedButton(onClick = onJson, enabled = canExport, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
         Icon(Icons.Rounded.DataObject, null); Spacer(Modifier.width(10.dp)); Text("Exportar informe JSON")
@@ -39,6 +39,6 @@ import cl.habita.mobile.HabitaViewModel.Companion.format
         Icon(Icons.Rounded.Share, null); Spacer(Modifier.width(10.dp)); Text("Compartir resumen")
     }
     if (!canExport && state.busy == null) Notice("Analiza una ubicación para generar su reporte.")
-    Text("El PDF incluye el resumen y las limitaciones. El JSON conserva el desglose de cálculos y el informe GTFS completo cuando corresponde.", color = Muted, style = MaterialTheme.typography.bodySmall)
+    Text("El PDF incluye el resumen y las limitaciones. El JSON conserva el desglose, las fuentes del entorno, las consultas en línea o el informe GTFS según el modo elegido.", color = Muted, style = MaterialTheme.typography.bodySmall)
     Text("Prototipo conceptual · Metodología provisional", color = Muted, style = MaterialTheme.typography.bodySmall)
 }

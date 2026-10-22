@@ -1,5 +1,40 @@
 # Validación de HABITA Android
 
+## Comprobación previa a la publicación del 22 de octubre de 2026
+
+Se comprobó nuevamente `:core:test :app:assembleDebug :app:lintDebug` con resultado **BUILD SUCCESSFUL**. Las tareas de pruebas conservan sus resultados vigentes: **19 pruebas Kotlin/JVM**, sin fallos. Gradle verificó el SHA-256 del catálogo y generó el APK debug. Esta comprobación no repite las pruebas de emulador ni las consultas de APIs realizadas el 21 de octubre y documentadas abajo.
+
+## Actualización del 21 de octubre de 2026
+
+Versión Android **0.2.0**, preparada sobre `main` en `e075fd4fd0a4c893f419ea3b7baec09aa878f38f`. La rama de desarrollo es `kr0us`.
+
+- **Build y Android Lint:** correctos. Se generaron los APK de la app y de instrumentación. Lint conserva recomendaciones de versiones/estilo; no hay errores bloqueantes ni baseline nuevo.
+- **Kotlin/JVM:** **19 pruebas aprobadas**, sin fallos. Incluyen las 11 anteriores, equivalencia del modelo geográfico con las ocho ubicaciones Python y pruebas de cobertura, coordenadas, unidades, ceros, catálogos truncados, duplicados e interpretación de amenazas sin puntaje inventado.
+- **Fuentes Python:** **26 pruebas aprobadas**, sin cambiar sus fórmulas. Se ejecutaron con Python y openpyxl del entorno, usando una carpeta temporal del proyecto por restricciones de escritura de Windows.
+- **Android:** **7 pruebas aprobadas en una ejecución final**, en un emulador QA independiente Android 17 / API 37.1. Incluyen demo y rotación, error legible de coordenadas, GTFS completo, importación/restauración, índice real de cuatro variables, persistencia, PDF y fuentes online.
+- **APIs desde Android:** las cuatro respondieron correctamente: Open-Meteo Weather, Open-Meteo Air Quality/CAMS, MINSAL/IDE Chile WFS y SENAPRED volcánico. Se comprobó que la consulta no cambia el puntaje histórico. Es evidencia de la ejecución; no garantiza disponibilidad futura del proveedor.
+- **Integridad:** **162 archivos fuente** contrastados contra el SHA-256 del catálogo preparado, sin diferencias. Los 16 Excel de las dos carpetas renombradas conservan sus blobs originales. El catálogo de 2.358.759 bytes tiene SHA-256 `fe85427b56b4fce09f2e7c2345a7b45dd5daf71ab8269aeb6907f51a32b8446b`.
+
+El entorno de prueba se creó dentro de `build/qa-avds` y se cerró al terminar. No se instaló ni ejecutó la batería de pruebas en el emulador del usuario que ya estaba abierto.
+
+### Comprobaciones funcionales nuevas
+
+La Moneda: índice **7,8 / 10** al redondear a un decimal y **92,5%** de disponibilidad ponderada. El aire selecciona Parque O'Higgins y conserva la ausencia de O₃ por cobertura anual insuficiente (248 días, por debajo de 256); confort selecciona Quinta Normal. Kotlin coincide con el programa Python para este punto y los otros siete ejemplos, incluidos los componentes y distancias.
+
+San Bernardo: el índice histórico es **7,9740641268 / 10**, con 100% de componentes disponibles. La prueba de APIs conservó ese valor; consultó temperatura y humedad exterior, concentraciones de aire modeladas, establecimientos del catálogo WFS y la intersección volcánica. La respuesta WFS informó **15 centros admisibles en 2 km**. La capa volcánica no devolvió intersecciones para ese punto; esto no equivale a ausencia de riesgo.
+
+Se verificó que editar la coordenada marque el resultado anterior y deshabilite actualizar sus APIs hasta volver a analizar, que el índice del entorno se persista en almacenamiento privado y que JSON/PDF incluyan las fuentes y el modo. La prueba GTFS fija explícitamente San Bernardo para no heredar la ubicación de otro ensayo.
+
+### Capturas de la aplicación actualizada
+
+| Índice histórico | Estaciones de referencia | Confirmación de consultas |
+| --- | --- | --- |
+| <img src="capturas/entorno-indice.png" alt="Índice del entorno en La Moneda" width="230" /> | <img src="capturas/entorno-salud.png" alt="Estaciones SINCA y DMC con su cobertura y períodos" width="230" /> | <img src="capturas/fuentes-en-linea.png" alt="Confirmación de cuatro fuentes consultadas en Android" width="230" /> |
+
+Ver [decisiones y límites de integración](INTEGRACION_FUENTES.md) y [cómo ejecutarlo](../README.md). El nuevo modelo sigue siendo una propuesta de prueba. Amenazas de inundación, fallas y remociones, el geocodificador remoto y la conexión a un sensor IoT no se dan por validados por estas pruebas.
+
+## Evidencia de la versión anterior
+
 Comprobaciones realizadas el **20 de octubre de 2026**, en la rama local `cristian/prototipo-movil`.
 
 - **Compilación debug:** correcta, con Gradle 8.13, Android Gradle Plugin 8.13.2 y JDK 21.
