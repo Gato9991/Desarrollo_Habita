@@ -24,9 +24,10 @@ import java.time.ZoneId
 @Composable fun EvaluateScreen(state: AppState, vm: HabitaViewModel, importZip: () -> Unit, importFolder: () -> Unit) = PageBody {
     Eyebrow("01 / ELIGE TU UBICACIÓN")
     Text("¿Qué dirección\nquieres conocer?", style = MaterialTheme.typography.headlineLarge)
-    Text("Explora los puntos de prueba o consulta el transporte cerca de una dirección real.", color = Muted)
-    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+    Text("Evalúa una dirección con las fuentes del equipo, consulta movilidad o explora la demostración.", color = Muted)
+    Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
         FilterChip(selected = state.evaluation == Evaluation.DEMO, onClick = { vm.mode(Evaluation.DEMO) }, label = { Text("Demostración") })
+        FilterChip(selected = state.evaluation == Evaluation.TERRITORY, onClick = { vm.mode(Evaluation.TERRITORY) }, label = { Text("Índice del entorno") })
         FilterChip(selected = state.evaluation == Evaluation.GTFS, onClick = { vm.mode(Evaluation.GTFS) }, label = { Text("Dirección / GTFS") })
     }
     if (state.evaluation == Evaluation.DEMO) {
@@ -75,11 +76,14 @@ import java.time.ZoneId
                 OutlinedTextField(state.query.lat, { vm.edit(state.query.copy(lat = it)) }, label = { Text("Latitud") }, singleLine = true, modifier = Modifier.weight(1f).testTag("query-lat"), enabled = state.busy == null)
                 OutlinedTextField(state.query.lon, { vm.edit(state.query.copy(lon = it)) }, label = { Text("Longitud") }, singleLine = true, modifier = Modifier.weight(1f), enabled = state.busy == null)
             }
-            DateField(state, vm)
-            PrimaryAction("Analizar ubicación", vm::analyzeMobility, enabled = state.busy == null && state.metadata != null)
+            if (state.evaluation == Evaluation.GTFS) DateField(state, vm)
+            PrimaryAction("Analizar ubicación", if (state.evaluation == Evaluation.TERRITORY) vm::analyzeEnvironment else vm::analyzeMobility, enabled = state.busy == null && (state.evaluation == Evaluation.TERRITORY || state.metadata != null))
         }
-        Notice("Para una dirección real, GTFS aporta transporte. El índice parcial muestra 20% de cobertura; las otras fuentes permanecen sin datos.")
-        FeedControls(state, vm, importZip, importFolder)
+        if (state.evaluation == Evaluation.TERRITORY) Notice("Evalúa aire, confort exterior, paraderos y salud con las fuentes históricas del equipo. Puedes consultar datos en línea después de analizar. No requiere internet para el índice incluido.")
+        else {
+            Notice("Este modo analiza solo GTFS. Para aire, confort y salud selecciona Índice del entorno.")
+            FeedControls(state, vm, importZip, importFolder)
+        }
     }
 }
 

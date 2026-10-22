@@ -20,24 +20,28 @@ data class Variable(
     val score: Double?, val coverage: Double, val effectiveWeight: Double = 0.0,
     val finalWeight: Double = 0.0,
 )
-data class IndexResult(val score: Double?, val coverage: Double, val variables: List<Variable>) {
+data class IndexResult(val score: Double?, val coverage: Double, val variables: List<Variable>,
+    val version: String = HabitaIndex.VERSION, val displayMaximum: Int = 100,
+    val baseWeight: Double = .2, val minimumCoverage: Double = 0.0) {
+    fun display(value: Double?): Double? = value?.times(displayMaximum / 100.0)
     val status: String get() = when {
         coverage == 0.0 -> "Sin datos"
+        coverage + 1e-12 < minimumCoverage -> "Cobertura insuficiente"
         abs(coverage - 1.0) < 1e-9 -> "Datos completos"
         else -> "Índice provisional"
     }
     fun toJson(): JsonObject = json(
-        "version_formula" to HabitaIndex.VERSION, "indice_habita" to score,
+        "version_formula" to version, "indice_habita" to display(score), "escala_maxima" to displayMaximum,
         "cobertura_porcentaje" to coverage * 100, "estado" to status,
         "advertencia" to HabitaIndex.NOTICE,
         "variables" to variables.map { v -> json(
             "id" to v.id, "nombre" to v.name, "alcance" to v.scope,
-            "puntaje" to v.score, "cobertura" to v.coverage,
-            "peso_base" to .2, "peso_efectivo" to v.effectiveWeight,
+            "puntaje" to display(v.score), "cobertura" to v.coverage,
+            "peso_base" to baseWeight, "peso_efectivo" to v.effectiveWeight,
             "participacion_final" to v.finalWeight,
             "componentes" to v.components.map { c -> json(
                 "nombre" to c.name, "valor" to c.value, "unidad" to c.unit,
-                "peso_interno" to c.weight, "puntaje" to c.score,
+                "peso_interno" to c.weight, "puntaje" to display(c.score),
             ) },
         ) },
     )

@@ -6,6 +6,7 @@ dependencies {
     testImplementation("com.google.code.gson:gson:2.11.0")
 }
 tasks.test {
+    systemProperty("habita.catalogPath", rootProject.file("app/src/main/assets/reference/catalog.json").absolutePath)
     dependsOn(rootProject.tasks.named("prepareBundledGtfs"))
     systemProperty("habita.gtfsPath", rootProject.layout.buildDirectory.file("generated/habitaAssets/gtfs/feed.zip").get().asFile.absolutePath)
     maxHeapSize = "1536m"

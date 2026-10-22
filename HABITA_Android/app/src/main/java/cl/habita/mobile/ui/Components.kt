@@ -77,9 +77,9 @@ import kotlin.math.roundToInt
         verticalArrangement = Arrangement.spacedBy(16.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(18.dp)) {
             Column(Modifier.size(112.dp).background(Color.White, CircleShape), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(if (result.score == null) "—" else format(result.score), color = Blue, fontSize = 35.sp, fontWeight = FontWeight.Bold,
+                Text(if (result.score == null) "—" else format(result.display(result.score)), color = Blue, fontSize = 35.sp, fontWeight = FontWeight.Bold,
                     modifier = Modifier.testTag("index-score"))
-                Text("de 100", color = Muted, style = MaterialTheme.typography.bodySmall)
+                Text("de ${result.displayMaximum}", color = Muted, style = MaterialTheme.typography.bodySmall)
             }
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(7.dp)) {
                 Text("ÍNDICE HABITA", color = Color(0xFF9EDFE6), style = MaterialTheme.typography.labelSmall, letterSpacing = 1.sp)
@@ -89,13 +89,13 @@ import kotlin.math.roundToInt
         }
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Text("Disponibilidad de datos ponderada", color = Color(0xFFD4E8EE), style = MaterialTheme.typography.bodySmall)
-            Text("${(result.coverage * 100).roundToInt()}%", color = Color.White, style = MaterialTheme.typography.labelSmall)
+            Text("${if (result.displayMaximum == 10) format(result.coverage * 100) else (result.coverage * 100).roundToInt().toString()}%", color = Color.White, style = MaterialTheme.typography.labelSmall)
         }
         LinearProgressIndicator(progress = { result.coverage.toFloat() }, Modifier.fillMaxWidth().height(6.dp), color = Teal, trackColor = Color(0xFF355B72))
     }
 }
 
-@Composable fun VariableCard(variable: Variable, modifier: Modifier = Modifier, startExpanded: Boolean = false) {
+@Composable fun VariableCard(variable: Variable, modifier: Modifier = Modifier, startExpanded: Boolean = false, result: IndexResult? = null) {
     var expanded by rememberSaveable(variable.id, startExpanded) { mutableStateOf(startExpanded) }
     Surface(onClick = { expanded = !expanded }, modifier = modifier.testTag("variable-${variable.id}")
         .semantics { stateDescription = if (expanded) "Datos expandidos" else "Datos contraídos" },
@@ -106,7 +106,7 @@ import kotlin.math.roundToInt
                 null, Modifier.size(25.dp), tint = Blue)
             Text(variable.name, style = MaterialTheme.typography.titleMedium)
             Text(variable.scope, color = Muted, style = MaterialTheme.typography.bodySmall)
-            Text(format(variable.score), color = Navy, fontSize = if (variable.score == null) 19.sp else 30.sp, fontWeight = FontWeight.Bold)
+            Text(format(if (result != null) result.display(variable.score) else variable.score), color = Navy, fontSize = if (variable.score == null) 19.sp else 30.sp, fontWeight = FontWeight.Bold)
             LinearProgressIndicator(progress = { (variable.score?.div(100) ?: 0.0).toFloat() }, modifier = Modifier.fillMaxWidth().height(5.dp), color = Teal, trackColor = Pale)
             Text("Cobertura ${(variable.coverage * 100).roundToInt()}%", color = Muted, style = MaterialTheme.typography.bodySmall)
             Text(if (expanded) "Ocultar datos −" else "Ver datos +", color = Blue, style = MaterialTheme.typography.labelSmall)
@@ -115,9 +115,9 @@ import kotlin.math.roundToInt
                 variable.components.forEach { c ->
                     Text(c.name, style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.SemiBold)
                     Text(c.value?.let { "${format(it)} ${c.unit}" } ?: "Sin dato", color = Muted, style = MaterialTheme.typography.bodySmall)
-                    Text("Peso interno ${(c.weight * 100).roundToInt()}% · Puntaje ${format(c.score)}", color = Muted, style = MaterialTheme.typography.bodySmall)
+                    Text("Peso interno ${(c.weight * 100).roundToInt()}% · Puntaje ${format(if (result != null) result.display(c.score) else c.score)}", color = Muted, style = MaterialTheme.typography.bodySmall)
                 }
-                Text("Peso base 20% · Peso efectivo ${format(variable.effectiveWeight * 100)}% · Participación ${format(variable.finalWeight * 100)}%",
+                Text("Peso base ${((result?.baseWeight ?: .2) * 100).roundToInt()}% · Peso efectivo ${format(variable.effectiveWeight * 100)}% · Participación ${format(variable.finalWeight * 100)}%",
                     color = Blue, style = MaterialTheme.typography.bodySmall)
             }
         }
