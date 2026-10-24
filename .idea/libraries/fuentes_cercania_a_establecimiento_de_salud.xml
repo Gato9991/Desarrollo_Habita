@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="fuentes cercania a establecimiento de salud">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/FUENTES/fuentes cercania a establecimiento de salud/ESTABLECIMIENTOS_12062026_DES.zip!/" />
+      <root url="jar://$PROJECT_DIR$/FUENTES/fuentes cercania a establecimiento de salud/HABITA_Salud_v1.0_GUI_ubicaciones.zip!/" />
+      <root url="jar://$PROJECT_DIR$/FUENTES/fuentes cercania a establecimiento de salud/l_910_v1_establecimientos_de_salud_diciembre_2025.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
